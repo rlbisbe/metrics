@@ -57,7 +57,7 @@
                     <Button VerticalAlignment="Top" Width="75" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Left" FlowDirection="LeftToRight" Padding="12,4,12,5" Margin="30,0,0,0"/>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" UseLayoutRounding="True">
-                    <Button VerticalAlignment="Top" Width="75" Style="{StaticResource AddAppBarButtonStyle}"  Click="Button_Click_1"/>
+                    <Button VerticalAlignment="Top" Width="75" Style="{StaticResource AddAppBarButtonStyle}" />
                     <Button VerticalAlignment="Top" Width="75" Style="{StaticResource DeleteAppBarButtonStyle}"  Click="Delete_Click" IsEnabled="False"/>
 				</StackPanel>
 			</Grid>
@@ -79,12 +79,12 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="1081*"/>
-                <ColumnDefinition Width="201*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Margin="36,0,0,36" d:LayoutOverrides="Margin"/>
+            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Margin="36,0,36,36" d:LayoutOverrides="Margin"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0,0,55,40" Height="40" d:LayoutOverrides="Margin"/>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
                 <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40"/>
                 <Button x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40" />
                 <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40" Visibility="Collapsed" />

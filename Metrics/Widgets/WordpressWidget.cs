@@ -26,9 +26,15 @@ namespace Metrics.Widgets
 
         public override async Task Update()
         {
+            //TODO: Check valid syntax of blog, and correct API Key.
+
+
+            // For last day: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&days=1 -< Yesterday: Today = 0
+            // This week: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&period=week&days=0
+            // This month: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&period=month&days=0
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
-            var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com"));
+            var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog));
             var result = await response.Content.ReadAsStringAsync();
 
             // Parse the JSON recipe data
