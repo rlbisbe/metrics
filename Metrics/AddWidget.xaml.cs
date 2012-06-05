@@ -59,6 +59,10 @@ namespace Metrics
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new GithubControl());
                     break;
+                case "StackOverflow":
+                    WidgetContainer.Children.Clear();
+                    WidgetContainer.Children.Add(new StackOverflowControl());
+                    break;
                 case "Tuenti":
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new TuentiControl());

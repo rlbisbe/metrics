@@ -173,6 +173,7 @@
                 <ComboBox x:Name="Services" Margin="4,4,3,4" BorderThickness="2" SelectionChanged="ComboBox_SelectionChanged_1" BorderBrush="#CC000000">
                     <ComboBoxItem Content="Facebook"/>
                     <ComboBoxItem Content="Github"/>
+                    <ComboBoxItem Content="StackOverflow"/>
                     <ComboBoxItem Content="Tuenti"/>
                     <ComboBoxItem Content="Twitter"/>
                     <ComboBoxItem Content="Wordpress"/>

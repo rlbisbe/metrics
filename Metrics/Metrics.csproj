@@ -116,6 +116,7 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\GzipHttpClient.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="App.xaml.cs">
@@ -123,6 +124,9 @@
     </Compile>
     <Compile Include="Pages\GithubControl.xaml.cs">
       <DependentUpon>GithubControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StackOverflowControl.xaml.cs">
+      <DependentUpon>StackOverflowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TuentiControl.xaml.cs">
       <DependentUpon>TuentiControl.xaml</DependentUpon>
@@ -142,6 +146,7 @@
       <DependentUpon>TwitterControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widgets\GithubWidget.cs" />
+    <Compile Include="Widgets\StackOverflowWidget.cs" />
     <Compile Include="Widgets\TuentiWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
     <Compile Include="Widgets\Widget.cs" />
@@ -156,6 +161,10 @@
     <None Include="Metrics_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Pages\StackOverflowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GithubControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
