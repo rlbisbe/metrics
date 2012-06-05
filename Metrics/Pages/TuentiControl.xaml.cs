@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Metrics.Widgets;
-using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,22 +16,23 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Metrics
+namespace Metrics.Pages
 {
-    public sealed partial class FacebookControl : UserControl, IWidget
+    public sealed partial class TuentiControl : UserControl, IWidget
     {
+
         public int Tweets { get; set; }
 
-        public FacebookControl()
+        public TuentiControl()
         {
             this.InitializeComponent();
         }
 
         async public Task<Widget> GetWidget()
         {
-            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Page likes"))
+            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Likes"))
             {
-                FacebookWidget tw = new FacebookWidget(Name.Text);
+                TuentiWidget tw = new TuentiWidget(Name.Text);
                 await tw.Update();
                 return tw;
             }

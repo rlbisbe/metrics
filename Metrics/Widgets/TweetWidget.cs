@@ -32,9 +32,13 @@ namespace Metrics.Widgets
             var recipes = JsonObject.Parse(result);
 
             Counter = (int)recipes["followers_count"].GetNumber();
-            // Convert the JSON objects into RecipeDataItems and RecipeDataGroups
         }
 
+        /// <summary>
+        /// Converts the content of the widget into an ApplicationDataCompositeValue,
+        /// for saving it in the local system.
+        /// </summary>
+        /// <returns></returns>
         public override ApplicationDataCompositeValue Save()
         {
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();

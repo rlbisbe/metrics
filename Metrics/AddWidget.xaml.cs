@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Metrics.Pages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,8 +27,7 @@ namespace Metrics
         }
 
         private void Submit_Click_1(object sender, RoutedEventArgs e)
-        {
-                
+        {  
             p.IsOpen = false;
         }
 
@@ -44,7 +44,6 @@ namespace Metrics
             p.IsOpen = false;
             var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
             myApp.Widgets.Add(w);
-            
         }
 
         private void ComboBox_SelectionChanged_1(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
@@ -52,23 +51,26 @@ namespace Metrics
             string service = (Services.SelectedItem as ComboBoxItem).Content.ToString();
             switch (service)
             {
-                case "Twitter":
-                    WidgetContainer.Children.Clear();
-                    WidgetContainer.Children.Add(new TwitterControl());
-                    break;
                 case "facebook":
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new FacebookControl());
+                    break;
+                case "Tuenti":
+                    WidgetContainer.Children.Clear();
+                    WidgetContainer.Children.Add(new TuentiControl());
+                    break;
+                case "Twitter":
+                    WidgetContainer.Children.Clear();
+                    WidgetContainer.Children.Add(new TwitterControl());
                     break;
                 case "Wordpress":
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;
+                
                 default:
                     break;
             }
-
-        	// TODO: Add event handler implementation here.
         }
     }
 }
