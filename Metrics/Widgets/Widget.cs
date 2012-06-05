@@ -85,6 +85,10 @@ namespace Metrics
                     return new TweetWidget((string)val["source"]);
                 case "FacebookWidget":
                     return new FacebookWidget((string)val["source"]);
+                case "TuentiWidget":
+                    return new TuentiWidget((string)val["source"]);
+                case "GithubWidget":
+                    return new GithubWidget((string)val["username"], (string)val["repository"]);
                 case "WordpressWidget":
                     return new WordpressWidget((string)val["blog"], (string)val["key"]);
                 default:

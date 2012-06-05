@@ -121,6 +121,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GithubControl.xaml.cs">
+      <DependentUpon>GithubControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TuentiControl.xaml.cs">
       <DependentUpon>TuentiControl.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,7 @@
     <Compile Include="Pages\TwitterControl.xaml.cs">
       <DependentUpon>TwitterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\GithubWidget.cs" />
     <Compile Include="Widgets\TuentiWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
     <Compile Include="Widgets\Widget.cs" />
@@ -152,6 +156,10 @@
     <None Include="Metrics_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Pages\GithubControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TuentiControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

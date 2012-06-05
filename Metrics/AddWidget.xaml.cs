@@ -51,9 +51,13 @@ namespace Metrics
             string service = (Services.SelectedItem as ComboBoxItem).Content.ToString();
             switch (service)
             {
-                case "facebook":
+                case "Facebook":
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new FacebookControl());
+                    break;
+                case "Github":
+                    WidgetContainer.Children.Clear();
+                    WidgetContainer.Children.Add(new GithubControl());
                     break;
                 case "Tuenti":
                     WidgetContainer.Children.Clear();

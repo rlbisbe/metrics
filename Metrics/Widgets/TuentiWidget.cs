@@ -28,14 +28,14 @@ namespace Metrics.Widgets
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
             var response = await client.GetAsync(new Uri("http://tuenti.com/" + Source));
             var result = await response.Content.ReadAsStringAsync();
-            var numero = Regex.Match(result, @"<li \s*(?:(?:\b(\w|-)+\b\s*(?:=\s*(?:""[^""]*""|'[^']*'|[^""'<> ]+)\s*)?)*)/?\s*>(\d\.)*(\d)*").Value.Replace(".","").Substring(28);
+            var numero = Regex.Match(result, @"<li \s*(?:(?:\b(\w|-)+\b\s*(?:=\s*(?:""[^""]*""|'[^']*'|[^""'<> ]+)\s*)?)*)/?\s*>(\d)*(\.)*(\d)*").Value.Replace(".","").Substring(28);
             Counter = int.Parse(numero);       
         }
 
         public override ApplicationDataCompositeValue Save()
         {
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
-            composite["name"] = "FacebookWidget";
+            composite["name"] = "TuentiWidget";
             composite["source"] = Source;
             return composite;
         }
