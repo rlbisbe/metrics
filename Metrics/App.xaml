@@ -9,7 +9,7 @@
 
         <ResourceDictionary>
             <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-            <x:String x:Key="AppName">Metrics Main Panel</x:String>
+            <x:String x:Key="AppName">Metrics</x:String>
             <ResourceDictionary.MergedDictionaries>
 
                 <!-- 

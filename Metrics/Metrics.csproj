@@ -122,6 +122,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Pages\GithubControl.xaml.cs">
       <DependentUpon>GithubControl.xaml</DependentUpon>
     </Compile>

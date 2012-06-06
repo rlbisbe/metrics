@@ -25,8 +25,6 @@ namespace Metrics
     /// </summary>
     sealed partial class App : Application
     {
-        public event EventHandler LoadCompleted;
-
         private ObservableCollection<Widget> _widgets = new ObservableCollection<Widget>();
         public ObservableCollection<Widget> Widgets
         {
@@ -81,12 +79,6 @@ namespace Metrics
             // Place the frame in the current Window and ensure that it is active
             Window.Current.Content = rootFrame;
             Window.Current.Activate();
-
-            //myApp.Widgets.Add(new Widget() { Title = "Followers for @rlbisbe", Counter = 200, Background = "Green" });
-            //myApp.Widgets.Add(new Widget() { Title = "Blog visits today", Counter = 160, Background = "Black" });
-            //myApp.Widgets.Add(new Widget() { Title = "Blog posts", Counter = 12, Background = "Blue" });
-            //myApp.Widgets.Add(new Widget() { Title = "Tweets with #helloworld tag", Counter = 65, Background = "Brown" });
-            //myApp.Widgets.Add(new Widget() { Title = "Likes today", Counter = 117, Background = "Blue" });
             
         }
 
