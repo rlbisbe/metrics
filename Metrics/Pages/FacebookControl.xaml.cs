@@ -31,6 +31,10 @@ namespace Metrics
 
         async public Task<Widget> GetWidget()
         {
+            if (String.IsNullOrEmpty(Name.Text))
+            {
+                throw new NullReferenceException("Page cannot be null");
+            }
             FacebookWidget tw;
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Page likes"))
             {

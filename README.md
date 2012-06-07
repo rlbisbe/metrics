@@ -24,6 +24,9 @@ Stats available right now:
 By now, only open issues are shown.
 
 Final stats (for version 1.0)
+## Twitter
+* Tweet count
+
 ## Wordpress
 * Other possible stats would be weekly stats or monthly stats.
 

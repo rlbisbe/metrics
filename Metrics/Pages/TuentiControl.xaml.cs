@@ -30,6 +30,10 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
+            if (String.IsNullOrEmpty(Name.Text))
+            {
+                throw new NullReferenceException("Page name cannot be null");
+            }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Likes"))
             {
                 TuentiWidget tw = new TuentiWidget(Name.Text);

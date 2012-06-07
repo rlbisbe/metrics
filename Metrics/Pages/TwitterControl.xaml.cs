@@ -31,6 +31,10 @@ namespace Metrics
 
         async public Task<Widget> GetWidget()
         {
+            if (String.IsNullOrEmpty(Name.Text))
+            {
+                throw new NullReferenceException("Twitter handle cannot be null");
+            }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Followers"))
             {
                 TweetWidget tw = new TweetWidget(Name.Text);

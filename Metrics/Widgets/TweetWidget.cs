@@ -13,8 +13,15 @@ namespace Metrics.Widgets
     {
         public TweetWidget(string Source)
         {
-            this.Source = Source;
-            this.Title =  Source + " followers";
+            if (Source.Contains("@"))
+            {
+                this.Source = Source.Substring(1);
+            }
+            else
+            {
+                this.Source = Source;
+            }
+            this.Title =  "@" + this.Source + " followers";
             this.Background = "#33CCFF";
             this.Foreground = "black";
             this.WidgetForeground = "#33000000";
@@ -27,7 +34,11 @@ namespace Metrics.Widgets
         {
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
-            var response = await client.GetAsync(new Uri("https://api.twitter.com/1/users/show.json?screen_name=" + Source));
+            var response = await client.GetAsync(new Uri("https://api.twitter.com/1/users/show.json?screen_name=" + this.Source));
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new NullReferenceException("The selected user was not found. Please check spelling.");
+            }
             var result = await response.Content.ReadAsStringAsync();
 
             // Parse the JSON recipe data
