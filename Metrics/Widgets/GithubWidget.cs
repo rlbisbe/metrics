@@ -21,6 +21,8 @@ namespace Metrics.Widgets
             this.Title = Repository + " open issues";
             this.Background = "#ffffff";
             this.Foreground = "black";
+            this.WidgetForeground = "#33000000";
+            this.WidgetName = "github";
         }
 
         public override async Task Update()

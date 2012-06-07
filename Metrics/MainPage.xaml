@@ -13,17 +13,18 @@
     <UserControl.Resources>
 
         <DataTemplate x:Key="Widget">
-            <Grid Width="300" Background="{Binding Background}" Height="120">
+            <Grid Width="380" Background="{Binding Background}" Height="130">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Margin="10" RenderTransformOrigin="0.5,0.5">
+                <Grid Margin="10,10,10,0" RenderTransformOrigin="0.5,0.5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="74*"/>
                         <RowDefinition Height="107*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource PageSubheaderTextStyle}" TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Stretch"/>
-                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Counter}" Style="{StaticResource PageHeaderTextStyle}" Margin="0" TextAlignment="Right" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.Row="1"/>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageHeaderTextStyle}" Margin="10,0,0,0" TextAlignment="Right" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.Row="1"/>
+                    <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,0,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="29.333"/>
                 </Grid>
             </Grid>
         </DataTemplate>

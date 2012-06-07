@@ -18,6 +18,8 @@ namespace Metrics.Widgets
             this.Title = Source + " visits today";
             this.Background = "#464646";
             this.Foreground = "white";
+            this.WidgetForeground = "#338ec9e8";
+            this.WidgetName = "wordpress";
         }
 
         public string Source { get; set; }

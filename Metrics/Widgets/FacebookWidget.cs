@@ -13,24 +13,53 @@ namespace Metrics.Widgets
     /// Facebook Widget.
     /// </summary>
     /// API Info: http://developers.facebook.com/docs/reference/api/
-    class FacebookWidget: Widget
+    class FacebookWidget : Widget
     {
-        public enum Selection { Likes, TalkingAbout }
-        
-        public FacebookWidget(string Source, Selection s)
+        public enum Selection { Null, Likes, TalkingAbout }
+
+        public FacebookWidget(string Source, string selection)
         {
             this.Source = Source;
-            this.sel = s;
-            if (s == Selection.Likes)
+            if (selection.Equals("Likes"))
             {
-                 this.Title = Source + " likes";
+                this.sel = Selection.Likes;
             }
-            else if (s == Selection.TalkingAbout)
+            else if (selection.Equals("TalkingAbout"))
             {
-                this.Title = "people talking about " + Source;                
+                this.sel = Selection.TalkingAbout;
+            }
+
+            this.Source = Source;
+            if (this.sel == Selection.Likes)
+            {
+                this.Title = Source + " likes";
+            }
+            else if (this.sel == Selection.TalkingAbout)
+            {
+                this.Title = "people talking about " + Source;
             }
             this.Background = "#385998";
             this.Foreground = "white";
+            this.WidgetForeground = "#33ffffff";
+            this.WidgetName = "facebook";
+        }
+
+        public FacebookWidget(string Source, Selection s)
+        {
+            this.sel = s;
+            this.Source = Source;
+            if (this.sel == Selection.Likes)
+            {
+                this.Title = Source + " likes";
+            }
+            else if (this.sel == Selection.TalkingAbout)
+            {
+                this.Title = "people talking about " + Source;
+            }
+            this.Background = "#385998";
+            this.Foreground = "white";
+            this.WidgetForeground = "#33ffffff";
+            this.WidgetName = "facebook";
         }
 
         public string Source { get; set; }
@@ -60,7 +89,7 @@ namespace Metrics.Widgets
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
             composite["name"] = "FacebookWidget";
             composite["source"] = Source;
-            composite["selection"] = sel;
+            composite["selection"] = sel.ToString();
             return composite;
         }
     }

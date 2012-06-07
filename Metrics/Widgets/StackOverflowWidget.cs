@@ -18,6 +18,8 @@ namespace Metrics.Widgets
             this.Site = Site;
             this.Background = "#366fb3";
             this.Foreground = "#ffffff";
+            this.WidgetForeground = "#33ffffff";
+            this.WidgetName = Site;
         }
 
 
@@ -44,7 +46,7 @@ namespace Metrics.Widgets
                 throw new NullReferenceException("The user id was not found.");
             }
 
-            this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation on " + Site;
+            this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation";
             Counter = (int)recipes["items"].GetArray()[0].GetObject()["reputation"].GetNumber();
         }
 

@@ -17,6 +17,8 @@ namespace Metrics.Widgets
             this.Title =  Source + " followers";
             this.Background = "#33CCFF";
             this.Foreground = "black";
+            this.WidgetForeground = "#33000000";
+            this.WidgetName = "twitter";
         }
 
         public string Source { get; set; }

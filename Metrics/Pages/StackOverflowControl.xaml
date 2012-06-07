@@ -23,9 +23,7 @@
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Stackexchange site:"/>
         <TextBox x:Name="Site" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
-        	<Run Text="Note"/>
-        	<Run Text=" t"/>
-        	<Run Text="he user id varies in each StackExchange site."/>
+        	<Run Text="Note: the user id varies in each StackExchange site."/>
         </TextBlock>
     </StackPanel>
 </UserControl>

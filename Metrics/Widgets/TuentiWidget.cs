@@ -19,6 +19,8 @@ namespace Metrics.Widgets
             this.Title = Source + " likes";
             this.Background = "#003b6a";
             this.Foreground = "#8ec9e8";
+            this.WidgetForeground = "#338ec9e8";
+            this.WidgetName = "tuenti";
         }
 
         public override async Task Update()

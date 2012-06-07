@@ -69,8 +69,11 @@ namespace Metrics
                 {
                     ApplicationDataCompositeValue composite = (ApplicationDataCompositeValue)localSettings.Values["Widget" + i];
                     Widget w = Widget.CreateWidget(composite);
-                    w.Update();
-                    this.Widgets.Add(w);
+                    if (w != null)
+                    {
+                        w.Update();
+                        this.Widgets.Add(w);
+                    }
                 }
             }
 
