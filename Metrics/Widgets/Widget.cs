@@ -84,13 +84,13 @@ namespace Metrics
                 case "TweetWidget":
                     return new TweetWidget((string)val["source"]);
                 case "FacebookWidget":
-                    return new FacebookWidget((string)val["source"]);
+                    return new FacebookWidget((string)val["source"], (FacebookWidget.Selection)val["selection"]);
                 case "TuentiWidget":
                     return new TuentiWidget((string)val["source"]);
                 case "GithubWidget":
                     return new GithubWidget((string)val["username"], (string)val["repository"]);
                 case "StackOverflowWidget":
-                    return new StackOverflowWidget((string)val["source"]);
+                    return new StackOverflowWidget((string)val["source"], (string)val["site"]);
                 case "WordpressWidget":
                     return new WordpressWidget((string)val["blog"], (string)val["key"]);
                 default:

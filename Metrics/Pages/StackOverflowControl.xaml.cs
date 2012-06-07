@@ -29,7 +29,7 @@ namespace Metrics.Pages
         {
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Reputation"))
             {
-                StackOverflowWidget tw = new StackOverflowWidget(Name.Text);
+                StackOverflowWidget tw = new StackOverflowWidget(Name.Text,Site.Text);
                 await tw.Update();
                 return tw;
             }

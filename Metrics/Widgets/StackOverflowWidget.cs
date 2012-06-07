@@ -12,28 +12,30 @@ namespace Metrics.Widgets
 {
     class StackOverflowWidget : Widget
     {
-        public StackOverflowWidget(string Source)
+        public StackOverflowWidget(string Source, string Site)
         {
             this.Source = Source;
-            this.Background = "#ffffff";
-            this.Foreground = "#ff99dd";
+            this.Site = Site;
+            this.Background = "#366fb3";
+            this.Foreground = "#ffffff";
         }
 
 
         public string Source { get; set; }
+        public string Site { get; set; }
 
 
         public override async Task Update()
         {
             var client = new GZipHttpClient();
-            client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
-            string url = "https://api.stackexchange.com/2.0/users/" + Source + "?site=stackoverflow";
+            client.MaxResponseContentBufferSize = 1024 * 1024;
+            string url = "https://api.stackexchange.com/2.0/users/" + Source + "?site=" + Site;
             var response = await client.GetAsync(new Uri(url));
             var result = await response.Content.ReadAsStringAsync();
 
             // Parse the JSON recipe data
             var recipes = JsonObject.Parse(result);
-            this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation";
+            this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation on " + Site;
             Counter = (int)recipes["items"].GetArray()[0].GetObject()["reputation"].GetNumber();
         }
 
@@ -42,6 +44,7 @@ namespace Metrics.Widgets
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
             composite["name"] = "StackOverflowWidget";
             composite["source"] = Source;
+            composite["site"] = Site;
             return composite;
         }
     }

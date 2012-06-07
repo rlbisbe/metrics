@@ -31,13 +31,21 @@ namespace Metrics
 
         async public Task<Widget> GetWidget()
         {
+            FacebookWidget tw;
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Page likes"))
             {
-                FacebookWidget tw = new FacebookWidget(Name.Text);
-                await tw.Update();
-                return tw;
+                tw = new FacebookWidget(Name.Text, FacebookWidget.Selection.Likes);
             }
-            return null;
+            else if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("People talking about count"))
+            {
+                tw = new FacebookWidget(Name.Text, FacebookWidget.Selection.TalkingAbout);
+            }
+            else
+            {
+                return null;
+            }
+            await tw.Update();
+            return tw;
         }
     }
 }

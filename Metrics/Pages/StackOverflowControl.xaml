@@ -14,6 +14,18 @@
         <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
             <ComboBoxItem Content="Reputation"/>
         </ComboBox>
+        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
+        	<Run Text="User id as shown on stackoverflow.com/users/"/>
+        	<Run FontWeight="Bold" Text="userid"/>
+        	<Run Text="/username:"/>
+        </TextBlock>
         <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Stackexchange site:"/>
+        <TextBox x:Name="Site" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
+        	<Run Text="Note: "/>
+        	<LineBreak/>
+        	<Run Text="The user id varies in each StackExchange site."/>
+        </TextBlock>
     </StackPanel>
 </UserControl>

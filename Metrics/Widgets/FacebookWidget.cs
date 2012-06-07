@@ -9,17 +9,32 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
+    /// <summary>
+    /// Facebook Widget.
+    /// </summary>
+    /// API Info: http://developers.facebook.com/docs/reference/api/
     class FacebookWidget: Widget
     {
-        public FacebookWidget(string Source)
+        public enum Selection { Likes, TalkingAbout }
+        
+        public FacebookWidget(string Source, Selection s)
         {
             this.Source = Source;
-            this.Title = Source + " likes";
+            this.sel = s;
+            if (s == Selection.Likes)
+            {
+                 this.Title = Source + " likes";
+            }
+            else if (s == Selection.TalkingAbout)
+            {
+                this.Title = "people talking about " + Source;                
+            }
             this.Background = "#385998";
             this.Foreground = "white";
         }
 
         public string Source { get; set; }
+        public Selection sel { get; set; }
 
         public override async Task Update()
         {
@@ -30,8 +45,14 @@ namespace Metrics.Widgets
 
             // Parse the JSON recipe data
             var recipes = JsonObject.Parse(result);
-
-            Counter = (int)recipes["likes"].GetNumber();
+            if (sel == Selection.TalkingAbout)
+            {
+                Counter = (int)recipes["talking_about_count"].GetNumber();
+            }
+            else if (sel == Selection.Likes)
+            {
+                Counter = (int)recipes["likes"].GetNumber();
+            }
         }
 
         public override ApplicationDataCompositeValue Save()
@@ -39,6 +60,7 @@ namespace Metrics.Widgets
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
             composite["name"] = "FacebookWidget";
             composite["source"] = Source;
+            composite["selection"] = sel;
             return composite;
         }
     }
