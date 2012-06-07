@@ -9,6 +9,10 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
+    /// <summary>
+    /// Github Widget
+    /// </summary>
+    /// API Info: http://developer.github.com/v3/
     class GithubWidget : Widget
     {
         public string User { get; set; }

@@ -9,6 +9,10 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
+    /// <summary>
+    /// Tuenti Widget
+    /// </summary>
+    /// Sorry folks, no app here
     class TuentiWidget : Widget
     {
         public string Source { get; set; }
@@ -30,8 +34,16 @@ namespace Metrics.Widgets
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
             var response = await client.GetAsync(new Uri("http://tuenti.com/" + Source));
             var result = await response.Content.ReadAsStringAsync();
-            var numero = Regex.Match(result, @"<li \s*(?:(?:\b(\w|-)+\b\s*(?:=\s*(?:""[^""]*""|'[^']*'|[^""'<> ]+)\s*)?)*)/?\s*>(\d)*(\.)*(\d)*").Value.Replace(".","").Substring(28);
-            Counter = int.Parse(numero);       
+            try
+            {
+                var numero = Regex.Match(result, @"<li \s*(?:(?:\b(\w|-)+\b\s*(?:=\s*(?:""[^""]*""|'[^']*'|[^""'<> ]+)\s*)?)*)/?\s*>(\d)*(\.)*(\d)*").Value.Replace(".", "").Substring(28);
+                Counter = int.Parse(numero);
+            }
+            catch (Exception)
+            {
+                throw new NullReferenceException("The selected page was not found. Please check spelling.");
+            }
+              
         }
 
         public override ApplicationDataCompositeValue Save()

@@ -11,9 +11,14 @@
 
     <StackPanel>
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
-        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
+        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
             <ComboBoxItem Content="Likes"/>
         </ComboBox>
+        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
+        	<Run Text="Page name as shown on tuenti.com/"/>
+        	<Run FontWeight="Bold" Text="pagename"/>
+        	<Run Text=":"/>
+        </TextBlock>
         <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
     </StackPanel>
 </UserControl>

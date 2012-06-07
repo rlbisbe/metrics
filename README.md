@@ -5,24 +5,36 @@ Metrics is a social app that connects you to your most important stats.
 Stats available right now:
 
 ## Twitter:
-At the moment, the program counts only the followers.
+* Follower count
 
 ## Facebook:
-Right now only count the likes of certain facebook pages.
+* Likes from a facebook page
+* People talking about a page
 
 ## Wordpress
-Here we count the blog visits today.
-Other possible stats would be weekly stats or monthly stats.
-For V2: Difference between months, in percentage.
+* Blog visits today
 	
 ## Tuenti
-Right now we count the Likes from the tuenti pages.
-For V1: Add the full name, not only the url.
-	
+* Likes from a public tuenti page.
+
+## Stackoverflow
+* Reputation from any Stackexchange site
+
 ## Github
 By now, only open issues are shown.
 
-## API:
+Final stats (for version 1.0)
+## Wordpress
+* Other possible stats would be weekly stats or monthly stats.
+
+# Github
+* User followers
+
+Future stats (for version 2.0)
+For V2: Difference between months, in percentage.
+
+# API:
 The idea is to offer an API in different programming languages (PHP and .net as first-class)
 
 Also, provide a common Json that will be interpreted by the system. 
+

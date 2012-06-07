@@ -10,6 +10,10 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
+    /// <summary>
+    /// Stack Overflow Widget
+    /// </summary>
+    /// API Info: http://api.stackexchange.com/docs
     class StackOverflowWidget : Widget
     {
         public StackOverflowWidget(string Source, string Site)
