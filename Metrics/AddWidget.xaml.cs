@@ -5,6 +5,7 @@ using System.Linq;
 using Metrics.Pages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,17 +34,25 @@ namespace Metrics
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-			p.IsOpen = false;
-        	// TODO: Add event handler implementation here.
+            p.IsOpen = false;
+            // TODO: Add event handler implementation here.
         }
 
         async private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             //Submit
             App myApp = (App)App.Current;
-            p.IsOpen = false;
-            var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
-            myApp.Widgets.Add(w);
+            try
+            {
+                var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
+                myApp.Widgets.Add(w);
+                p.IsOpen = false;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog msg = new MessageDialog(ex.Message,"Error creating widget");
+                msg.ShowAsync();
+            }
         }
 
         private void ComboBox_SelectionChanged_1(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)

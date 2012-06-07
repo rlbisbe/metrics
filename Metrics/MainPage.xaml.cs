@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -43,6 +45,7 @@ namespace Metrics
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             App myApp = (App)App.Current;
+            myApp.HaveInternetConnection();
             this.DefaultViewModel["Items"] = myApp.Widgets;
         }
 
@@ -94,9 +97,12 @@ namespace Metrics
         private void refreshButton_Click_1(object sender, RoutedEventArgs e)
         {
             App myApp = (App)App.Current;
-            foreach (var item in myApp.Widgets)
+            if (myApp.HaveInternetConnection() == true)
             {
-                item.Update();
+                foreach (var item in myApp.Widgets)
+                {
+                    item.Update();
+                }
             }
         }
     }

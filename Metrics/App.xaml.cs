@@ -7,7 +7,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -80,6 +82,32 @@ namespace Metrics
             Window.Current.Content = rootFrame;
             Window.Current.Activate();
             
+        }
+
+        /// <summary>
+        /// Checks if there is an internet connection available.
+        /// </summary>
+        /// <returns></returns>
+        public bool HaveInternetConnection()
+        {
+            var profile = NetworkInformation.GetInternetConnectionProfile();
+            if (profile == null)
+            {
+                MessageDialog msg = new MessageDialog("This program requires internet connection for obtaining the metrics data. Please check your internet connection.", "Internet connection not found.");
+                msg.ShowAsync();
+                return false;
+            }
+            else
+            {
+                var level = profile.GetNetworkConnectivityLevel();
+                if (level == NetworkConnectivityLevel.LocalAccess || level == NetworkConnectivityLevel.None)
+                {
+                    MessageDialog msg = new MessageDialog("This program requires internet connection for obtaining the metrics data. Please check your internet connection.", "Internet connection not found.");
+                    msg.ShowAsync();
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>

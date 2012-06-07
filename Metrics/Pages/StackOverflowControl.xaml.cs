@@ -27,6 +27,14 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
+            if (String.IsNullOrEmpty(Name.Text))
+            {
+                throw new NullReferenceException("User Id cannot be null");
+            }
+            if (String.IsNullOrEmpty(Site.Text))
+            {
+                throw new NullReferenceException("Site cannot be null");
+            }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Reputation"))
             {
                 StackOverflowWidget tw = new StackOverflowWidget(Name.Text,Site.Text);

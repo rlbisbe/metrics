@@ -31,10 +31,19 @@ namespace Metrics.Widgets
             client.MaxResponseContentBufferSize = 1024 * 1024;
             string url = "https://api.stackexchange.com/2.0/users/" + Source + "?site=" + Site;
             var response = await client.GetAsync(new Uri(url));
-            var result = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                throw new NullReferenceException("The selected site was not found. Please check spelling.");
+            }
 
-            // Parse the JSON recipe data
+            var result = await response.Content.ReadAsStringAsync();
             var recipes = JsonObject.Parse(result);
+
+            if (recipes["items"].GetArray().Count == 0)
+            {
+                throw new NullReferenceException("The user id was not found.");
+            }
+
             this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation on " + Site;
             Counter = (int)recipes["items"].GetArray()[0].GetObject()["reputation"].GetNumber();
         }

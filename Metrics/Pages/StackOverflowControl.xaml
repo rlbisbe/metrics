@@ -11,7 +11,7 @@
     
     <StackPanel>
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
-        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
+        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
             <ComboBoxItem Content="Reputation"/>
         </ComboBox>
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
@@ -23,9 +23,9 @@
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Stackexchange site:"/>
         <TextBox x:Name="Site" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
         <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
-        	<Run Text="Note: "/>
-        	<LineBreak/>
-        	<Run Text="The user id varies in each StackExchange site."/>
+        	<Run Text="Note"/>
+        	<Run Text=" t"/>
+        	<Run Text="he user id varies in each StackExchange site."/>
         </TextBlock>
     </StackPanel>
 </UserControl>
