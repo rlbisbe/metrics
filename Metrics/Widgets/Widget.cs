@@ -136,7 +136,7 @@ namespace Metrics
                 case "StackOverflowWidget":
                     return new StackOverflowWidget((string)val["source"], (string)val["site"]);
                 case "WordpressWidget":
-                    return new WordpressWidget((string)val["blog"], (string)val["key"]);
+                    return new WordpressWidget((string)val["blog"], (string)val["key"], (string)val["selection"]);
                 default:
                     return null;
             }

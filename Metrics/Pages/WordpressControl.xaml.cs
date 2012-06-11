@@ -31,13 +31,33 @@ namespace Metrics
 
         async public Task<Widget> GetWidget()
         {
+            if (String.IsNullOrEmpty(URL.Text))
+            {
+                throw new NullReferenceException("URL cannot be null");
+            }
+            if (String.IsNullOrEmpty(API.Text))
+            {
+                throw new NullReferenceException("API key cannot be null");
+            }
+            WordpressWidget tw;
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Visits today"))
             {
-                WordpressWidget tw = new WordpressWidget(URL.Text,API.Text);
-                await tw.Update();
-                return tw;
+                tw = new WordpressWidget(URL.Text,API.Text,"day");
+
+            } else if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Visits this week"))
+            {
+                tw = new WordpressWidget(URL.Text, API.Text, "week");
+
+            } else if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Visits this month"))
+            {
+                tw = new WordpressWidget(URL.Text, API.Text, "month");
             }
-            return null;
+            else
+            {
+                return null;
+            }
+            await tw.Update();
+            return tw;
         }
     }
 }

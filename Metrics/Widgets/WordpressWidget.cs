@@ -9,38 +9,74 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
-    class WordpressWidget: Widget
+    class WordpressWidget : Widget
     {
-        public WordpressWidget(string Blog, string Key)
+
+        public WordpressWidget(string Blog, string Key, string Selection)
         {
             this.Key = Key;
             this.Blog = Blog;
-            this.Title = Source + " visits today";
+            if (this.Blog.StartsWith("http://"))
+            {
+                this.Blog = this.Blog.Substring(7);
+            }
+            this.Selection = Selection;
+            this.Title = Source + " visits";
             this.Background = "#464646";
             this.Foreground = "white";
-            this.WidgetForeground = "#338ec9e8";
+            this.WidgetForeground = "#33ffffff";
             this.WidgetName = "wordpress";
+
         }
 
         public string Source { get; set; }
         public string Blog { get; set; }
         public string Key { get; set; }
+        public string Selection { get; set; }
 
         public override async Task Update()
         {
             //TODO: Check valid syntax of blog, and correct API Key.
 
+            //Check correct API Key:
 
-            // For last day: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&days=1 -< Yesterday: Today = 0
-            // This week: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&period=week&days=0
-            // This month: http://stats.wordpress.com/csv.php?api_key=9bb99caddf84&blog_uri=robertoluis.wordpress.com&period=month&days=0
+
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
-            var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog));
-            var result = await response.Content.ReadAsStringAsync();
-
-            // Parse the JSON recipe data
-
+            string result = "";
+            switch (Selection)
+            {
+                case "day":
+                    {
+                        this.Title = Source + " visits today";
+                        var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog));
+                        result = await response.Content.ReadAsStringAsync();
+                        // Parse the JSON recipe data
+                        break;
+                    }
+                case "week":
+                    {
+                        this.Title = Source + " visits this week";
+                        var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog + "&period=week&days=0"));
+                        result = await response.Content.ReadAsStringAsync();
+                        // Parse the JSON recipe data
+                        break;
+                    }
+                case "month":
+                    {
+                        this.Title = Source + " visits this month";
+                        var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog + "&period=month&days=0"));
+                        result = await response.Content.ReadAsStringAsync();
+                        // Parse the JSON recipe data
+                        break;
+                    }
+                default:
+                    break;
+            }
+            if (result.Contains("Error"))
+            {
+                throw new NullReferenceException(result.Split('\n')[0]);
+            }
             Counter = int.Parse(result.Split('\n')[1].Split(',')[1]);
         }
 
@@ -50,7 +86,10 @@ namespace Metrics.Widgets
             composite["name"] = "WordpressWidget";
             composite["blog"] = Blog;
             composite["key"] = Key;
+            composite["selection"] = Selection;
             return composite;
         }
+
+
     }
 }
