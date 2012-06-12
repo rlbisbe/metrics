@@ -24,6 +24,8 @@
                     <ComboBoxItem Content="Tuenti"/>
                     <ComboBoxItem Content="Twitter"/>
                     <ComboBoxItem Content="Wordpress"/>
+                    <ComboBoxItem Content="----------------"/>
+                    <ComboBoxItem Content="Custom"/>
                 </ComboBox>
                 <Grid x:Name="WidgetContainer"/>
                 <StackPanel Margin="0" Orientation="Horizontal" FlowDirection="RightToLeft">

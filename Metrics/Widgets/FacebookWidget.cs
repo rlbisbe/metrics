@@ -67,7 +67,6 @@ namespace Metrics.Widgets
 
         public override async Task Update()
         {
-
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
             var response = await client.GetAsync(new Uri("https://graph.facebook.com/" + Source));

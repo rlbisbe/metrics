@@ -84,6 +84,10 @@ namespace Metrics
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;
+                case "Custom":
+                    WidgetContainer.Children.Clear();
+                    WidgetContainer.Children.Add(new CustomWidgetControl());
+                    break;
                 
                 default:
                     break;

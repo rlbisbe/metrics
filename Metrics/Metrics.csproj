@@ -123,6 +123,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Pages\CustomWidgetControl.xaml.cs">
+      <DependentUpon>CustomWidgetControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\GithubControl.xaml.cs">
       <DependentUpon>GithubControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,7 @@
     <Compile Include="Pages\TwitterControl.xaml.cs">
       <DependentUpon>TwitterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\CustomWidget.cs" />
     <Compile Include="Widgets\GithubWidget.cs" />
     <Compile Include="Widgets\StackOverflowWidget.cs" />
     <Compile Include="Widgets\TuentiWidget.cs" />
@@ -162,6 +166,10 @@
     <None Include="Metrics_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Pages\CustomWidgetControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StackOverflowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
