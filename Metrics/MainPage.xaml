@@ -22,7 +22,7 @@
                         <RowDefinition Height="74*"/>
                         <RowDefinition Height="107*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource PageSubheaderTextStyle}" TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Stretch"/>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource PageSubheaderTextStyle}" TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
                     <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageHeaderTextStyle}" Margin="10,43,0,10" TextAlignment="Right" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
                     <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,0,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="29.333"/>
                 </Grid>

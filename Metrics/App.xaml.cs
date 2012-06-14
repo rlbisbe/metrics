@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using Metrics.Widgets;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -27,6 +28,8 @@ namespace Metrics
     /// </summary>
     sealed partial class App : Application
     {
+        public EmptyWidget Empty;
+
         private ObservableCollection<Widget> _widgets = new ObservableCollection<Widget>();
         public ObservableCollection<Widget> Widgets
         {
@@ -42,6 +45,7 @@ namespace Metrics
         /// </summary>
        public App()
         {
+            Empty = new EmptyWidget();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

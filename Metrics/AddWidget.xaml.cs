@@ -44,8 +44,14 @@ namespace Metrics
             App myApp = (App)App.Current;
             try
             {
+
                 var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
                 myApp.Widgets.Add(w);
+                //Remove empty Widget
+                if (myApp.Widgets.Contains(myApp.Empty))
+                {
+                    myApp.Widgets.Remove(myApp.Empty);
+                } 
                 p.IsOpen = false;
             }
             catch (Exception ex)
@@ -88,7 +94,6 @@ namespace Metrics
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new CustomWidgetControl());
                     break;
-                
                 default:
                     break;
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using Metrics.Widgets;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
@@ -47,6 +48,10 @@ namespace Metrics
             App myApp = (App)App.Current;
             myApp.HaveInternetConnection();
             this.DefaultViewModel["Items"] = myApp.Widgets;
+            if (myApp.Widgets.Count == 0)
+            {
+                myApp.Widgets.Add(myApp.Empty);
+            }
         }
 
         /// <summary>
@@ -59,6 +64,10 @@ namespace Metrics
             if (element != null)
             {
                 myApp.Widgets.Remove(element as Widget);
+            }
+            if (myApp.Widgets.Count == 0)
+            {
+                myApp.Widgets.Add(myApp.Empty);
             }
         }
 
