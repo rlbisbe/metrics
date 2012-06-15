@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel.DataTransfer;
 
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
@@ -35,6 +36,7 @@ namespace Metrics
             this.InitializeComponent();
         }
 
+
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
         /// provided when recreating a page from a prior session.
@@ -46,6 +48,11 @@ namespace Metrics
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            this.dataTransferManager = DataTransferManager.GetForCurrentView();
+            this.dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager,
+                DataRequestedEventArgs>(this.OnDataRequested);
+
+
             App myApp = (App)App.Current;
             myApp.HaveInternetConnection();
             this.DefaultViewModel["Items"] = myApp.Widgets;
@@ -61,6 +68,40 @@ namespace Metrics
                 MessageDialog msg = new MessageDialog("We have added a few sample widgets to the app, you can delete them and add your own info", "First launch");
                 msg.ShowAsync();
             }
+        }
+
+        private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            // TitleInputbox is a TextBox in the app UI.
+            string dataPackageTitle = "Metrics resume of widget data";
+
+            App myApp = (App)App.Current;
+
+            var htmlExample = "<p>Resume of Metrics for <b>" + DateTime.Now + "</b></p><ul>";
+
+            foreach (var item in myApp.Widgets)
+            {
+                htmlExample += "<li><i>" + item.WidgetName + "</i> <b>" + item.Title + "</b> " + item.SCounter + "</li>";
+            }
+
+            htmlExample += "</ul>";
+
+            var htmlFormat = Windows.ApplicationModel.DataTransfer.HtmlFormatHelper.CreateHtmlFormat(htmlExample);
+
+
+            DataPackage requestData = args.Request.Data;
+            requestData.Properties.Title = dataPackageTitle;
+
+            // The description is optional. DescriptionInputBox is a TextBox in the app UI.
+            string dataPackageDescription = "Descripción";
+
+            if (dataPackageDescription != null)
+            {
+                requestData.Properties.Description = dataPackageDescription;
+            }
+            requestData.SetHtmlFormat(htmlFormat);
+
+
         }
 
         /// <summary>
@@ -123,5 +164,7 @@ namespace Metrics
                 }
             }
         }
+
+        public DataTransferManager dataTransferManager { get; set; }
     }
 }
