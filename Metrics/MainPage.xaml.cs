@@ -7,6 +7,7 @@ using Metrics.Widgets;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -51,6 +52,14 @@ namespace Metrics
             if (myApp.Widgets.Count == 0)
             {
                 myApp.Widgets.Add(myApp.Empty);
+            }
+
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            object NewLoad = localSettings.Values["NewLoad"];
+            if (NewLoad == null)
+            {
+                MessageDialog msg = new MessageDialog("We have added a few sample widgets to the app, you can delete them and add your own info", "First launch");
+                msg.ShowAsync();
             }
         }
 

@@ -81,6 +81,45 @@ namespace Metrics
                 }
             }
 
+            object NewLoad = localSettings.Values["NewLoad"];
+            if (NewLoad == null)
+            {
+                Widget w;
+
+                w = new FacebookWidget("cocacola",FacebookWidget.Selection.Likes);
+                w.Update(); 
+                this.Widgets.Add(w);
+
+                w = new TweetWidget("windows");
+                w.Update(); 
+                this.Widgets.Add(w);
+
+                w = new GithubWidget("twitter", "bootstrap");
+                w.Update();
+                this.Widgets.Add(w);
+
+                w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
+                w.Update(); 
+                this.Widgets.Add(w);
+
+                w = new TuentiWidget("cocacola");
+                w.Update(); 
+                this.Widgets.Add(w);
+
+                w = new TweetWidget("microsoft");
+                w.Update();
+                this.Widgets.Add(w);
+
+                w = new StackOverflowWidget("190165","stackoverflow");
+                w.Update();
+                this.Widgets.Add(w);
+
+                w = new GithubWidget("rails", "rails");
+                w.Update();
+                this.Widgets.Add(w);
+            
+            }
+
             // Create a Frame to act navigation context and navigate to the first page
             var rootFrame = new Frame();
             rootFrame.Navigate(typeof(MainPage));
@@ -137,6 +176,8 @@ namespace Metrics
                 localSettings.Values["Widget" + i] = item.Save();
 
             }
+
+            localSettings.Values["NewLoad"] = true;
         }
     }
 }

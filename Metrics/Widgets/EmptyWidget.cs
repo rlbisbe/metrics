@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Metrics.Widgets
 {
@@ -20,7 +21,7 @@ namespace Metrics.Widgets
             return;
         }
 
-        public override Windows.Storage.ApplicationDataCompositeValue Save()
+        public override ApplicationDataCompositeValue Save()
         {
             return null;
         }

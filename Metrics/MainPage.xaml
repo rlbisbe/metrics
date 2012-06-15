@@ -13,30 +13,27 @@
     <UserControl.Resources>
 
         <DataTemplate x:Key="Widget">
-            <Grid Width="380" Background="{Binding Background}" Height="130">
+            <Grid Margin="0" Background="{Binding Background}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Grid Margin="10.5,10,9.5,0" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="74*"/>
-                        <RowDefinition Height="107*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource PageSubheaderTextStyle}" TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
-                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageHeaderTextStyle}" Margin="10,43,0,10" TextAlignment="Right" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
-                    <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,0,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="29.333"/>
-                </Grid>
+                <StackPanel>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource CaptionTextStyle}"  Margin="10,12,20,5" MaxHeight="40" Width="280" HorizontalAlignment="Left" FontSize="18.667" FontWeight="SemiBold"/>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageHeaderTextStyle}" TextWrapping="NoWrap" TextAlignment="Right" Margin="10,10,20,5"/>
+                    <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,5,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="24"/>
+                </StackPanel>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="WidgetSnapped">
-            <Grid Margin="6" Background="{Binding Background}" Height="100">
+            <Grid Margin="0" Background="{Binding Background}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="20,0,0,0" d:LayoutOverrides="GridBox">
-                    <TextBlock Text="{Binding Title}" Style="{StaticResource ItemTextStyle}" MaxHeight="40" Margin="0,10"/>
-                    <TextBlock Text="{Binding Counter}" Style="{StaticResource PageHeaderTextStyle}" TextWrapping="NoWrap" TextAlignment="Right" Margin="0,0,10,40" Width="240"/>
+                <StackPanel>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource CaptionTextStyle}"  Margin="10,12,20,5" MaxHeight="40" FontSize="16" FontWeight="Bold" Width="230" HorizontalAlignment="Left"/>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageSubheaderTextStyle}" TextWrapping="NoWrap" TextAlignment="Right" Margin="10,0,20,5"/>
+                    <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,0,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="24"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -48,23 +45,6 @@
 
 
     </UserControl.Resources>
-    <common:LayoutAwarePage.BottomAppBar>
-        <AppBar HorizontalContentAlignment="Stretch" Height="88" VerticalContentAlignment="Stretch">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button VerticalAlignment="Top" Width="75" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Left" FlowDirection="LeftToRight" Padding="12,4,12,5" Margin="30,0,0,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" UseLayoutRounding="True">
-                    <Button VerticalAlignment="Top" Width="75" Style="{StaticResource AddAppBarButtonStyle}" />
-                    <Button VerticalAlignment="Top" Width="75" Style="{StaticResource DeleteAppBarButtonStyle}"  Click="Delete_Click" IsEnabled="False"/>
-                </StackPanel>
-            </Grid>
-        </AppBar>
-    </common:LayoutAwarePage.BottomAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -109,17 +89,25 @@
                 -->
                 <VisualState x:Name="Snapped">
                     <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
                         </ObjectAnimationUsingKeyFrames>
-
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Margin">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="20,0,10,10"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MainGrid" Storyboard.TargetProperty="RowDefinitions[0].Height">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="80"/>
+                        </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListScrollViewer" Storyboard.TargetProperty="Visibility">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridScrollViewer" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="buttons" Storyboard.TargetProperty="Visibility">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
@@ -132,14 +120,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Margin="36,0,36,36" d:LayoutOverrides="Margin"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0,0,55,40" Height="40" d:LayoutOverrides="Margin"/>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
-                <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40"/>
-                <Button x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40" />
-                <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,30,0,40" Visibility="Collapsed" />
+            <StackPanel x:Name="buttons" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
+                <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10"/>
+                <Button x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10" />
+                <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DeleteAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10" />
 
             </StackPanel>
 
@@ -179,7 +166,7 @@
                 AutomationProperties.Name="Items"
                 Margin="10,0,0,60"
                 ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-                ItemTemplate="{StaticResource WidgetSnapped}"/>
+                ItemTemplate="{StaticResource WidgetSnapped}" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
         </ScrollViewer>
 
     </Grid>
