@@ -18,7 +18,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource CaptionTextStyle}"  Margin="10,12,20,5" MaxHeight="40" Width="280" HorizontalAlignment="Left" FontSize="18.667" FontWeight="SemiBold"/>
+                    <TextBlock Foreground="{Binding Foreground}" Text="{Binding Title}" Style="{StaticResource CaptionTextStyle}"  Margin="10,12,20,5" MaxHeight="40" Width="300" HorizontalAlignment="Left" FontSize="18.667" FontWeight="SemiBold"/>
                     <TextBlock Foreground="{Binding Foreground}" Text="{Binding SCounter}" Style="{StaticResource PageHeaderTextStyle}" TextWrapping="NoWrap" TextAlignment="Right" Margin="10,10,20,5"/>
                     <TextBlock Text="{Binding WidgetName}" Style="{StaticResource CaptionTextStyle}" Margin="10,5,0,10" TextAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Left"  FontWeight="Bold" Foreground="{Binding WidgetForeground}" FontSize="24"/>
                 </StackPanel>

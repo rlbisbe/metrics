@@ -13,7 +13,8 @@ namespace Metrics.Widgets
         {
             this.WidgetName = "EmptyWidget";
             this.Foreground = "white";
-            this.Title = "For adding a new widget click on the + sign.";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            this.Title = loader.GetString("EmptyWidgetTitle");
         }
 
         public override async Task Update()

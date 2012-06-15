@@ -52,6 +52,7 @@ namespace Metrics
             this.dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager,
                 DataRequestedEventArgs>(this.OnDataRequested);
 
+            
 
             App myApp = (App)App.Current;
             myApp.HaveInternetConnection();
@@ -65,7 +66,8 @@ namespace Metrics
             object NewLoad = localSettings.Values["NewLoad"];
             if (NewLoad == null)
             {
-                MessageDialog msg = new MessageDialog("We have added a few sample widgets to the app, you can delete them and add your own info", "First launch");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                MessageDialog msg = new MessageDialog(loader.GetString("FirstLaunchText"), loader.GetString("FirstLaunchTitle"));
                 msg.ShowAsync();
             }
         }

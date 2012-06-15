@@ -165,6 +165,8 @@
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
     <None Include="Metrics_TemporaryKey.pfx" />
+    <PRIResource Include="strings\es-ES\Resources.resw" />
+    <PRIResource Include="strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Pages\CustomWidgetControl.xaml">
@@ -228,6 +230,9 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
