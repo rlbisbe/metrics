@@ -22,7 +22,8 @@ namespace Metrics.Widgets
         {
             this.User = User;
             this.Repository = Repository;
-            this.Title = Repository + " open issues";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            this.Title = String.Format(loader.GetString("GithubWidgetOpenIssues"), this.Repository);
             this.Background = "#ffffff";
             this.Foreground = "black";
             this.WidgetForeground = "#33000000";

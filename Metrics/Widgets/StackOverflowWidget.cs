@@ -51,6 +51,8 @@ namespace Metrics.Widgets
             }
 
             this.Title = recipes["items"].GetArray()[0].GetObject()["display_name"].GetString() + " reputation";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            this.Title = String.Format(loader.GetString("StackOverflowWidgetReputation"), recipes["items"].GetArray()[0].GetObject()["display_name"].GetString());
             Counter = (int)recipes["items"].GetArray()[0].GetObject()["reputation"].GetNumber();
         }
 

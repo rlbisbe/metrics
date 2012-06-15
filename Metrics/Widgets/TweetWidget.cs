@@ -21,7 +21,9 @@ namespace Metrics.Widgets
             {
                 this.Source = Source;
             }
-            this.Title =  "@" + this.Source + " followers";
+
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            this.Title = String.Format(loader.GetString("TWWidgetFollowers"), this.Source);
             this.Background = "#33CCFF";
             this.Foreground = "black";
             this.WidgetForeground = "#33000000";

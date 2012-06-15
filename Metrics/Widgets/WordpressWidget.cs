@@ -21,7 +21,6 @@ namespace Metrics.Widgets
                 this.Blog = this.Blog.Substring(7);
             }
             this.Selection = Selection;
-            this.Title = Source + " visits";
             this.Background = "#464646";
             this.Foreground = "white";
             this.WidgetForeground = "#33ffffff";
@@ -29,26 +28,23 @@ namespace Metrics.Widgets
 
         }
 
-        public string Source { get; set; }
         public string Blog { get; set; }
         public string Key { get; set; }
         public string Selection { get; set; }
 
         public override async Task Update()
         {
-            //TODO: Check valid syntax of blog, and correct API Key.
-
             //Check correct API Key:
-
 
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
             string result = "";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             switch (Selection)
             {
                 case "day":
                     {
-                        this.Title = Source + " visits today";
+                        this.Title = loader.GetString("WordpressWidgetVisitsToday");
                         var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog));
                         result = await response.Content.ReadAsStringAsync();
                         // Parse the JSON recipe data
@@ -56,7 +52,7 @@ namespace Metrics.Widgets
                     }
                 case "week":
                     {
-                        this.Title = Source + " visits this week";
+                        this.Title = loader.GetString("WordpressWidgetVisitsThisWeek");
                         var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog + "&period=week&days=0"));
                         result = await response.Content.ReadAsStringAsync();
                         // Parse the JSON recipe data
@@ -64,7 +60,7 @@ namespace Metrics.Widgets
                     }
                 case "month":
                     {
-                        this.Title = Source + " visits this month";
+                        this.Title = loader.GetString("WordpressWidgetVisitsThisMonth");
                         var response = await client.GetAsync(new Uri("http://stats.wordpress.com/csv.php?api_key=" + Key + "&blog_uri=" + Blog + "&period=month&days=0"));
                         result = await response.Content.ReadAsStringAsync();
                         // Parse the JSON recipe data

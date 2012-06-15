@@ -33,12 +33,12 @@ namespace Metrics.Widgets
             if (this.sel == Selection.Likes)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = loader.GetString("FBWidgetLikes") + Source;
+                this.Title = String.Format(loader.GetString("FBWidgetLikes"), Source);
             }
             else if (this.sel == Selection.TalkingAbout)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = loader.GetString("FBWidgetPeopleTalkingAbout") + Source;
+                this.Title = String.Format(loader.GetString("FBWidgetPeopleTalkingAbout"), Source);
             }
             this.Background = "#385998";
             this.Foreground = "white";
@@ -53,12 +53,12 @@ namespace Metrics.Widgets
             if (this.sel == Selection.Likes)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = loader.GetString("FBWidgetLikes") + Source;
+                this.Title = String.Format(loader.GetString("FBWidgetLikes"), Source);
             }
             else if (this.sel == Selection.TalkingAbout)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = loader.GetString("FBWidgetPeopleTalkingAbout") + Source;
+                this.Title = String.Format(loader.GetString("FBWidgetPeopleTalkingAbout"), Source);
             }
             this.Background = "#385998";
             this.Foreground = "white";

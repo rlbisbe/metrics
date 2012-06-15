@@ -20,7 +20,8 @@ namespace Metrics.Widgets
         public TuentiWidget(string Source)
         {
             this.Source = Source;
-            this.Title = Source + " likes";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            this.Title = String.Format(loader.GetString("FBWidgetLikes"), Source);
             this.Background = "#003b6a";
             this.Foreground = "#8ec9e8";
             this.WidgetForeground = "#338ec9e8";

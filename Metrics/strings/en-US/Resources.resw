@@ -120,16 +120,37 @@
   <data name="EmptyWidgetTitle" xml:space="preserve">
     <value>For adding a new widget click on the + sign.</value>
   </data>
+  <data name="ErrorSelectedPageNotFound" xml:space="preserve">
+    <value>The selected page was not found. Please check spelling.</value>
+  </data>
   <data name="FBWidgetLikes" xml:space="preserve">
-    <value>likes for</value>
+    <value>{0} likes</value>
   </data>
   <data name="FBWidgetPeopleTalkingAbout" xml:space="preserve">
-    <value>people talking about</value>
+    <value>people talking about {0}</value>
   </data>
   <data name="FirstLaunchText" xml:space="preserve">
     <value>We have added a few sample widgets to the app, you can delete them and add your own info.</value>
   </data>
   <data name="FirstLaunchTitle" xml:space="preserve">
     <value>First launch</value>
+  </data>
+  <data name="GithubWidgetOpenIssues" xml:space="preserve">
+    <value>{0} open issues</value>
+  </data>
+  <data name="StackOverflowWidgetReputation" xml:space="preserve">
+    <value>{0} reputation</value>
+  </data>
+  <data name="TWWidgetFollowers" xml:space="preserve">
+    <value>@{0} followers</value>
+  </data>
+  <data name="WordpressWidgetVisitsThisMonth" xml:space="preserve">
+    <value>visits this week</value>
+  </data>
+  <data name="WordpressWidgetVisitsThisWeek" xml:space="preserve">
+    <value>visits this month</value>
+  </data>
+  <data name="WordpressWidgetVisitsToday" xml:space="preserve">
+    <value>visits today</value>
   </data>
 </root>

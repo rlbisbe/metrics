@@ -120,16 +120,37 @@
   <data name="EmptyWidgetTitle" xml:space="preserve">
     <value>Para agregar un nuevo widget pulse sobre el botón +.</value>
   </data>
+  <data name="ErrorSelectedPageNotFound" xml:space="preserve">
+    <value>No se ha encontrado la página seleccionada, por favor compruebe la otrografía</value>
+  </data>
   <data name="FBWidgetLikes" xml:space="preserve">
-    <value>"me gusta" de </value>
+    <value>"me gusta" de {0}</value>
   </data>
   <data name="FBWidgetPeopleTalkingAbout" xml:space="preserve">
-    <value>personas hablando sobre </value>
+    <value>personas hablando sobre {0}</value>
   </data>
   <data name="FirstLaunchText" xml:space="preserve">
     <value>Hemos agregado algunos widgets de ejemplo para usted. Puede borrarlos y agregar su propia información.</value>
   </data>
   <data name="FirstLaunchTitle" xml:space="preserve">
     <value>Primera Ejecución</value>
+  </data>
+  <data name="GithubWidgetOpenIssues" xml:space="preserve">
+    <value>Incidencias abiertas de {0}</value>
+  </data>
+  <data name="StackOverflowWidgetReputation" xml:space="preserve">
+    <value>Reputación de {0}</value>
+  </data>
+  <data name="TWWidgetFollowers" xml:space="preserve">
+    <value>Seguidores de @{0}</value>
+  </data>
+  <data name="WordpressWidgetVisitsThisMonth" xml:space="preserve">
+    <value>visitas este mes</value>
+  </data>
+  <data name="WordpressWidgetVisitsThisWeek" xml:space="preserve">
+    <value>visitas esta semana</value>
+  </data>
+  <data name="WordpressWidgetVisitsToday" xml:space="preserve">
+    <value>visitas hoy</value>
   </data>
 </root>
