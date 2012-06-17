@@ -61,9 +61,9 @@ namespace Metrics
             }
         }
 
-        private void ComboBox_SelectionChanged_1(object sender, Windows.UI.Xaml.Controls.SelectionChangedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            string service = (Services.SelectedItem as ComboBoxItem).Content.ToString();
+            string service = (e.OriginalSource as Button).Content.ToString();
             switch (service)
             {
                 case "Facebook":
@@ -97,6 +97,13 @@ namespace Metrics
                 default:
                     break;
             }
+
+            myStoryboard.Begin();
+        }
+
+        private void WidgetContainer_LayoutUpdated(object sender, object e)
+        {
+            ServiceGrid.Height = WidgetContainer.ActualHeight + 250;
         }
     }
 }
