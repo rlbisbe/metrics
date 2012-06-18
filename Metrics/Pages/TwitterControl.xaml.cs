@@ -35,7 +35,7 @@ namespace Metrics
             {
                 throw new NullReferenceException("Twitter handle cannot be null");
             }
-            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Followers"))
+            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(ControlFollowers.Content))
             {
                 TweetWidget tw = new TweetWidget(Name.Text);
                 await tw.Update();

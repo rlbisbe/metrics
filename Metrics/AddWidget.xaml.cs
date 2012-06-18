@@ -28,7 +28,7 @@ namespace Metrics
         }
 
         private void Submit_Click_1(object sender, RoutedEventArgs e)
-        {  
+        {
             p.IsOpen = false;
         }
 
@@ -51,12 +51,12 @@ namespace Metrics
                 if (myApp.Widgets.Contains(myApp.Empty))
                 {
                     myApp.Widgets.Remove(myApp.Empty);
-                } 
+                }
                 p.IsOpen = false;
             }
             catch (Exception ex)
             {
-                MessageDialog msg = new MessageDialog(ex.Message,"Error creating widget");
+                MessageDialog msg = new MessageDialog(ex.Message, "Error creating widget");
                 msg.ShowAsync();
             }
         }
@@ -90,12 +90,13 @@ namespace Metrics
                     WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;
-                case "Custom":
-                    WidgetContainer.Children.Clear();
-                    WidgetContainer.Children.Add(new CustomWidgetControl());
-                    break;
                 default:
                     break;
+            }
+            if (service == CustomWidget.Content.ToString())
+            {
+                WidgetContainer.Children.Clear();
+                WidgetContainer.Children.Add(new CustomWidgetControl());
             }
 
             myStoryboard.Begin();

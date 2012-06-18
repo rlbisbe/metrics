@@ -10,15 +10,15 @@
     d:DesignWidth="400">
 
     <StackPanel>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
+        <TextBlock x:Uid="SelectMetric" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
         <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
-            <ComboBoxItem Content="Followers"/>
+            <ComboBoxItem x:Uid="TwitterControlFollowers" x:Name="ControlFollowers" Content="Followers"/>
         </ComboBox>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
-        	<Run Text="Twitter handle ("/>
+        <TextBlock x:Uid="TwitterHandle" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000"/>
+        	<!--<Run Text="Twitter handle ("/>
         	<Run FontWeight="Bold" Text="@user"/>
         	<Run Text="):"/>
-        </TextBlock>
+        </TextBlock>-->
         <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
     </StackPanel>
 </UserControl>

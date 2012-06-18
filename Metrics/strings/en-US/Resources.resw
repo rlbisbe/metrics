@@ -123,6 +123,18 @@
   <data name="Cancel.Content" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="CustomControlAttribute.Text" xml:space="preserve">
+    <value>Attribute to get:</value>
+  </data>
+  <data name="CustomControlText.Text" xml:space="preserve">
+    <value>Text to show:</value>
+  </data>
+  <data name="CustomControlTitle.Text" xml:space="preserve">
+    <value>Service title:</value>
+  </data>
+  <data name="CustomControlURL.Text" xml:space="preserve">
+    <value>Service URL (in json format):</value>
+  </data>
   <data name="CustomWidget.Content" xml:space="preserve">
     <value>Custom</value>
   </data>
@@ -192,8 +204,20 @@
   <data name="TuentiControlPage.Text" xml:space="preserve">
     <value>Tuenti URL (Example: www.tuenti.com/company)</value>
   </data>
+  <data name="TwitterControlFollowers.Content" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="TwitterHandle.Text" xml:space="preserve">
+    <value>Twitter username (@name)</value>
+  </data>
   <data name="TWWidgetFollowers" xml:space="preserve">
     <value>@{0} followers</value>
+  </data>
+  <data name="WordpressControlApiKey.Text" xml:space="preserve">
+    <value>Akismet API key:</value>
+  </data>
+  <data name="WordpressControlUrl.Text" xml:space="preserve">
+    <value>Blog URL:</value>
   </data>
   <data name="WordpressWidgetVisitsThisMonth" xml:space="preserve">
     <value>visits this week</value>

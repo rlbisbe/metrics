@@ -34,7 +34,7 @@
                     <Button Content="Tuenti" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="#8ec9e8" BorderBrush="#FF646464" Background="#003b6a" Height="74" FontWeight="Bold"/>
                     <Button Content="Twitter" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#33CCFF" Height="74" FontWeight="Bold"/>
                     <Button Content="Wordpress" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="White" BorderBrush="#FF646464" Background="#464646" Height="74" FontWeight="Bold"/>
-                    <Button x:Uid="CustomWidget" Content="Custom" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#19000000" Height="74"/>
+                    <Button x:Name="CustomWidget" x:Uid="CustomWidget" Content="Custom" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#19000000" Height="74"/>
                 </GridView>
 
                 <Grid x:Name="WidgetContainer" LayoutUpdated="WidgetContainer_LayoutUpdated"/>

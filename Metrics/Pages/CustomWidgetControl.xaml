@@ -10,13 +10,13 @@
     d:DesignWidth="400">
     
     <StackPanel>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Full URL of the JSON file:"/>
+        <TextBlock x:Uid="CustomControlURL" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Full URL of the JSON file:"/>
         <TextBox x:Name="URL" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Title of the service:"/>
+        <TextBlock x:Uid="CustomControlTitle" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Title of the service:"/>
         <TextBox x:Name="Title" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Text to show:"/>
+        <TextBlock x:Uid="CustomControlText" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Text to show:"/>
         <TextBox x:Name="Text" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="JSON Attribute to get:"/>
+        <TextBlock x:Uid="CustomControlAttribute" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="JSON Attribute to get:"/>
         <TextBox x:Name="Attr" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
     </StackPanel>
 </UserControl>
