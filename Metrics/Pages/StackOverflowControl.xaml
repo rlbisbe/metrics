@@ -10,17 +10,15 @@
     d:DesignWidth="400">
 
     <StackPanel>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
+        <TextBlock  x:Uid="SelectMetric"  Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
         <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
             <ComboBoxItem Content="Reputation"/>
         </ComboBox>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Stackexchange site:"/>
-        <TextBox x:Name="Site" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000">
-        	<Run Text="User id as shown on stackoverflow.com/users/"/>
-        	<Run FontWeight="Bold" Text="userid"/>
-        	<Run Text="/username:"/>
-        </TextBlock>
+        <TextBlock x:Uid="StackOverflowControlSite"  Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Stackexchange site:"/>
+<ComboBox x:Name="StackSite" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectionChanged="StackSite_SelectionChanged" >
+        </ComboBox>
+        <TextBlock x:Name="UserID" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000"/>
         <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        
     </StackPanel>
 </UserControl>

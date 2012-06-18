@@ -171,6 +171,15 @@
   <data name="SelectService.Text" xml:space="preserve">
     <value>Select a service:</value>
   </data>
+  <data name="StackOverflowControlSite.Text" xml:space="preserve">
+    <value>Stackexchange site:</value>
+  </data>
+  <data name="StackOverflowControlURL" xml:space="preserve">
+    <value>User id as shown on {0}/users/userid/username</value>
+  </data>
+  <data name="StackOverflowControlUserID.Text" xml:space="preserve">
+    <value>User id as shown on stackoverflow.com/users/userid/username</value>
+  </data>
   <data name="StackOverflowWidgetReputation" xml:space="preserve">
     <value>{0} reputation</value>
   </data>
