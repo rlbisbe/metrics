@@ -121,7 +121,7 @@ namespace Metrics.Pages
             {
                 throw new NullReferenceException("Site cannot be null");
             }
-            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Reputation"))
+            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(Reputation.Content))
             {
                 StackOverflowWidget tw = new StackOverflowWidget(Name.Text,(StackSite.SelectedItem as MyComboBoxItem).API_ID);
                 await tw.Update();

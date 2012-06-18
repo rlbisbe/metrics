@@ -34,7 +34,7 @@ namespace Metrics.Pages
             {
                 throw new NullReferenceException("Page name cannot be null");
             }
-            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Likes"))
+            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(Likes.Content))
             {
                 TuentiWidget tw = new TuentiWidget(Name.Text);
                 await tw.Update();
