@@ -8,14 +8,14 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-        <StackPanel>
-            <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
-            <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
-                <ComboBoxItem Content="Open issues"/>
-            </ComboBox>
-            <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Username:"/>
-            <TextBox x:Name="Username" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-            <TextBlock Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Repository:"/>
-            <TextBox x:Name="Repository" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        </StackPanel>
+    <StackPanel>
+        <TextBlock x:Uid="SelectMetric" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
+        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
+            <ComboBoxItem x:Uid="GitHubControlOpenIssues" x:Name="OpenIssues" Content="Open issues"/>
+        </ComboBox>
+        <TextBlock x:Uid="GitHubControlUsername" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Username:"/>
+        <TextBox  x:Name="Username" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock x:Uid="GitHubControlRepository" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Repository:"/>
+        <TextBox  x:Name="Repository" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+    </StackPanel>
 </UserControl>

@@ -153,6 +153,15 @@
   <data name="FirstLaunchTitle" xml:space="preserve">
     <value>Primera Ejecución</value>
   </data>
+  <data name="GitHubControlOpenIssues.Content" xml:space="preserve">
+    <value>Incidencias abiertas</value>
+  </data>
+  <data name="GitHubControlRepository.Text" xml:space="preserve">
+    <value>Repositorio de github:</value>
+  </data>
+  <data name="GitHubControlUsername.Text" xml:space="preserve">
+    <value>Nombre de usuario:</value>
+  </data>
   <data name="GithubWidgetOpenIssues" xml:space="preserve">
     <value>Incidencias abiertas de {0}</value>
   </data>

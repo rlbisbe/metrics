@@ -27,7 +27,7 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
-            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Open issues"))
+            if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(OpenIssues.Content))
             {
                 GithubWidget tw = new GithubWidget(Username.Text,Repository.Text);
                 await tw.Update();

@@ -153,11 +153,20 @@
   <data name="FirstLaunchTitle" xml:space="preserve">
     <value>First launch</value>
   </data>
+  <data name="GitHubControlOpenIssues.Content" xml:space="preserve">
+    <value>Open issues</value>
+  </data>
+  <data name="GitHubControlRepository.Text" xml:space="preserve">
+    <value>Github repository:</value>
+  </data>
+  <data name="GitHubControlUsername.Text" xml:space="preserve">
+    <value>Username:</value>
+  </data>
   <data name="GithubWidgetOpenIssues" xml:space="preserve">
     <value>{0} open issues</value>
   </data>
   <data name="SelectMetric.Text" xml:space="preserve">
-    <value>Select Metric to show:</value>
+    <value>Select metric to show:</value>
   </data>
   <data name="SelectService.Text" xml:space="preserve">
     <value>Select a service:</value>
