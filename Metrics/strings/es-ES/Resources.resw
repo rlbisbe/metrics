@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add.Content" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CustomWidget.Content" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
   <data name="EmptyWidgetTitle" xml:space="preserve">
     <value>Para agregar un nuevo widget pulse sobre el botón +.</value>
   </data>
   <data name="ErrorSelectedPageNotFound" xml:space="preserve">
     <value>No se ha encontrado la página seleccionada, por favor compruebe la otrografía</value>
+  </data>
+  <data name="FBControlLikes.Content" xml:space="preserve">
+    <value>"Me gusta" de la página</value>
+  </data>
+  <data name="FBControlPageName.Text" xml:space="preserve">
+    <value>URL de Facebook (Por ejemplo: www.facebook.com/empresa)</value>
+  </data>
+  <data name="FBControlTalkingAbout.Content" xml:space="preserve">
+    <value>Número de personas que están hablando de esto</value>
   </data>
   <data name="FBWidgetLikes" xml:space="preserve">
     <value>"me gusta" de {0}</value>
@@ -137,6 +155,12 @@
   </data>
   <data name="GithubWidgetOpenIssues" xml:space="preserve">
     <value>Incidencias abiertas de {0}</value>
+  </data>
+  <data name="SelectMetric.Text" xml:space="preserve">
+    <value>Seleccione métrica a mostrar:</value>
+  </data>
+  <data name="SelectService.Text" xml:space="preserve">
+    <value>Seleccione un servicio:</value>
   </data>
   <data name="StackOverflowWidgetReputation" xml:space="preserve">
     <value>Reputación de {0}</value>

@@ -26,7 +26,7 @@
             </Grid.Resources>
             <StackPanel Margin="200,0">
 
-                <TextBlock Text="Select a service:" Style="{StaticResource SnappedPageHeaderTextStyle}" Foreground="#DE000000" Margin="4,20,18,20"/>
+                <TextBlock x:Uid="SelectService" Style="{StaticResource SnappedPageHeaderTextStyle}" Foreground="#DE000000" Margin="4,20,18,20"/>
                 <GridView HorizontalAlignment="Left" Height="100">
                     <Button Content="Facebook" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Background="#385998" Foreground="White" BorderBrush="#FF646464" Height="74" FontWeight="Bold"/>
                     <Button Content="Github" VerticalAlignment="Top" Width="137" Click="Button_Click_3"  Background="White" Foreground="Black" BorderBrush="#FF646464" Height="74" FontWeight="Bold"/>
@@ -34,15 +34,22 @@
                     <Button Content="Tuenti" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="#8ec9e8" BorderBrush="#FF646464" Background="#003b6a" Height="74" FontWeight="Bold"/>
                     <Button Content="Twitter" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#33CCFF" Height="74" FontWeight="Bold"/>
                     <Button Content="Wordpress" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="White" BorderBrush="#FF646464" Background="#464646" Height="74" FontWeight="Bold"/>
-                    <Button Content="Custom" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#19000000" Height="74"/>
+                    <Button x:Uid="CustomWidget" Content="Custom" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#19000000" Height="74"/>
                 </GridView>
 
                 <Grid x:Name="WidgetContainer" LayoutUpdated="WidgetContainer_LayoutUpdated"/>
 
-                <StackPanel Margin="0" Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button Content="Cancel" VerticalAlignment="Top" Width="91" Click="Button_Click_1" Foreground="Black" BorderBrush="#FF646464" Background="#19000000"/>
-                    <Button Content="Add" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="Black" Background="#19000000" Click="Button_Click_2"/>
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1"  Margin="0" Orientation="Horizontal">
+                        <Button x:Uid="Add" Content="Add" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="Black" Background="#19000000" Click="Button_Click_2"/>
+                        <Button x:Uid="Cancel" Content="Cancel" VerticalAlignment="Top" Width="91" Click="Button_Click_1" Foreground="Black" BorderBrush="#FF646464" Background="#19000000"/>
+                    </StackPanel>
+                </Grid>
+
 
             </StackPanel>
         </Grid>

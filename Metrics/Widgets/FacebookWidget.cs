@@ -28,8 +28,23 @@ namespace Metrics.Widgets
             {
                 this.sel = Selection.TalkingAbout;
             }
+            init();
+        }
 
-            this.Source = Source;
+        /// <summary>
+        /// Initializes the widget, specifying the page name and extracting it from the source.
+        /// </summary>
+        private void init()
+        {
+            if (this.Source.Contains("http://"))
+            {
+                this.Source = this.Source.Substring(Source.IndexOf("//") + 2);
+            }
+            if (this.Source.Contains("facebook.com"))
+            {
+                this.Source = this.Source.Substring(Source.IndexOf("/") + 1);
+            }
+
             if (this.sel == Selection.Likes)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
@@ -50,20 +65,7 @@ namespace Metrics.Widgets
         {
             this.sel = s;
             this.Source = Source;
-            if (this.sel == Selection.Likes)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = String.Format(loader.GetString("FBWidgetLikes"), Source);
-            }
-            else if (this.sel == Selection.TalkingAbout)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                this.Title = String.Format(loader.GetString("FBWidgetPeopleTalkingAbout"), Source);
-            }
-            this.Background = "#385998";
-            this.Foreground = "white";
-            this.WidgetForeground = "#33ffffff";
-            this.WidgetName = "facebook";
+            init();
         }
 
         public string Source { get; set; }
