@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Metrics.App">
-      <VisualElements DisplayName="Metrics" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Metrics" ForegroundText="light" BackgroundColor="#007200">
+      <VisualElements DisplayName="Metrics" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Metrics" ForegroundText="light" BackgroundColor="#00283A">
         <DefaultTile ShowName="allLogos" ShortName="Metrics" />
         <SplashScreen Image="Assets\SplashScreen.png" />
         <InitialRotationPreference>
