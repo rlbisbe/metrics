@@ -10,15 +10,19 @@
     d:DesignWidth="400">
     
     <StackPanel>
-        <TextBlock x:Uid="SelectMetric" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
-        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000">
+        <TextBlock x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}" Margin="4,0,0,5" Foreground="#DE000000" Text="Select metric:"/>
+        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,0" BorderBrush="#CC000000">
             <ComboBoxItem Content="Visits today"/>
             <ComboBoxItem Content="Visits this week"/>
             <ComboBoxItem Content="Visits this month"/>
         </ComboBox>
-        <TextBlock x:Uid="WordpressControlUrl" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Blog url:"/>
-        <TextBox x:Name="URL" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock x:Uid="WordpressControlApiKey" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="API Key:"/>
-        <TextBox x:Name="API" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock x:Uid="WordpressControlUrl" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000" Text="Blog url:"/>
+        <TextBox x:Name="URL" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorBlogUrl" x:Uid="ErrorWordpressBlogUrl" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
+        <TextBlock x:Uid="WordpressControlApiKey" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000" Text="API Key:"/>
+        <TextBox x:Name="API" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorNullApiKey" x:Uid="ErrorWordpressNullApiKey" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
     </StackPanel>
 </UserControl>

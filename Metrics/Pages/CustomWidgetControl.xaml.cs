@@ -27,21 +27,35 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
+            ErrorUrl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorTitle.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorText.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorAttribute.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+            bool error = false;
             if (String.IsNullOrEmpty(URL.Text))
             {
-                throw new NullReferenceException("URL cannot be null");
+                ErrorUrl.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
             }
             if (String.IsNullOrEmpty(Title.Text))
             {
-                throw new NullReferenceException("Title of the widget cannot be null");
+                ErrorTitle.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
             }
             if (String.IsNullOrEmpty(Text.Text))
             {
-                throw new NullReferenceException("Text cannot be null");
+                ErrorText.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
             }
             if (String.IsNullOrEmpty(Attr.Text))
             {
-                throw new NullReferenceException("Attribute cannot be null");
+                ErrorAttribute.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (error == true)
+            {
+                return null;
             }
             CustomWidget tw = new CustomWidget(URL.Text, Attr.Text, Title.Text, Text.Text);
             await tw.Update();

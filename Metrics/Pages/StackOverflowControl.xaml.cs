@@ -113,13 +113,22 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
+            UserIDError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            SelectedItemError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            bool error = false;
             if (String.IsNullOrEmpty(Name.Text))
             {
-                throw new NullReferenceException("User Id cannot be null");
+                UserIDError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
             }
             if (StackSite.SelectedItem == null)
             {
-                throw new NullReferenceException("Site cannot be null");
+                SelectedItemError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (error == true)
+            {
+                return null;
             }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(Reputation.Content))
             {

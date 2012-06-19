@@ -8,15 +8,22 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    
+
     <StackPanel>
-        <TextBlock x:Uid="CustomControlURL" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Full URL of the JSON file:"/>
-        <TextBox x:Name="URL" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock x:Uid="CustomControlTitle" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Title of the service:"/>
-        <TextBox x:Name="Title" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock x:Uid="CustomControlText" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Text to show:"/>
-        <TextBox x:Name="Text" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
-        <TextBlock x:Uid="CustomControlAttribute" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="JSON Attribute to get:"/>
-        <TextBox x:Name="Attr" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock x:Uid="CustomControlURL" Style="{StaticResource TitleTextStyle}" Margin="4,0,0,5" Foreground="#DE000000" Text="Full URL of the JSON file:"/>
+        <TextBox x:Name="URL" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorUrl" x:Uid="ErrorCustomUrl" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
+        <TextBlock x:Uid="CustomControlTitle" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000" Text="Title of the service:"/>
+        <TextBox x:Name="Title" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorTitle" x:Uid="ErrorCustomTitle" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
+        <TextBlock x:Uid="CustomControlText" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000" Text="Text to show:"/>
+        <TextBox x:Name="Text" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorText" x:Uid="ErrorCustomText" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
+        <TextBlock x:Uid="CustomControlAttribute" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000" Text="JSON Attribute to get:"/>
+        <TextBox x:Name="Attr" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="ErrorAttribute" x:Uid="ErrorCustomAttribute" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
     </StackPanel>
 </UserControl>

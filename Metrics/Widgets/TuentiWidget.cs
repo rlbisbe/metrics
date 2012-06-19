@@ -52,9 +52,10 @@ namespace Metrics.Widgets
             }
             catch (Exception)
             {
-                throw new NullReferenceException("The selected page was not found. Please check spelling.");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                throw new NullReferenceException(loader.GetString("ErrorSelectedPageNotFound"));
             }
-              
+
         }
 
         public override ApplicationDataCompositeValue Save()

@@ -10,15 +10,13 @@
     d:DesignWidth="400">
 
     <StackPanel>
-        <TextBlock x:Uid="SelectMetric" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
-        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
+        <TextBlock x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}" Margin="4,0,0,5" Foreground="#DE000000" Text="Select metric:"/>
+        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,0" BorderBrush="#CC000000" SelectedIndex="0">
             <ComboBoxItem x:Uid="TwitterControlFollowers" x:Name="ControlFollowers" Content="Followers"/>
         </ComboBox>
-        <TextBlock x:Uid="TwitterHandle" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000"/>
-        	<!--<Run Text="Twitter handle ("/>
-        	<Run FontWeight="Bold" Text="@user"/>
-        	<Run Text="):"/>
-        </TextBlock>-->
-        <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock x:Uid="TwitterHandle" Text="Twitter username" Style="{StaticResource TitleTextStyle}" Margin="4,20,0,5" Foreground="#DE000000"/>
+        <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="UserError" x:Uid="ErrorTwitterNullUser" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
+
     </StackPanel>
 </UserControl>

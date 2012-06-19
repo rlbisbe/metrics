@@ -240,4 +240,46 @@
   <data name="ErrorFBControlPageNull" xml:space="preserve">
     <value>The page field cannot be null.</value>
   </data>
+  <data name="ErrorCustomAttribute.Text" xml:space="preserve">
+    <value>The attribute field cannot be null.</value>
+  </data>
+  <data name="ErrorCustomText.Text" xml:space="preserve">
+    <value>The text field cannot be null.</value>
+  </data>
+  <data name="ErrorCustomTitle.Text" xml:space="preserve">
+    <value>The title field cannot be null.</value>
+  </data>
+  <data name="ErrorCustomUrl.Text" xml:space="preserve">
+    <value>The URL field cannot be null.</value>
+  </data>
+  <data name="ErrorGithubNullRepository.Text" xml:space="preserve">
+    <value>The repository field cannot be null.</value>
+  </data>
+  <data name="ErrorGithubNullUser.Text" xml:space="preserve">
+    <value>The user field cannot be null.</value>
+  </data>
+  <data name="ErrorStackOverflowNoSelection.Text" xml:space="preserve">
+    <value>A site must be selected.</value>
+  </data>
+  <data name="ErrorStackOverflowNullUser.Text" xml:space="preserve">
+    <value>The user field cannot be null.</value>
+  </data>
+  <data name="ErrorTuentiPage.Text" xml:space="preserve">
+    <value>The page field cannot be null.</value>
+  </data>
+  <data name="ErrorTwitterNullUser.Text" xml:space="preserve">
+    <value>The user field cannot be null.</value>
+  </data>
+  <data name="ErrorTwitterUserNotFound" xml:space="preserve">
+    <value>The selected user was not found. Please check spelling.</value>
+  </data>
+  <data name="ErrorWordpressBlogUrl.Text" xml:space="preserve">
+    <value>The URL field cannot be null.</value>
+  </data>
+  <data name="ErrorWordpressNullApiKey.Text" xml:space="preserve">
+    <value>The API key field cannot be null.</value>
+  </data>
+  <data name="Hide.Content" xml:space="preserve">
+    <value>Hide</value>
+  </data>
 </root>

@@ -79,21 +79,37 @@ namespace Metrics.Widgets
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
                 throw new NullReferenceException(loader.GetString("ErrorFBControlPageNotFound"));
             }
+
             var result = await response.Content.ReadAsStringAsync();
 
+            if (result == "false")
+            {
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                throw new NullReferenceException(loader.GetString("ErrorFBControlPageNotFound"));
+            }
+
             // Parse the JSON recipe data
-            var recipes = JsonObject.Parse(result);
-            if (sel == Selection.TalkingAbout)
+            try
             {
-                Counter = (int)recipes["talking_about_count"].GetNumber();
+                var recipes = JsonObject.Parse(result);
+                if (sel == Selection.TalkingAbout)
+                {
+                    Counter = (int)recipes["talking_about_count"].GetNumber();
+                }
+                else if (sel == Selection.Likes)
+                {
+                    Counter = (int)recipes["likes"].GetNumber();
+                }
             }
-            else if (sel == Selection.Likes)
+            catch (Exception)
             {
-                Counter = (int)recipes["likes"].GetNumber();
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                throw new NullReferenceException(loader.GetString("ErrorFBControlPageNotFound"));
             }
+            
+
         }
 
         public override ApplicationDataCompositeValue Save()

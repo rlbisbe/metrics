@@ -39,7 +39,8 @@ namespace Metrics.Widgets
             var response = await client.GetAsync(new Uri("https://api.twitter.com/1/users/show.json?screen_name=" + this.Source));
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                throw new NullReferenceException("The selected user was not found. Please check spelling.");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                throw new NullReferenceException(loader.GetString("ErrorTwitterUserNotFound"));
             }
             var result = await response.Content.ReadAsStringAsync();
 

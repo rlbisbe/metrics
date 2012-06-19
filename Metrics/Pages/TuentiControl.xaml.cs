@@ -32,8 +32,14 @@ namespace Metrics.Pages
         {
             if (String.IsNullOrEmpty(Name.Text))
             {
-                throw new NullReferenceException("Page name cannot be null");
+                TuentiError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                return null;
             }
+            else
+            {
+                TuentiError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(Likes.Content))
             {
                 TuentiWidget tw = new TuentiWidget(Name.Text);

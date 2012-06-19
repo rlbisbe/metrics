@@ -27,6 +27,25 @@ namespace Metrics.Pages
 
         async public Task<Widget> GetWidget()
         {
+            UserError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            RepositoryError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            bool error = false;
+            if (String.IsNullOrEmpty(Username.Text))
+            {
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                UserError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (String.IsNullOrEmpty(Repository.Text))
+            {
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                RepositoryError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (error == true)
+            {
+                return null;
+            }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(OpenIssues.Content))
             {
                 GithubWidget tw = new GithubWidget(Username.Text,Repository.Text);

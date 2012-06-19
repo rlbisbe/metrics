@@ -31,13 +31,22 @@ namespace Metrics
 
         async public Task<Widget> GetWidget()
         {
-            if (String.IsNullOrEmpty(URL.Text))
-            {
-                throw new NullReferenceException("URL cannot be null");
-            }
+            ErrorNullApiKey.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorBlogUrl.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            bool error = false;
             if (String.IsNullOrEmpty(API.Text))
             {
-                throw new NullReferenceException("API key cannot be null");
+                ErrorNullApiKey.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (String.IsNullOrEmpty(URL.Text))
+            {
+                ErrorBlogUrl.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                error = true;
+            }
+            if (error == true)
+            {
+                return null;
             }
             WordpressWidget tw;
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals("Visits today"))

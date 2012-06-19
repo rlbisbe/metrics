@@ -33,7 +33,9 @@ namespace Metrics
         {
             if (String.IsNullOrEmpty(Name.Text))
             {
-                throw new NullReferenceException("Twitter handle cannot be null");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                UserError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                return null;
             }
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(ControlFollowers.Content))
             {
