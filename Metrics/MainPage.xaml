@@ -42,6 +42,11 @@
         <CollectionViewSource
             x:Name="itemsViewSource"
             Source="{Binding Items}"/>
+        <Style x:Key="ButtonStyle1" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+        	<Setter Property="AutomationProperties.AutomationId" Value="AddAppBarButton"/>
+        	<Setter Property="AutomationProperties.Name" Value="Add"/>
+        	<Setter Property="Content" Value="&#xE109;"/>
+        </Style>
 
 
     </UserControl.Resources>
@@ -58,7 +63,7 @@
         * Row 1 contains the rest of the page layout
     -->
 
-    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" Background="#FF004000">
+    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" Background="#FF00283A">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -124,9 +129,9 @@
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Margin="36,0,36,36" d:LayoutOverrides="Margin"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0,0,55,40" Height="40" d:LayoutOverrides="Margin"/>
             <StackPanel x:Name="buttons" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
-                <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10"/>
+                <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10"/>
                 <Button x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10" />
-                <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DeleteAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10" />
+                <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}" HorizontalAlignment="Right" Width="80" Margin="0,40,0,10" />
 
             </StackPanel>
 

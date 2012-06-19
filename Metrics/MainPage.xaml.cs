@@ -74,12 +74,13 @@ namespace Metrics
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
-            // TitleInputbox is a TextBox in the app UI.
-            string dataPackageTitle = "Metrics resume of widget data";
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            string dataPackageTitle = loader.GetString("MetricsResume");
 
             App myApp = (App)App.Current;
 
-            var htmlExample = "<p>Resume of Metrics for <b>" + DateTime.Now + "</b></p><ul>";
+            var htmlExample = string.Format(loader.GetString("MetricsResumeContent"), DateTime.Now);
 
             foreach (var item in myApp.Widgets)
             {
@@ -94,7 +95,6 @@ namespace Metrics
             DataPackage requestData = args.Request.Data;
             requestData.Properties.Title = dataPackageTitle;
 
-            // The description is optional. DescriptionInputBox is a TextBox in the app UI.
             string dataPackageDescription = "Descripción";
 
             if (dataPackageDescription != null)
