@@ -10,12 +10,13 @@
     d:DesignWidth="400">
     
     <StackPanel>
-        <TextBlock x:Uid="SelectMetric" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Select metric:"/>
+        <TextBlock x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}" Margin="4,0,0,5" Foreground="#DE000000" Text="Select metric:"/>
         <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,10" BorderBrush="#CC000000" SelectedIndex="0">
             <ComboBoxItem x:Name="FBControlLikes" x:Uid="FBControlLikes" Content="Page likes"/>
             <ComboBoxItem x:Name="FBControlTalkingAbout" x:Uid="FBControlTalkingAbout" Content="People talking about count"/>
         </ComboBox>
-        <TextBlock x:Uid="FBControlPageName" Style="{StaticResource BaselineTextStyle}" Margin="4,0,0,10" Foreground="#DE000000" Text="Hello World"/>
-        <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,4" ToolTipService.ToolTip=""/>
+        <TextBlock x:Uid="FBControlPageName" Style="{StaticResource TitleTextStyle}" Margin="4,5,0,5" Foreground="#DE000000" Text="Page Name" />
+        <TextBox x:Name="Name" BorderBrush="Black" Margin="4,4,3,0" ToolTipService.ToolTip=""/>
+        <TextBlock x:Name="PageError" x:Uid="FBControlPageError" Margin="4,0,0,0" Text="" Style="{StaticResource TitleTextStyle}" Foreground="#FFFF0000" Visibility="Collapsed"/>
     </StackPanel>
 </UserControl>

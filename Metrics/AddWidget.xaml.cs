@@ -25,6 +25,7 @@ namespace Metrics
         {
             this.p = p;
             this.InitializeComponent();
+            ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private void Submit_Click_1(object sender, RoutedEventArgs e)
@@ -44,20 +45,23 @@ namespace Metrics
             App myApp = (App)App.Current;
             try
             {
-
                 var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
-                myApp.Widgets.Add(w);
-                //Remove empty Widget
-                if (myApp.Widgets.Contains(myApp.Empty))
+                if (w != null)
                 {
-                    myApp.Widgets.Remove(myApp.Empty);
+                    myApp.Widgets.Add(w);
+                    //Remove empty Widget
+                    if (myApp.Widgets.Contains(myApp.Empty))
+                    {
+                        myApp.Widgets.Remove(myApp.Empty);
+                    }
+                    p.IsOpen = false;
                 }
-                p.IsOpen = false;
+
             }
             catch (Exception ex)
             {
-                MessageDialog msg = new MessageDialog(ex.Message, "Error creating widget");
-                msg.ShowAsync();
+                ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                ErrorGridText.Text = "Error: " + ex.Message;
             }
         }
 
@@ -105,6 +109,11 @@ namespace Metrics
         private void WidgetContainer_LayoutUpdated(object sender, object e)
         {
             ServiceGrid.Height = WidgetContainer.ActualHeight + 250;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }
 }

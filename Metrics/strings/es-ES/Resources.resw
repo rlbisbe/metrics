@@ -234,4 +234,10 @@
   <data name="MetricsResumeContent" xml:space="preserve">
     <value>&lt;p&gt;Resumen de datos de Metrics del &lt;b&gt;{0}&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;</value>
   </data>
+  <data name="ErrorFBControlPageNotFound" xml:space="preserve">
+    <value>La página seleccionada no ha sido encontrada, por favor, compruebe el enlace.</value>
+  </data>
+  <data name="ErrorFBControlPageNull" xml:space="preserve">
+    <value>El campo página no puede estar vacío.</value>
+  </data>
 </root>

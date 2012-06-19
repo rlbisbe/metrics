@@ -34,7 +34,13 @@ namespace Metrics
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             if (String.IsNullOrEmpty(Name.Text))
             {
-                throw new NullReferenceException("Page cannot be null");
+                PageError.Text = loader.GetString("ErrorFBControlPageNull");
+                PageError.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                return null;
+            }
+            else
+            {
+                PageError.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
             FacebookWidget tw;
             if ((Metric.SelectedItem as ComboBoxItem).Content.Equals(FBControlLikes.Content))
