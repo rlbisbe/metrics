@@ -35,7 +35,8 @@ namespace Metrics.Widgets
             var response = await client.GetAsync(new Uri(URL));
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                throw new NullReferenceException("The selected page was not found. Please check spelling.");
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                throw new NullReferenceException(loader.GetString("ErrorFBControlPageNotFound"));
             }
             var result = await response.Content.ReadAsStringAsync();
             // Parse the JSON recipe data
