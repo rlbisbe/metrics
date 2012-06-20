@@ -43,7 +43,7 @@ namespace Metrics
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-       public App()
+        public App()
         {
             Empty = new EmptyWidget();
             this.InitializeComponent();
@@ -86,12 +86,12 @@ namespace Metrics
             {
                 Widget w;
 
-                w = new FacebookWidget("cocacola",FacebookWidget.Selection.Likes);
-                w.Update(); 
+                w = new FacebookWidget("cocacola", FacebookWidget.Selection.Likes);
+                w.Update();
                 this.Widgets.Add(w);
 
                 w = new TweetWidget("windows");
-                w.Update(); 
+                w.Update();
                 this.Widgets.Add(w);
 
                 w = new GithubWidget("twitter", "bootstrap");
@@ -99,25 +99,25 @@ namespace Metrics
                 this.Widgets.Add(w);
 
                 w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
-                w.Update(); 
+                w.Update();
                 this.Widgets.Add(w);
 
                 w = new TuentiWidget("cocacola");
-                w.Update(); 
+                w.Update();
                 this.Widgets.Add(w);
 
                 w = new TweetWidget("microsoft");
                 w.Update();
                 this.Widgets.Add(w);
 
-                w = new StackOverflowWidget("190165","stackoverflow");
+                w = new StackOverflowWidget("190165", "stackoverflow");
                 w.Update();
                 this.Widgets.Add(w);
 
                 w = new GithubWidget("rails", "rails");
                 w.Update();
                 this.Widgets.Add(w);
-            
+
             }
 
             // Create a Frame to act navigation context and navigate to the first page
@@ -127,7 +127,15 @@ namespace Metrics
             // Place the frame in the current Window and ensure that it is active
             Window.Current.Content = rootFrame;
             Window.Current.Activate();
-            
+            Window.Current.VisibilityChanged += Current_VisibilityChanged;
+        }
+
+        void Current_VisibilityChanged(object sender, Windows.UI.Core.VisibilityChangedEventArgs e)
+        {
+            if (!e.Visible)
+            {
+                OnSuspending(sender,null);
+            }
         }
 
         /// <summary>
