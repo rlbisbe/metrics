@@ -13,7 +13,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Metrics_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>6372A2EF11578388013D8BA94231E9A979717264</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>331A14CF28F2613095D92E31126EDBD8CF9870C9</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <ExpressionBlendVersion>5.0.30514.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -164,8 +166,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
-    <None Include="Key.pfx" />
-    <None Include="Key.snk" />
     <None Include="Metrics_TemporaryKey.pfx" />
     <PRIResource Include="strings\es-ES\Resources.resw" />
     <PRIResource Include="strings\en-US\Resources.resw" />
@@ -237,7 +237,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Key.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>

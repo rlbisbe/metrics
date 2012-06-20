@@ -6,5 +6,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
+    <AppxPackageIsForStore>False</AppxPackageIsForStore>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>neutral</AppxBuildConfigurationSelection>
   </PropertyGroup>
 </Project>

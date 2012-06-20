@@ -2,7 +2,7 @@
 
 Metrics is a social app that connects you to your most important stats.
 
-Stats available right now:
+Stats available now:
 
 ## Twitter:
 * Follower count
@@ -11,17 +11,24 @@ Stats available right now:
 * Likes from a facebook page
 * People talking about a page
 
-## Wordpress
-* Blog visits today
-	
 ## Tuenti
-* Likes from a public tuenti page.
+* Likes from a public tuenti page
 
 ## Stackoverflow
 * Reputation from any Stackexchange site
 
+## Wordpress
+* Blog visits today
+* Blog visits this week
+* Blog visits this month
+
 ## Github
 By now, only open issues are shown.
+
+# Languages
+
+- English
+- Spanish
 
 Final stats (for version 1.0)
 ## Twitter
@@ -37,7 +44,6 @@ Future stats (for version 2.0)
 For V2: Difference between months, in percentage.
 
 # API:
-The idea is to offer an API in different programming languages (PHP and .net as first-class)
 
-Also, provide a common Json that will be interpreted by the system. 
+Provide a common Json that will be interpreted by the system. 
 

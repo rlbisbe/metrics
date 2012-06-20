@@ -70,6 +70,8 @@ namespace Metrics
                 MessageDialog msg = new MessageDialog(loader.GetString("FirstLaunchText"), loader.GetString("FirstLaunchTitle"));
                 msg.ShowAsync();
             }
+            itemGridView.SelectedItem = null;
+            BottomAppBar.IsOpen = false;
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -121,6 +123,7 @@ namespace Metrics
             {
                 myApp.Widgets.Add(myApp.Empty);
             }
+            BottomAppBar.IsOpen = false;
         }
 
         /// <summary>
@@ -133,6 +136,7 @@ namespace Metrics
             w.Height = this.ActualHeight;
             popup.Child = w;
             popup.IsOpen = true;
+            BottomAppBar.IsOpen = false;
         }
 
         /// <summary>
@@ -145,6 +149,7 @@ namespace Metrics
             if (itemGridView.SelectedItem != null)
             {
                 deleteButton.Visibility = Visibility.Visible;
+                BottomAppBar.IsOpen = true;
             }
             else
             {
@@ -168,5 +173,10 @@ namespace Metrics
         }
 
         public DataTransferManager dataTransferManager { get; set; }
+
+        private void AppBar_Closed_1(object sender, object e)
+        {
+            itemGridView.SelectedItem = null;
+        }
     }
 }
