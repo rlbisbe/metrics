@@ -135,7 +135,7 @@ namespace Metrics
             if (!e.Visible)
             {
                 OnSuspending(sender,null);
-            }
+            } 
         }
 
         /// <summary>

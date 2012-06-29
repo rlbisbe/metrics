@@ -165,6 +165,12 @@ namespace Metrics
             App myApp = (App)App.Current;
             if (myApp.HaveInternetConnection() == true)
             {
+                if (itemGridView.SelectedItem != null)
+                {
+                    (itemGridView.SelectedItem as Widget).Update();
+                    return;
+                }
+
                 foreach (var item in myApp.Widgets)
                 {
                     item.Update();
