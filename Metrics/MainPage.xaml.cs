@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.DataTransfer;
+using System.Threading.Tasks;
 
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
@@ -34,6 +35,53 @@ namespace Metrics
         public MainPage()
         {
             this.InitializeComponent();
+            NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+        }
+
+        async void NetworkInformation_NetworkStatusChanged(object sender)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, UpdateUI);
+        }
+
+        /// <summary>
+        /// Checks if there is an internet connection available.
+        /// </summary>
+        /// 
+        /// <returns></returns>
+        private bool HaveInternetConnection(string message = "This program requires internet connection for obtaining the metrics data. Please check your internet connection.")
+        {
+            bool status = true;
+            var profile = NetworkInformation.GetInternetConnectionProfile();
+            if (profile == null)
+            {
+                status = false;
+            }
+            else
+            {
+                var level = profile.GetNetworkConnectivityLevel();
+                if (level == NetworkConnectivityLevel.LocalAccess || level == NetworkConnectivityLevel.None)
+                {
+                    status = false;
+                }
+            }
+            if (status == false)
+            {
+                ErrorGridText.Text = message;
+                ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            return status;
+        }
+
+        private void UpdateUI()
+        {
+            if (HaveInternetConnection(message: "Internet connection was lost"))
+            {
+                App myApp = (App)App.Current;
+                foreach (var item in myApp.Widgets)
+                {
+                    item.Update();
+                }
+            }
         }
 
 
@@ -52,10 +100,8 @@ namespace Metrics
             this.dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager,
                 DataRequestedEventArgs>(this.OnDataRequested);
 
-            
-
             App myApp = (App)App.Current;
-            myApp.HaveInternetConnection();
+            HaveInternetConnection();
             this.DefaultViewModel["Items"] = myApp.Widgets;
             if (myApp.Widgets.Count == 0)
             {
@@ -72,6 +118,8 @@ namespace Metrics
             }
             itemGridView.SelectedItem = null;
             BottomAppBar.IsOpen = false;
+
+            
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -163,7 +211,7 @@ namespace Metrics
         private void refreshButton_Click_1(object sender, RoutedEventArgs e)
         {
             App myApp = (App)App.Current;
-            if (myApp.HaveInternetConnection() == true)
+            if (HaveInternetConnection() == true)
             {
                 if (itemGridView.SelectedItem != null)
                 {
@@ -183,6 +231,11 @@ namespace Metrics
         private void AppBar_Closed_1(object sender, object e)
         {
             itemGridView.SelectedItem = null;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }
 }

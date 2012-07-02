@@ -50,6 +50,7 @@ namespace Metrics
             this.Suspending += OnSuspending;
         }
 
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
@@ -138,31 +139,8 @@ namespace Metrics
             } 
         }
 
-        /// <summary>
-        /// Checks if there is an internet connection available.
-        /// </summary>
-        /// <returns></returns>
-        public bool HaveInternetConnection()
-        {
-            var profile = NetworkInformation.GetInternetConnectionProfile();
-            if (profile == null)
-            {
-                MessageDialog msg = new MessageDialog("This program requires internet connection for obtaining the metrics data. Please check your internet connection.", "Internet connection not found.");
-                msg.ShowAsync();
-                return false;
-            }
-            else
-            {
-                var level = profile.GetNetworkConnectivityLevel();
-                if (level == NetworkConnectivityLevel.LocalAccess || level == NetworkConnectivityLevel.None)
-                {
-                    MessageDialog msg = new MessageDialog("This program requires internet connection for obtaining the metrics data. Please check your internet connection.", "Internet connection not found.");
-                    msg.ShowAsync();
-                    return false;
-                }
-            }
-            return true;
-        }
+
+        
 
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
