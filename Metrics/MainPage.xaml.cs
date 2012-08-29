@@ -39,7 +39,6 @@ namespace Metrics
         {
             this.InitializeComponent();
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
-            SettingsPane.GetForCurrentView().CommandsRequested += MainPage_CommandsRequested;
         }
 
         void MainPage_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)

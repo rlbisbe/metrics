@@ -171,8 +171,8 @@
     <None Include="Common\ReadMe.txt" />
     <None Include="Metrics_StoreKey.pfx" />
     <None Include="Metrics_TemporaryKey.pfx" />
-    <PRIResource Include="Pages\strings\es-ES\Resources.resw" />
-    <PRIResource Include="Pages\strings\en-US\Resources.resw" />
+    <PRIResource Include="strings\en-US\Resources.resw" />
+    <PRIResource Include="strings\es-ES\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />

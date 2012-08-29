@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ApplicationSettings;
+using Windows.System;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -28,6 +30,7 @@ namespace Metrics
     /// </summary>
     sealed partial class App : Application
     {
+        private bool m_settingsReady = false;
         public EmptyWidget Empty;
 
         private ObservableCollection<Widget> _widgets = new ObservableCollection<Widget>();
@@ -59,6 +62,13 @@ namespace Metrics
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            // Notifícame cuando el usuario abra el panel de Settings
+            if (!this.m_settingsReady)
+            {
+                SettingsPane.GetForCurrentView().CommandsRequested += OnCommandsRequested;
+                this.m_settingsReady = true;
+            }
+
             if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
             {
                 //TODO: Load state from previously suspended application
@@ -129,6 +139,57 @@ namespace Metrics
             Window.Current.Content = rootFrame;
             Window.Current.Activate();
             Window.Current.VisibilityChanged += Current_VisibilityChanged;
+        }
+
+        void OnCommandsRequested(
+            SettingsPane settingsPane, SettingsPaneCommandsRequestedEventArgs eventArgs)
+        {
+            // Preparamos el metodo que se llamará cuando el usuario pulse 
+            // en alguno de los Settings
+            UICommandInvokedHandler handler = new UICommandInvokedHandler(OnSettingsCommand);
+
+            // Hacemos que las diferentes opciones aparezcan en los Settings
+
+            // Política de privacidad
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            string privacyStatement = loader.GetString("Privacy");
+            SettingsCommand privacyPolicyCommand =
+                new SettingsCommand("politicaPrivacidad", privacyStatement, handler);
+            eventArgs.Request.ApplicationCommands.Add(privacyPolicyCommand);
+
+            // Contacta con nosotros
+            string contactUs = loader.GetString("ContactUs");
+            SettingsCommand contactUsCommand =
+                new SettingsCommand("contactaConNosotros", contactUs, handler);
+            eventArgs.Request.ApplicationCommands.Add(contactUsCommand);
+        }
+
+        async void OnSettingsCommand(IUICommand command)
+        {
+            // Obtenemos en cuál de los Setting ha pulsado el usuario
+            SettingsCommand settingsCommand = (SettingsCommand)command;
+
+            // Según el que haya pulsado hacemos unas cosas u otras
+            switch ((string)settingsCommand.Id)
+            {
+                case "politicaPrivacidad":
+
+                    // Abrimos la página web con nuestra Política de Privacidad 
+                    // (nota: el enlace es de ejemplo, aquí deberías de poner el tuyo propio)
+                    await Launcher.LaunchUriAsync(new Uri(
+                        "http://apps.rlbisbe.net/metrics/privacy"));
+
+                    break;
+
+                case "contactaConNosotros":
+
+                    // Abrimos la página web con nuestra información de contacto
+                    // (nota: el enlace es de ejemplo, aquí deberías de poner el tuyo propio)
+                    await Launcher.LaunchUriAsync(new Uri(
+                        "http://robertoluis.wordpress.com/contacto/"));
+
+                    break;
+            }
         }
 
         void Current_VisibilityChanged(object sender, Windows.UI.Core.VisibilityChangedEventArgs e)

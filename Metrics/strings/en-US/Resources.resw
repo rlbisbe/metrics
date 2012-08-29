@@ -282,4 +282,10 @@
   <data name="Hide.Content" xml:space="preserve">
     <value>Hide</value>
   </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy Statement</value>
+  </data>
 </root>
