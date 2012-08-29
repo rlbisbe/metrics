@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="487895fc-e348-48cd-aedd-0c883c619dae" Publisher="CN=rlbisbe" Version="1.0.0.2" />
+  <Identity Name="677RobertoLuisBisb.Metrics" Publisher="CN=94CEFD94-7733-40B6-9D99-88E25EBFC8CE" Version="1.0.0.4" />
   <Properties>
     <DisplayName>Metrics</DisplayName>
-    <PublisherDisplayName>Roberto</PublisherDisplayName>
+    <PublisherDisplayName>Roberto Luis Bisbé</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
     <Description>Metrics</Description>
   </Properties>

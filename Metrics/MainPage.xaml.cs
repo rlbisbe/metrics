@@ -19,7 +19,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.DataTransfer;
 using System.Threading.Tasks;
-
+using Windows.UI.ApplicationSettings;
+using Metrics.Pages;
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
 namespace Metrics
@@ -30,14 +31,36 @@ namespace Metrics
     /// </summary>
     public sealed partial class MainPage : Metrics.Common.LayoutAwarePage
     {
+        double _settingsWidth = 346;
+
         Popup popup = new Popup();
 
         public MainPage()
         {
             this.InitializeComponent();
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+            SettingsPane.GetForCurrentView().CommandsRequested += MainPage_CommandsRequested;
         }
 
+        void MainPage_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            string privacyStatement = loader.GetString("Privacy");
+            SettingsCommand cmd = new SettingsCommand("sample", privacyStatement, (x) =>
+            {
+                Privacy w = new Privacy(popup);
+                w.Width = _settingsWidth;
+                w.Height = this.ActualHeight;
+                w.Margin = new Thickness(this.ActualWidth - _settingsWidth, 0, 0, 0);
+                popup.Child = w;
+                popup.IsOpen = true;
+                BottomAppBar.IsOpen = false;
+            });
+
+            args.Request.ApplicationCommands.Add(cmd);
+        }
+
+       
         async void NetworkInformation_NetworkStatusChanged(object sender)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, UpdateUI);
@@ -236,6 +259,14 @@ namespace Metrics
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+
+        private void MainGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            if (popup.IsOpen == true && popup.Child is Privacy)
+            {
+                popup.IsOpen = false;
+            }
         }
     }
 }

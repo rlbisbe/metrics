@@ -58,11 +58,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}"/>
+                    <Button x:Uid="addButton" x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}"/>
-                    <Button x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}"/>
+                    <Button x:Uid="refreshButton" x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}"/>
+                    <Button x:Uid="deleteButton" x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}"/>
                 </StackPanel>
             </Grid>
         </AppBar>
@@ -80,7 +80,7 @@
         * Row 1 contains the rest of the page layout
     -->
 
-    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" Background="#FF00283A">
+    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" Background="#FF00283A" PointerPressed="MainGrid_PointerPressed">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
