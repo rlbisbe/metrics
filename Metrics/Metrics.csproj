@@ -16,6 +16,10 @@
     <PackageCertificateThumbprint>0E9B41F79FEA613F4286FB9CE9D17B63FC892888</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <ExpressionBlendVersion>5.0.30514.0</ExpressionBlendVersion>
+    <SccProjectName>Plastic SCM</SccProjectName>
+    <SccLocalPath>Plastic SCM</SccLocalPath>
+    <SccAuxPath>Plastic SCM</SccAuxPath>
+    <SccProvider>Plastic SCM Source Control Service:{774e58ba-f1b9-40a7-b676-834fa2c220fe}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

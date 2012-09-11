@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Metrics.Widgets;
 using Windows.Globalization.NumberFormatting;
 using Windows.Storage;
+using System.Collections.ObjectModel;
 
 namespace Metrics
 {
@@ -146,5 +147,52 @@ namespace Metrics
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+    }
+
+    public class WidgetSource
+    {
+        private ObservableCollection<Widget> _allWidgets = new ObservableCollection<Widget>();
+
+        public ObservableCollection<Widget> AllWidgets
+        {
+            get { return this._allWidgets; }
+        }
+
+        public WidgetSource()
+        {
+            Widget w;
+
+            w = new FacebookWidget("cocacola", FacebookWidget.Selection.Likes);
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new TweetWidget("windows");
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new GithubWidget("twitter", "bootstrap");
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new TuentiWidget("cocacola");
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new TweetWidget("microsoft");
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new StackOverflowWidget("190165", "stackoverflow");
+            w.Update();
+            this._allWidgets.Add(w);
+
+            w = new GithubWidget("rails", "rails");
+            w.Update();
+            this._allWidgets.Add(w);
+        }
     }
 }
