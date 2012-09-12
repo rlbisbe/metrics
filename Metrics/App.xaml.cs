@@ -226,5 +226,7 @@ namespace Metrics
 
             localSettings.Values["NewLoad"] = true;
         }
+
+        public bool isGrouped { get; set; }
     }
 }

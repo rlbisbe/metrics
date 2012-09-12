@@ -267,5 +267,24 @@ namespace Metrics
                 popup.IsOpen = false;
             }
         }
+
+        private void Button_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {  
+            App myApp = (App)App.Current;
+
+            if (myApp.isGrouped)
+            {
+                this.DefaultViewModel["Items"] = myApp.Widgets;
+                myApp.isGrouped = false;
+            }
+            else
+            {
+                var widgets = myApp.Widgets.OrderBy(x => x.WidgetName);
+                this.DefaultViewModel["Items"] = widgets;
+                myApp.isGrouped = true;
+            }
+
+            // TODO: Falta agregar los grupos, para que se muestren en la lista. http://mtaulty.com/CommunityServer/blogs/mike_taultys_blog/archive/2012/08/14/from-the-windows-8-camps-gridviews-with-inlined-group-headers.aspx
+        }
     }
 }
