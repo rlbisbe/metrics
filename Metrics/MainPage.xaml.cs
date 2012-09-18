@@ -279,7 +279,15 @@ namespace Metrics
             }
             else
             {
-                var widgets = myApp.Widgets.OrderBy(x => x.WidgetName);
+                ObservableCollection<Widget> titles = new ObservableCollection<Widget>();
+                foreach (var item in myApp.Widgets)
+                {
+                    if (!titles.Contains(item))
+                    {
+                        titles.Add(new Group(item));
+                    }
+                }
+                var widgets = myApp.Widgets.Union(titles).OrderBy(x => x.WidgetName).ThenBy(x => x.Title);
                 this.DefaultViewModel["Items"] = widgets;
                 myApp.isGrouped = true;
             }

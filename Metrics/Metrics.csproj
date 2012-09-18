@@ -162,6 +162,7 @@
     <Compile Include="Widgets\CustomWidget.cs" />
     <Compile Include="Widgets\EmptyWidget.cs" />
     <Compile Include="Widgets\GithubWidget.cs" />
+    <Compile Include="Widgets\Group.cs" />
     <Compile Include="Widgets\StackOverflowWidget.cs" />
     <Compile Include="Widgets\TuentiWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
