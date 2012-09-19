@@ -288,4 +288,28 @@
   <data name="Privacy" xml:space="preserve">
     <value>Privacy Statement</value>
   </data>
+  <data name="addButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="deleteButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="groupButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="GroupText" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="LostInternetConnection" xml:space="preserve">
+    <value>Internet connection has been lost.</value>
+  </data>
+  <data name="RecoveredInternetConnection" xml:space="preserve">
+    <value>Internet connection has been recovered.</value>
+  </data>
+  <data name="refreshButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="UngroupText" xml:space="preserve">
+    <value>Ungroup</value>
+  </data>
 </root>
