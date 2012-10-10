@@ -16,6 +16,10 @@
     <PackageCertificateThumbprint>0E9B41F79FEA613F4286FB9CE9D17B63FC892888</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <ExpressionBlendVersion>5.0.30514.0</ExpressionBlendVersion>
+    <SccProjectName>Plastic SCM</SccProjectName>
+    <SccLocalPath>Plastic SCM</SccLocalPath>
+    <SccAuxPath>Plastic SCM</SccAuxPath>
+    <SccProvider>Plastic SCM Source Control Service:{774e58ba-f1b9-40a7-b676-834fa2c220fe}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -125,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="MyTemplateSelector.cs" />
     <Compile Include="Pages\CustomWidgetControl.xaml.cs">
       <DependentUpon>CustomWidgetControl.xaml</DependentUpon>
     </Compile>
@@ -157,6 +162,7 @@
     <Compile Include="Widgets\CustomWidget.cs" />
     <Compile Include="Widgets\EmptyWidget.cs" />
     <Compile Include="Widgets\GithubWidget.cs" />
+    <Compile Include="Widgets\Group.cs" />
     <Compile Include="Widgets\StackOverflowWidget.cs" />
     <Compile Include="Widgets\TuentiWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
