@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="677RobertoLuisBisb.Metrics" Publisher="CN=94CEFD94-7733-40B6-9D99-88E25EBFC8CE" Version="1.0.0.4" />
+  <Identity Name="677RobertoLuisBisb.Metrics" Publisher="CN=94CEFD94-7733-40B6-9D99-88E25EBFC8CE" Version="1.0.0.5" />
   <Properties>
     <DisplayName>Metrics</DisplayName>
     <PublisherDisplayName>Roberto Luis Bisbé</PublisherDisplayName>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Metrics.App">
-      <VisualElements DisplayName="Metrics" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Metrics" ForegroundText="light" BackgroundColor="#00283A">
+      <VisualElements DisplayName="Metrics" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Metrics is a dashboard for having your social info in the same place. You can retrieve your data from popular social networks such as Twitter, Facebook or Github." ForegroundText="light" BackgroundColor="#00283A">
         <DefaultTile ShowName="allLogos" ShortName="Metrics" />
         <SplashScreen Image="Assets\SplashScreen.png" />
         <InitialRotationPreference>

@@ -30,7 +30,9 @@
     <Language Code="as-in" InMinimumRequirementSet="false" />
     <Language Code="az" InMinimumRequirementSet="false" />
     <Language Code="az-arab" InMinimumRequirementSet="false" />
+    <Language Code="az-arab-az" InMinimumRequirementSet="false" />
     <Language Code="az-cyrl" InMinimumRequirementSet="false" />
+    <Language Code="az-cyrl-az" InMinimumRequirementSet="false" />
     <Language Code="az-latn" InMinimumRequirementSet="false" />
     <Language Code="az-latn-az" InMinimumRequirementSet="false" />
     <Language Code="be" InMinimumRequirementSet="false" />
@@ -244,6 +246,8 @@
     <Language Code="pt" InMinimumRequirementSet="true" />
     <Language Code="pt-br" InMinimumRequirementSet="true" />
     <Language Code="pt-pt" InMinimumRequirementSet="true" />
+    <Language Code="quc" InMinimumRequirementSet="false" />
+    <Language Code="quc-latn" InMinimumRequirementSet="false" />
     <Language Code="qut" InMinimumRequirementSet="false" />
     <Language Code="qut-gt" InMinimumRequirementSet="false" />
     <Language Code="qut-latn" InMinimumRequirementSet="false" />
@@ -352,10 +356,5 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames />
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/d15cb392-5323-4683-b4f3-bea8109a8595">
-    <PackageInfo>
-      <PackageArchitecture />
-      <PackageMaxArchitectureVersion>0.0.0.0</PackageMaxArchitectureVersion>
-    </PackageInfo>
-  </PackageInfoList>
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/d15cb392-5323-4683-b4f3-bea8109a8595" />
 </StoreAssociation>
