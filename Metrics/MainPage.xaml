@@ -72,6 +72,7 @@
             Source="{Binding Items}"
             d:Source="{Binding AllWidgets, 
             Source={d:DesignInstance IsDesignTimeCreatable=True, Type=local:WidgetSource}}"/>
+        
         <Style x:Key="ButtonStyle1" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
             <Setter Property="AutomationProperties.AutomationId" Value="AddAppBarButton"/>
             <Setter Property="AutomationProperties.Name" Value="Add"/>
@@ -92,7 +93,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                     <Button x:Uid="groupButton" x:Name="groupButton" Margin="0" AutomationProperties.Name="Group" Tapped="Button_Tapped_1" Style="{StaticResource MoreAppBarButtonStyle}" Content="&#xE15C;"/>
-                    <Button x:Uid="refreshButton" x:Name="refreshButton" Click="refreshButton_Click_1" Style="{StaticResource RefreshAppBarButtonStyle}"/>
+                    <Button x:Uid="refreshButton" x:Name="refreshButton" Style="{StaticResource RefreshAppBarButtonStyle}" Command="{Binding RefreshCommand}"/>
                     <Button x:Uid="deleteButton" x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}"/>
                 </StackPanel>
             </Grid>
@@ -111,7 +112,7 @@
         * Row 1 contains the rest of the page layout
     -->
 
-    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" PointerPressed="MainGrid_PointerPressed">
+    <Grid x:Name="MainGrid" Style="{StaticResource LayoutRootStyle}" Background="#FF00283A">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -180,9 +181,21 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Margin="36,0,36,36" d:LayoutOverrides="Margin"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}" Margin="0,0,55,40" Height="40" d:LayoutOverrides="Margin"/>
+            <Grid Grid.Column="2">
+                <StackPanel Orientation="Horizontal" Visibility="{Binding Loading}" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF001924">
+                    <TextBlock x:Uid="UpdatingText" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource PageSubheaderTextStyle}" Margin="10,0,10,10" Text="Updating"/>
+                    <TextBlock Text="{Binding UpdatedItems}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource PageSubheaderTextStyle}" Margin="0,0,0,10"/>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource PageSubheaderTextStyle}" Margin="0,0,0,10">
+                    	<Run Text="/"/>
+</TextBlock>
+                    <TextBlock Text="{Binding Items.Count}" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource PageSubheaderTextStyle}" Margin="0,0,0,10"/>
+                    <ProgressRing IsActive="True" VerticalAlignment="Center" Margin="10,0" Foreground="White" />
+                </StackPanel>
+            </Grid>
         </Grid>
 
         <!-- Horizontal scrolling grid used in most view states -->

@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml.Automation;
+using Metrics.ViewModel;
+using Metrics.Services;
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
 namespace Metrics
@@ -25,109 +27,53 @@ namespace Metrics
     /// </summary>
     public sealed partial class MainPage : Metrics.Common.LayoutAwarePage
     {
-        double _settingsWidth = 346;
+        double mSettingsWidth = 346;
 
         Popup popup = new Popup();
-        private CoreDispatcher _dispatcher;
-        private bool _hayConexion;
+        private CoreDispatcher mDispatcher;
+        private bool mHaveConnection;
+        private App myApp = App.Current as App;
 
         public MainPage()
         {
             this.InitializeComponent();
-            _dispatcher = Window.Current.Dispatcher; 
-            _hayConexion = NetworkInformation.GetInternetConnectionProfile() != null;
+            mDispatcher = Window.Current.Dispatcher; 
+            mHaveConnection = NetworkInformation.GetInternetConnectionProfile() != null;
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+            this.DataContext = new AppViewModel();
         }
-
-        void MainPage_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
-        {
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            string privacyStatement = loader.GetString("Privacy");
-            SettingsCommand cmd = new SettingsCommand("sample", privacyStatement, (x) =>
-            {
-                Privacy w = new Privacy(popup);
-                w.Width = _settingsWidth;
-                w.Height = this.ActualHeight;
-                w.Margin = new Thickness(this.ActualWidth - _settingsWidth, 0, 0, 0);
-                popup.Child = w;
-                popup.IsOpen = true;
-                BottomAppBar.IsOpen = false;
-            });
-
-            args.Request.ApplicationCommands.Add(cmd);
-        }
-
        
         async void NetworkInformation_NetworkStatusChanged(object sender)
         {
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
             if (NetworkInformation.GetInternetConnectionProfile() == null)
             {
-                if (_hayConexion)
+                if (mHaveConnection)
                 {
-                    _hayConexion = false;
+                    mHaveConnection = false;
                     //Código a ejecutar cuando se pierda la conexión
-                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                    await mDispatcher.RunAsync(CoreDispatcherPriority.Normal,
                         () => {
-                            ErrorGridText.Text = loader.GetString("LostInternetConnection");
+                            ErrorGridText.Text = 
+                                LocalizationService.GetString("LostInternetConnection");
                             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                         });
                 }
             }
             else
             {
-                if (!_hayConexion)
+                if (!mHaveConnection)
                 {
-                    _hayConexion = true;
+                    mHaveConnection = true;
                     //Código a ejecutar cuando se recupere la conexión
-                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                    await mDispatcher.RunAsync(CoreDispatcherPriority.Normal,
                         () => {
-                            ErrorGridText.Text = loader.GetString("RecoveredInternetConnection");
+                            ErrorGridText.Text = LocalizationService.GetString("RecoveredInternetConnection");
                             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                            UpdateUI();
+                            (this.DataContext as AppViewModel).RefreshCommand.Execute(null);
                         });
                 }
             }
-            //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, UpdateUI);
         }
-
-        /// <summary>
-        /// Checks if there is an internet connection available.
-        /// </summary>
-        /// 
-        /// <returns></returns>
-        private bool HaveInternetConnection()
-        {
-            bool status = true;
-            var profile = NetworkInformation.GetInternetConnectionProfile();
-            if (profile == null)
-            {
-                status = false;
-            }
-            else
-            {
-                var level = profile.GetNetworkConnectivityLevel();
-                if (level == NetworkConnectivityLevel.LocalAccess || level == NetworkConnectivityLevel.None)
-                {
-                    status = false;
-                }
-            }
-            return status;
-        }
-
-        private void UpdateUI()
-        {
-            if (HaveInternetConnection())
-            {
-                App myApp = (App)App.Current;
-                foreach (var item in myApp.Widgets)
-                {
-                    item.Update();
-                }
-            } 
-        }
-
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -144,9 +90,8 @@ namespace Metrics
             this.dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager,
                 DataRequestedEventArgs>(this.OnDataRequested);
 
-            App myApp = (App)App.Current;
-            UpdateUI();
-            this.DefaultViewModel["Items"] = myApp.Widgets;
+            (this.DataContext as AppViewModel).RefreshCommand.Execute(null);
+
             if (myApp.Widgets.Count == 0)
             {
                 myApp.Widgets.Add(myApp.Empty);
@@ -156,8 +101,9 @@ namespace Metrics
             object NewLoad = localSettings.Values["NewLoad"];
             if (NewLoad == null)
             {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                MessageDialog msg = new MessageDialog(loader.GetString("FirstLaunchText"), loader.GetString("FirstLaunchTitle"));
+                MessageDialog msg = new MessageDialog(
+                    LocalizationService.GetString("FirstLaunchText"),
+                    LocalizationService.GetString("FirstLaunchTitle"));
                 msg.ShowAsync();
             }
             itemGridView.SelectedItem = null;
@@ -168,47 +114,40 @@ namespace Metrics
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            string dataPackageTitle = loader.GetString("MetricsResume");
-
-            App myApp = (App)App.Current;
-
-            var htmlExample = string.Format(loader.GetString("MetricsResumeContent"), DateTime.Now);
+            string dataPackageTitle = LocalizationService.GetString("MetricsResume");
+            var htmlExample = string.Format(
+                LocalizationService.GetString("MetricsResumeContent"),
+                DateTime.Now);
 
             if (!myApp.isGrouped)
             {
                 SwitchGroup();
             }
-            IEnumerable<Widget> widgets = this.DefaultViewModel["Items"] as IEnumerable<Widget>;
+            IEnumerable<Widget> widgets = 
+                this.DefaultViewModel["Items"] as IEnumerable<Widget>;
             foreach (var item in widgets)
             {
                 if (item is Group)
                 {
-                    htmlExample += "</ul><li><i>" + item.WidgetName + "</i><ul>";
+                    htmlExample += string.Format("</ul><li><i>{0}</i><ul>", 
+                        item.WidgetName);
                 }
                 else
                 {
-                    htmlExample += "<li>" + item.SCounter + "<b> " + item.Title + "</b></li>";
+                    htmlExample += string.Format("<li>{0}<b>{1}</b></li>", 
+                        item.SCounter, 
+                        item.Title);
                 }
             }
 
             htmlExample += "</ul>";
 
-            var htmlFormat = Windows.ApplicationModel.DataTransfer.HtmlFormatHelper.CreateHtmlFormat(htmlExample);
-
+            var htmlFormat = HtmlFormatHelper.CreateHtmlFormat(htmlExample);
 
             DataPackage requestData = args.Request.Data;
             requestData.Properties.Title = dataPackageTitle;
-
-            string dataPackageDescription = "Descripción";
-
-            if (dataPackageDescription != null)
-            {
-                requestData.Properties.Description = dataPackageDescription;
-            }
+            requestData.Properties.Description = "Descripción";
             requestData.SetHtmlFormat(htmlFormat);
-
-
         }
 
         /// <summary>
@@ -216,7 +155,6 @@ namespace Metrics
         /// </summary>
         private void Delete_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            App myApp = (App)App.Current;
             var element = itemGridView.SelectedItem;
             if (element != null)
             {
@@ -228,7 +166,7 @@ namespace Metrics
                 myApp.Widgets.Add(myApp.Empty);
             }
             BottomAppBar.IsOpen = false;
-            RefreshView(myApp);
+            //RefreshView(myApp);
         }
 
         /// <summary>
@@ -263,37 +201,15 @@ namespace Metrics
             }
         }
 
-        /// <summary>
-        /// Reloads the info from the different widgets.
-        /// </summary>
-        private void refreshButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            App myApp = (App)App.Current;
-            if (HaveInternetConnection() == true)
-            {
-                if (itemGridView.SelectedItem != null)
-                {
-                    (itemGridView.SelectedItem as Widget).Update();
-                    return;
-                }
-
-                foreach (var item in myApp.Widgets)
-                {
-                    item.Update();
-                }
-            }
-            RefreshView(myApp);
-        }
-
-        private void RefreshView(App myApp)
-        {
-            if (myApp.isGrouped)
-            {
-                ShowGrouped();
-                return;
-            }
-            ShowUngrouped();
-        }
+        //private void RefreshView(App myApp)
+        //{
+        //    if (myApp.isGrouped)
+        //    {
+        //        ShowGrouped();
+        //        return;
+        //    }
+        //    ShowUngrouped();
+        //}
 
         public DataTransferManager dataTransferManager { get; set; }
 
@@ -307,14 +223,6 @@ namespace Metrics
             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private void MainGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            if (popup.IsOpen == true && popup.Child is Privacy)
-            {
-                popup.IsOpen = false;
-            }
-        }
-
         private void Button_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             SwitchGroup();   
@@ -322,7 +230,6 @@ namespace Metrics
 
         private void SwitchGroup()
         {
-            App myApp = (App)App.Current;
             if (myApp.isGrouped)
             {
                 ShowUngrouped();
@@ -333,9 +240,6 @@ namespace Metrics
 
         private void ShowGrouped()
         {
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
-            App myApp = (App)App.Current;
             ObservableCollection<Widget> titles = new ObservableCollection<Widget>();
             foreach (var item in myApp.Widgets)
             {
@@ -344,23 +248,25 @@ namespace Metrics
                     titles.Add(new Group(item));
                 }
             }
-            var widgets = myApp.Widgets.Union(titles).OrderBy(x => x.WidgetName).ThenBy(x => x.Title).AsQueryable();
+            var widgets = myApp.Widgets.Union(titles).
+                OrderBy(x => x.WidgetName).
+                ThenBy(x => x.Title).AsQueryable();
+
             this.DefaultViewModel["Items"] = widgets;
             myApp.isGrouped = true;
             groupButton.Content = "\uE0F4";
-            groupButton.SetValue(AutomationProperties.NameProperty, loader.GetString("UngroupText"));
+            groupButton.SetValue(AutomationProperties.NameProperty, 
+                LocalizationService.GetString("UngroupText"));
         }
 
 
         private void ShowUngrouped()
         {
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
-            App myApp = (App)App.Current;
             this.DefaultViewModel["Items"] = myApp.Widgets;
             myApp.isGrouped = false;
             groupButton.Content = "\uE15C";
-            groupButton.SetValue(AutomationProperties.NameProperty, loader.GetString("GroupText"));
+            groupButton.SetValue(AutomationProperties.NameProperty, 
+                LocalizationService.GetString("GroupText"));
         }
     }
 }
