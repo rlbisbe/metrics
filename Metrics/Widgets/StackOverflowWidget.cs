@@ -39,7 +39,9 @@ namespace Metrics.Widgets
             var response = await client.GetAsync(new Uri(url));
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {
-                throw new NullReferenceException("The selected site was not found. Please check spelling.");
+                Counter = 0;
+                return;
+                //throw new NullReferenceException("The selected site was not found. Please check spelling.");
             }
 
             var result = await response.Content.ReadAsStringAsync();

@@ -46,7 +46,11 @@ namespace Metrics.Widgets
 
             // Parse the JSON recipe data
             var recipes = JsonObject.Parse(result);
-
+            if (recipes["error"] != null)
+            {
+                Counter = 0;
+                return;
+            }
             Counter = (int)recipes["followers_count"].GetNumber();
         }
 

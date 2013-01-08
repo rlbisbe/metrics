@@ -177,6 +177,7 @@
     <None Include="Common\ReadMe.txt" />
     <None Include="Metrics_StoreKey.pfx" />
     <None Include="Metrics_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <PRIResource Include="strings\en-US\Resources.resw" />
     <PRIResource Include="strings\es-ES\Resources.resw" />
   </ItemGroup>
@@ -240,6 +241,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="WinRTXamlToolkit">
+      <HintPath>..\packages\winrtxamltoolkit.1.3.5.1\lib\netcore45\WinRTXamlToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

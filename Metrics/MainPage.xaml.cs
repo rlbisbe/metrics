@@ -27,8 +27,6 @@ namespace Metrics
     /// </summary>
     public sealed partial class MainPage : Metrics.Common.LayoutAwarePage
     {
-        double mSettingsWidth = 346;
-
         Popup popup = new Popup();
         private CoreDispatcher mDispatcher;
         private bool mHaveConnection;
@@ -119,10 +117,6 @@ namespace Metrics
                 LocalizationService.GetString("MetricsResumeContent"),
                 DateTime.Now);
 
-            if (!myApp.isGrouped)
-            {
-                SwitchGroup();
-            }
             IEnumerable<Widget> widgets = 
                 this.DefaultViewModel["Items"] as IEnumerable<Widget>;
             foreach (var item in widgets)
@@ -174,7 +168,6 @@ namespace Metrics
         /// </summary>
         private void addButton_Click_1(object sender, RoutedEventArgs e)
         {
-            SwitchGroup();
             AddWidget w = new AddWidget(popup);
             w.Width = this.ActualWidth;
             w.Height = this.ActualHeight;
@@ -203,7 +196,7 @@ namespace Metrics
 
         //private void RefreshView(App myApp)
         //{
-        //    if (myApp.isGrouped)
+        //    if (myApp.IsGrouped)
         //    {
         //        ShowGrouped();
         //        return;
@@ -225,48 +218,30 @@ namespace Metrics
 
         private void Button_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            SwitchGroup();   
-        }
-
-        private void SwitchGroup()
-        {
-            if (myApp.isGrouped)
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            AppViewModel viewModel = this.DataContext as AppViewModel;
+            viewModel.IsGrouped = !viewModel.IsGrouped;
+            
+            if (viewModel.IsGrouped)
             {
-                ShowUngrouped();
+                groupButton.Content = "\uE0F4";
+                groupButton.SetValue(AutomationProperties.NameProperty, loader.GetString("UngroupText"));
                 return;
+
             }
-            ShowGrouped();
+            groupButton.Content = "\uE15C";
+            groupButton.SetValue(AutomationProperties.NameProperty,
+                LocalizationService.GetString("GroupText"));
         }
 
         private void ShowGrouped()
         {
-            ObservableCollection<Widget> titles = new ObservableCollection<Widget>();
-            foreach (var item in myApp.Widgets)
-            {
-                if (!titles.Contains(item))
-                {
-                    titles.Add(new Group(item));
-                }
-            }
-            var widgets = myApp.Widgets.Union(titles).
-                OrderBy(x => x.WidgetName).
-                ThenBy(x => x.Title).AsQueryable();
-
-            this.DefaultViewModel["Items"] = widgets;
-            myApp.isGrouped = true;
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            AppViewModel viewModel = this.DataContext as AppViewModel;
+            viewModel.GroupItems();
+            myApp.IsGrouped = true;
             groupButton.Content = "\uE0F4";
-            groupButton.SetValue(AutomationProperties.NameProperty, 
-                LocalizationService.GetString("UngroupText"));
-        }
-
-
-        private void ShowUngrouped()
-        {
-            this.DefaultViewModel["Items"] = myApp.Widgets;
-            myApp.isGrouped = false;
-            groupButton.Content = "\uE15C";
-            groupButton.SetValue(AutomationProperties.NameProperty, 
-                LocalizationService.GetString("GroupText"));
+            groupButton.SetValue(AutomationProperties.NameProperty, loader.GetString("UngroupText"));
         }
     }
 }

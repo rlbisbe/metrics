@@ -200,9 +200,6 @@ namespace Metrics
             } 
         }
 
-
-        
-
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -227,6 +224,6 @@ namespace Metrics
             localSettings.Values["NewLoad"] = true;
         }
 
-        public bool isGrouped { get; set; }
+        public bool IsGrouped { get; set; }
     }
 }
