@@ -128,6 +128,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="MyTemplateSelector.cs" />
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\HttpService.cs" />
     <Compile Include="Services\LocalizationService.cs" />
     <Compile Include="Services\NetworkService.cs" />
     <Compile Include="Pages\CustomWidgetControl.xaml.cs">

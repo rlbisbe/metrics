@@ -219,7 +219,7 @@ namespace Metrics
         private void Button_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            AppViewModel viewModel = this.DataContext as AppViewModel;
+             AppViewModel viewModel = this.DataContext as AppViewModel;
             viewModel.IsGrouped = !viewModel.IsGrouped;
             
             if (viewModel.IsGrouped)
