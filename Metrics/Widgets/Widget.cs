@@ -139,7 +139,8 @@ namespace Metrics
                 case "WordpressWidget":
                     return new WordpressWidget((string)val["blog"], (string)val["key"], (string)val["selection"]);
                 case "CustomWidget":
-                    return new CustomWidget((string)val["url"], (string)val["data"], (string)val["widgetName"], (string)val["title"]);
+                    return new CustomWidget((string)val["url"], 
+                        (string)val["data"], (string)val["widgetName"], (string)val["title"]);
                 
                 default:
                     return null;

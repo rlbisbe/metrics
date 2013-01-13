@@ -60,7 +60,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="1"  Margin="0" Orientation="Horizontal">
                         <Button x:Uid="Add" Content="Add" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="Black" Background="#19000000" Click="Button_Click_2"/>
-                        <Button x:Uid="Cancel" Content="Cancel" VerticalAlignment="Top" Width="91" Click="Button_Click_1" Foreground="Black" BorderBrush="#FF646464" Background="#19000000"/>
+                        <Button x:Uid="Cancel" Content="Cancel" VerticalAlignment="Top" Width="91" Click="Close" Foreground="Black" BorderBrush="#FF646464" Background="#19000000"/>
                     </StackPanel>
                 </Grid>
 

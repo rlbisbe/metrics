@@ -35,12 +35,12 @@ namespace Metrics
         public MainPage()
         {
             this.InitializeComponent();
-            mDispatcher = Window.Current.Dispatcher; 
+            mDispatcher = Window.Current.Dispatcher;
             mHaveConnection = NetworkInformation.GetInternetConnectionProfile() != null;
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
             this.DataContext = new AppViewModel();
         }
-       
+
         async void NetworkInformation_NetworkStatusChanged(object sender)
         {
             if (NetworkInformation.GetInternetConnectionProfile() == null)
@@ -50,8 +50,9 @@ namespace Metrics
                     mHaveConnection = false;
                     //Código a ejecutar cuando se pierda la conexión
                     await mDispatcher.RunAsync(CoreDispatcherPriority.Normal,
-                        () => {
-                            ErrorGridText.Text = 
+                        () =>
+                        {
+                            ErrorGridText.Text =
                                 LocalizationService.GetString("LostInternetConnection");
                             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                         });
@@ -64,7 +65,8 @@ namespace Metrics
                     mHaveConnection = true;
                     //Código a ejecutar cuando se recupere la conexión
                     await mDispatcher.RunAsync(CoreDispatcherPriority.Normal,
-                        () => {
+                        () =>
+                        {
                             ErrorGridText.Text = LocalizationService.GetString("RecoveredInternetConnection");
                             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                             (this.DataContext as AppViewModel).RefreshCommand.Execute(null);
@@ -91,9 +93,7 @@ namespace Metrics
             (this.DataContext as AppViewModel).RefreshCommand.Execute(null);
 
             if (myApp.Widgets.Count == 0)
-            {
                 myApp.Widgets.Add(myApp.Empty);
-            }
 
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             object NewLoad = localSettings.Values["NewLoad"];
@@ -107,7 +107,7 @@ namespace Metrics
             itemGridView.SelectedItem = null;
             BottomAppBar.IsOpen = false;
 
-            
+
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -117,19 +117,19 @@ namespace Metrics
                 LocalizationService.GetString("MetricsResumeContent"),
                 DateTime.Now);
 
-            IEnumerable<Widget> widgets = 
+            IEnumerable<Widget> widgets =
                 this.DefaultViewModel["Items"] as IEnumerable<Widget>;
             foreach (var item in widgets)
             {
                 if (item is Group)
                 {
-                    htmlExample += string.Format("</ul><li><i>{0}</i><ul>", 
+                    htmlExample += string.Format("</ul><li><i>{0}</i><ul>",
                         item.WidgetName);
                 }
                 else
                 {
-                    htmlExample += string.Format("<li>{0}<b>{1}</b></li>", 
-                        item.SCounter, 
+                    htmlExample += string.Format("<li>{0}<b>{1}</b></li>",
+                        item.SCounter,
                         item.Title);
                 }
             }
@@ -153,7 +153,7 @@ namespace Metrics
             if (element != null)
             {
                 myApp.Widgets.Remove(element as Widget);
-               
+
             }
             if (myApp.Widgets.Count == 0)
             {
@@ -168,7 +168,9 @@ namespace Metrics
         /// </summary>
         private void addButton_Click_1(object sender, RoutedEventArgs e)
         {
-            AddWidget w = new AddWidget(popup);
+            AppViewModel viewModel = this.DataContext as AppViewModel;
+
+            AddWidget w = new AddWidget(popup, viewModel);
             w.Width = this.ActualWidth;
             w.Height = this.ActualHeight;
             popup.Child = w;
@@ -219,9 +221,9 @@ namespace Metrics
         private void Button_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-             AppViewModel viewModel = this.DataContext as AppViewModel;
+            AppViewModel viewModel = this.DataContext as AppViewModel;
             viewModel.IsGrouped = !viewModel.IsGrouped;
-            
+
             if (viewModel.IsGrouped)
             {
                 groupButton.Content = "\uE0F4";

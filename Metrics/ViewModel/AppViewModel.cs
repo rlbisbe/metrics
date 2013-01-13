@@ -49,12 +49,14 @@ namespace Metrics.ViewModel
         }
 
         private ObservableCollection<Widget> groupedItems;
+        private App myApp;
 
         public AppViewModel()
         {
             this.RefreshCommand =
                 new DelegateCommand(RefreshCommandExecute,
                     RefreshCommandCanExecute);
+            this.myApp = App.Current as App;
         }
 
         private bool RefreshCommandCanExecute()
@@ -99,7 +101,8 @@ namespace Metrics.ViewModel
                     titles.Add(new Group(item));
                 }
             }
-            return new ObservableCollection<Widget>(myApp.Widgets.Union(titles).OrderBy(x => x.WidgetName).ThenBy(x => x.Title).AsQueryable());
+            return new ObservableCollection<Widget>(myApp.Widgets.Union(titles).
+                OrderBy(x => x.WidgetName).ThenBy(x => x.Title).AsQueryable());
         }
 
         public bool IsGrouped
@@ -110,11 +113,23 @@ namespace Metrics.ViewModel
             }
             set
             {
-                App myApp = App.Current as App;
                 myApp.IsGrouped = value;
                 mIsGrouped = value;
                 RaisePropertyChanged("Items");
             }
+        }
+
+        public void Add(Widget widget)
+        {
+            myApp.Widgets.Add(widget);
+            CheckForEmptyWidget();
+            RaisePropertyChanged("Items");
+        }
+
+        private void CheckForEmptyWidget()
+        {
+            if (myApp.Widgets.Contains(myApp.Empty))
+                myApp.Widgets.Remove(myApp.Empty);
         }
 
         private int updatedItems;

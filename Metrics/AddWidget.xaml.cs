@@ -20,100 +20,83 @@ namespace Metrics
 {
     public sealed partial class AddWidget : UserControl
     {
-        Popup p;
-        public AddWidget(Popup p)
+        public AddWidget(Popup popup, ViewModel.AppViewModel viewModel)
         {
-            this.p = p;
+            this.popup = popup;
             this.InitializeComponent();
             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            this.viewModel = viewModel;
         }
 
-        private void Submit_Click_1(object sender, RoutedEventArgs e)
+        private void Close(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            p.IsOpen = false;
-        }
-
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            p.IsOpen = false;
-            // TODO: Add event handler implementation here.
+            popup.IsOpen = false;
         }
 
         async private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //Submit
-            App myApp = (App)App.Current;
+            var widget = await (WidgetContainer.Children[0] as IWidget).GetWidget();
+            if (widget == null)
+                return;
+
             try
             {
-                var w = await (WidgetContainer.Children[0] as IWidget).GetWidget();
-                if (w != null)
-                {
-                    myApp.Widgets.Add(w);
-                    //Remove empty Widget
-                    if (myApp.Widgets.Contains(myApp.Empty))
-                    {
-                        myApp.Widgets.Remove(myApp.Empty);
-                    }
-                    p.IsOpen = false;
-                }
-
+                viewModel.Add(widget);
+                popup.IsOpen = false;
             }
             catch (Exception ex)
             {
                 ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 ErrorGridText.Text = "Error: " + ex.Message;
             }
+
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             string service = (e.OriginalSource as Button).Content.ToString();
+            WidgetContainer.Children.Clear();
             switch (service)
             {
                 case "Facebook":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new FacebookControl());
                     break;
                 case "Github":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new GithubControl());
                     break;
                 case "StackOverflow":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new StackOverflowControl());
                     break;
                 case "Tuenti":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new TuentiControl());
                     break;
                 case "Twitter":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new TwitterControl());
                     break;
                 case "Wordpress":
-                    WidgetContainer.Children.Clear();
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;
                 default:
                     break;
             }
             if (service == CustomWidget.Content.ToString())
-            {
-                WidgetContainer.Children.Clear();
                 WidgetContainer.Children.Add(new CustomWidgetControl());
-            }
 
             myStoryboard.Begin();
         }
 
         private void WidgetContainer_LayoutUpdated(object sender, object e)
         {
-            ServiceGrid.Height = WidgetContainer.ActualHeight + 250;
+            ServiceGrid.Height = WidgetContainer.ActualHeight + MARGIN;
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorGrid.Visibility = Visibility.Collapsed;
         }
+
+        private Popup popup;
+        private ViewModel.AppViewModel viewModel;
+        private int MARGIN = 250;
     }
 }
