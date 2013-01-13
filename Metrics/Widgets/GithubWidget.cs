@@ -38,8 +38,10 @@ namespace Metrics.Widgets
             var result = await response.Content.ReadAsStringAsync();
 
             // Parse the JSON recipe data
+            if (result.Contains("API Rate Limit"))
+                return;
+            
             var recipes = JsonObject.Parse(result);
-
             Counter = (int)recipes["open_issues"].GetNumber();
         }
 

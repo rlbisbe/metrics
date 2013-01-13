@@ -17,7 +17,7 @@ namespace Metrics
             // unfortunately, our item is an anonymous type because I was lazy and now  
             // I'm being more lazy.  
             dynamic d = (dynamic)item;
-            if (myApp.isGrouped)
+            if (myApp.IsGrouped)
             {
                 return (d is Group ? this.Group : this.Item);
             }

@@ -312,4 +312,7 @@
   <data name="UngroupText" xml:space="preserve">
     <value>Ungroup</value>
   </data>
+  <data name="UpdatingText.Text" xml:space="preserve">
+    <value>Updating...</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metrics.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -11,43 +12,46 @@ namespace Metrics.Widgets
 {
     class TweetWidget : Widget
     {
-        public TweetWidget(string Source)
+        public TweetWidget(string source)
         {
-            if (Source.Contains("@"))
-            {
-                this.Source = Source.Substring(1);
-            }
-            else
-            {
-                this.Source = Source;
-            }
+            SetTwitterUsername(source);
+            SetColors();
+            SetTexts();
+        }
 
+        private void SetTexts()
+        {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             this.Title = String.Format(loader.GetString("TWWidgetFollowers"), this.Source);
+            this.WidgetName = "twitter";
+        }
+
+        private void SetColors()
+        {
             this.Background = "#33CCFF";
             this.Foreground = "black";
             this.WidgetForeground = "#33000000";
-            this.WidgetName = "twitter";
+        }
+
+        private void SetTwitterUsername(string source)
+        {
+            if (source.Contains("@"))
+            {
+                this.Source = source.Substring(1);
+                return;
+            }
+
+            this.Source = source;
         }
 
         public string Source { get; set; }
 
         public override async Task Update()
         {
-            var client = new HttpClient();
-            client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
-            var response = await client.GetAsync(new Uri("https://api.twitter.com/1/users/show.json?screen_name=" + this.Source));
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                throw new NullReferenceException(loader.GetString("ErrorTwitterUserNotFound"));
-            }
-            var result = await response.Content.ReadAsStringAsync();
-
-            // Parse the JSON recipe data
-            var recipes = JsonObject.Parse(result);
-
-            Counter = (int)recipes["followers_count"].GetNumber();
+            var result = await HttpService.
+                GetJsonResult("https://api.twitter.com/1/users/show.json?screen_name="
+                + this.Source);
+            Counter = (int)result["followers_count"].GetNumber();
         }
 
         /// <summary>
