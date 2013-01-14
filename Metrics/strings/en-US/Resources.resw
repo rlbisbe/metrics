@@ -202,7 +202,7 @@
     <value>Page likes</value>
   </data>
   <data name="TuentiControlPage.Text" xml:space="preserve">
-    <value>Tuenti URL (Example: www.tuenti.com/company)</value>
+    <value>Tuenti URL (i.e: www.tuenti.com/company)</value>
   </data>
   <data name="TwitterControlFollowers.Content" xml:space="preserve">
     <value>Followers</value>
@@ -314,5 +314,8 @@
   </data>
   <data name="UpdatingText.Text" xml:space="preserve">
     <value>Updating...</value>
+  </data>
+  <data name="YTControlPageName.Text" xml:space="preserve">
+    <value>Youtube URL (i.e: http://www.youtube.com/watch?v=0000000)</value>
   </data>
 </root>

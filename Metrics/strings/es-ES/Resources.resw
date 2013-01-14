@@ -202,7 +202,7 @@
     <value>"Me gusta" de la página</value>
   </data>
   <data name="TuentiControlPage.Text" xml:space="preserve">
-    <value>URL de Tuenti (Por ejemplo: www.tuenti.com/empresa)</value>
+    <value>URL de Tuenti (Ejemplo: www.tuenti.com/empresa)</value>
   </data>
   <data name="TwitterControlFollowers.Content" xml:space="preserve">
     <value>Seguidores</value>
@@ -314,5 +314,8 @@
   </data>
   <data name="UpdatingText.Text" xml:space="preserve">
     <value>Actualizando...</value>
+  </data>
+  <data name="YTControlPageName.Text" xml:space="preserve">
+    <value>URL de Youtube (Ejemplo: http://www.youtube.com/watch?v=0000000)</value>
   </data>
 </root>

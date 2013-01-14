@@ -1,4 +1,5 @@
 ﻿using Metrics.Widgets;
+using Microsoft.Advertising.WinRT.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -8,6 +9,7 @@ namespace Metrics
     {
         public DataTemplate Group { get; set; }
         public DataTemplate Item { get; set; }
+        public DataTemplate Ad { get; set; }
         public DataTemplate Ungrouped { get; set; }
 
         protected override Windows.UI.Xaml.DataTemplate SelectTemplateCore(object item,
@@ -19,11 +21,26 @@ namespace Metrics
             dynamic d = (dynamic)item;
             if (myApp.IsGrouped)
             {
-                return (d is Group ? this.Group : this.Item);
+                if (d is Group)
+                    return this.Group;
+
+                if (d is Widget)
+                    return this.Item;
+
+                if (d is AdControl)
+                    return this.Ad;
+
+                return null;
             }
             else
             {
-                return this.Ungrouped;
+                if (d is Widget)
+                    return this.Ungrouped;
+
+                if (d is AdControl)
+                    return this.Ad;
+
+                return null;
             }
         }
     }

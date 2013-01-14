@@ -17,6 +17,7 @@ using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml.Automation;
 using Metrics.ViewModel;
 using Metrics.Services;
+using Microsoft.Advertising.WinRT.UI;
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
 namespace Metrics
@@ -90,6 +91,9 @@ namespace Metrics
             this.dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager,
                 DataRequestedEventArgs>(this.OnDataRequested);
 
+            if (this.DataContext as AppViewModel == null)
+                return;
+            
             (this.DataContext as AppViewModel).RefreshCommand.Execute(null);
 
             if (myApp.Widgets.Count == 0)
@@ -107,7 +111,10 @@ namespace Metrics
             itemGridView.SelectedItem = null;
             BottomAppBar.IsOpen = false;
 
-
+            //itemListView.Items.Add(new AdControl() {
+            //    ApplicationId = "5631da7f-12d0-4c10-ad98-3927d4b32ab8",
+            //    AdUnitId = "112816"
+            //});
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -123,7 +130,7 @@ namespace Metrics
             {
                 if (item is Group)
                 {
-                    htmlExample += string.Format("</ul><li><i>{0}</i><ul>",
+                    htmlExample += string.Format("</ul><li><random>{0}</random><ul>",
                         item.WidgetName);
                 }
                 else
@@ -160,7 +167,6 @@ namespace Metrics
                 myApp.Widgets.Add(myApp.Empty);
             }
             BottomAppBar.IsOpen = false;
-            //RefreshView(myApp);
         }
 
         /// <summary>
@@ -175,6 +181,7 @@ namespace Metrics
             w.Height = this.ActualHeight;
             popup.Child = w;
             popup.IsOpen = true;
+            
             BottomAppBar.IsOpen = false;
         }
 
@@ -195,16 +202,6 @@ namespace Metrics
                 deleteButton.Visibility = Visibility.Collapsed;
             }
         }
-
-        //private void RefreshView(App myApp)
-        //{
-        //    if (myApp.IsGrouped)
-        //    {
-        //        ShowGrouped();
-        //        return;
-        //    }
-        //    ShowUngrouped();
-        //}
 
         public DataTransferManager dataTransferManager { get; set; }
 

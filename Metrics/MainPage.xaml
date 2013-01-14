@@ -1,5 +1,6 @@
 ﻿<common:LayoutAwarePage
     x:Name="pageRoot"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
     x:Class="Metrics.MainPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -24,7 +25,33 @@
                 <Grid Margin="5" Width="400" />
             </Grid>
         </DataTemplate>
-       
+
+        <DataTemplate x:Key="Ad">
+            <Grid Margin="0">
+                <UI:AdControl 
+                    ApplicationId="5631da7f-12d0-4c10-ad98-3927d4b32ab8" 
+                    AdUnitId="112816" 
+                    HorizontalAlignment="Left" 
+                    Height="125" 
+                    Margin="0,0,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250"/>
+                </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SnappedAd">
+            <Grid Margin="0">
+                <UI:AdControl 
+                    ApplicationId="5631da7f-12d0-4c10-ad98-3927d4b32ab8" 
+                    AdUnitId="112816" 
+                    HorizontalAlignment="Left" 
+                    Height="60" 
+                    Margin="0,0,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="292"/>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Key="Item">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
@@ -67,7 +94,8 @@
         <local:MyTemplateSelector x:Key="mySelector"  
                                   Item="{StaticResource Item}" 
                                   Ungrouped="{StaticResource Widget}"
-                                  Group="{StaticResource Group}"/>
+                                  Group="{StaticResource Group}"
+                                  Ad="{StaticResource Ad}"/>
 
         <!-- Collection of items displayed by this page -->
         <CollectionViewSource

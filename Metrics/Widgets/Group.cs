@@ -11,6 +11,9 @@ namespace Metrics.Widgets
         public Type t;
         public Group(Widget w)
         {
+            if (w == null)
+                return;
+
             this.WidgetForeground = w.WidgetForeground;
             this.Background = w.Background;
             this.Foreground = w.Foreground;
@@ -21,6 +24,9 @@ namespace Metrics.Widgets
         // override object.Equals
         public override bool Equals(object obj)
         {
+            if (!(obj is Widget))
+                return false;
+            
             return (obj as Widget).GetType().Equals(t);
         }
 

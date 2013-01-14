@@ -33,8 +33,8 @@ namespace Metrics
         private bool m_settingsReady = false;
         public EmptyWidget Empty;
 
-        private ObservableCollection<Widget> _widgets = new ObservableCollection<Widget>();
-        public ObservableCollection<Widget> Widgets
+        private ObservableCollection<Object> _widgets = new ObservableCollection<Object>();
+        public ObservableCollection<Object> Widgets
         {
             get
             {
@@ -217,7 +217,10 @@ namespace Metrics
             for (int i = 0; i < Widgets.Count; i++)
             {
                 var item = Widgets[i];
-                localSettings.Values["Widget" + i] = item.Save();
+                if (item as Widget == null)
+                    continue;
+
+                localSettings.Values["Widget" + i] = (item as Widget).Save();
 
             }
 

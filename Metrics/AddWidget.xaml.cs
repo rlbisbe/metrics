@@ -76,6 +76,9 @@ namespace Metrics
                 case "Wordpress":
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;
+                case "Youtube":
+                    WidgetContainer.Children.Add(new YoutubeControl());
+                    break;
                 default:
                     break;
             }
