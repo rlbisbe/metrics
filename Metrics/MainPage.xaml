@@ -121,9 +121,16 @@
                     <Button x:Uid="addButton" x:Name="addButton" Click="addButton_Click_1" Style="{StaticResource AddAppBarButtonStyle}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button x:Uid="groupButton" x:Name="groupButton" Margin="0" AutomationProperties.Name="Group" Tapped="Button_Tapped_1" Style="{StaticResource MoreAppBarButtonStyle}" Content="&#xE15C;"/>
-                    <Button x:Uid="refreshButton" x:Name="refreshButton" Style="{StaticResource RefreshAppBarButtonStyle}" Command="{Binding RefreshCommand}"/>
-                    <Button x:Uid="deleteButton" x:Name="deleteButton" Click="Delete_Click" Style="{StaticResource DiscardAppBarButtonStyle}"/>
+                    <Button x:Uid="groupButton" x:Name="groupButton" Margin="0" AutomationProperties.Name="Group" 
+                            Tapped="Button_Tapped_1" Style="{StaticResource MoreAppBarButtonStyle}"
+                            Content="&#xE15C;"
+                            IsEnabled="{Binding IsNotLoading}"/>
+                    <Button x:Uid="refreshButton" x:Name="refreshButton" 
+                            Style="{StaticResource RefreshAppBarButtonStyle}" 
+                            Command="{Binding RefreshCommand}"
+                            IsEnabled="{Binding IsNotLoading}"/>
+                    <Button x:Uid="deleteButton" x:Name="deleteButton" Click="Delete_Click" 
+                            Style="{StaticResource DiscardAppBarButtonStyle}"/>
                 </StackPanel>
             </Grid>
         </AppBar>

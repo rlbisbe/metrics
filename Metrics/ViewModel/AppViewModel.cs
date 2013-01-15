@@ -23,6 +23,15 @@ namespace Metrics.ViewModel
             {
                 loading = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged("IsNotLoading");
+            }
+        }
+
+        public bool IsNotLoading
+        {
+            get
+            {
+                return Loading == Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
@@ -36,7 +45,7 @@ namespace Metrics.ViewModel
             }
         }
 
-        public ObservableCollection<Object> Items
+        public ObservableCollection<Widget> Items
         {
             get
             {
@@ -47,15 +56,15 @@ namespace Metrics.ViewModel
             }
         }
 
-        private ObservableCollection<object> IncludeAdControl()
+        private ObservableCollection<Widget> IncludeAdControl()
         {
             App myApp = App.Current as App;
-            ObservableCollection<Object> items = myApp.Widgets;
+            ObservableCollection<Widget> items = myApp.Widgets;
             int index = random.Next(1, items.Count);
-            if (items.Contains(adControl))
-                items.Remove(adControl);
+            if (items.Contains(adWidget))
+                return items;
 
-            items.Insert(index, adControl);
+            items.Insert(index, adWidget);
             return items;
         }
 
@@ -91,10 +100,7 @@ namespace Metrics.ViewModel
                 try
                 {
                     UpdatedItems += 1;
-                    if (item as Widget == null)
-                        continue;
-
-                    await (item as Widget).Update();
+                    await item.Update();
                 }
                 catch (Exception)
                 {
@@ -103,21 +109,25 @@ namespace Metrics.ViewModel
             Loading = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        public ObservableCollection<Object> GroupItems()
+        public ObservableCollection<Widget> GroupItems()
         {
             App myApp = App.Current as App;
-            ObservableCollection<Object> titles = new ObservableCollection<Object>();
+            ObservableCollection<Widget> titles = new ObservableCollection<Widget>();
+            if (myApp.Widgets.Contains(adWidget))
+            {
+                myApp.Widgets.Remove(adWidget);
+            }
             foreach (var item in myApp.Widgets)
             {
                 if (!titles.Contains(item))
                 {
-                    titles.Add(new Group(item as Widget));
+                    titles.Add(new Group(item));
                 }
             }
-            myApp.Widgets.Remove(adControl);
-            return new ObservableCollection<Object>(myApp.Widgets.Union(titles).
-                OrderBy(x => (x as Widget).WidgetName).
-                ThenBy(x => (x as Widget).Title).AsQueryable());
+            myApp.Widgets.Remove(adWidget);
+            return new ObservableCollection<Widget>(myApp.Widgets.Union(titles).
+                OrderBy(x => x.WidgetName).
+                ThenBy(x => x.Title).AsQueryable());
         }
 
         public bool IsGrouped
@@ -151,6 +161,6 @@ namespace Metrics.ViewModel
         private Windows.UI.Xaml.Visibility loading;
         private bool mIsGrouped;
         private Random random = new Random();
-        private AdControl adControl = new AdControl();
+        private AdWidget adWidget = new AdWidget();
     }
 }

@@ -16,10 +16,14 @@
     <PackageCertificateThumbprint>0E9B41F79FEA613F4286FB9CE9D17B63FC892888</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <ExpressionBlendVersion>5.0.30514.0</ExpressionBlendVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -163,6 +167,7 @@
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Widgets\AdWidget.cs" />
     <Compile Include="Widgets\CustomWidget.cs" />
     <Compile Include="Widgets\EmptyWidget.cs" />
     <Compile Include="Widgets\GithubWidget.cs" />

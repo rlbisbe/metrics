@@ -1,5 +1,4 @@
 ﻿using Metrics.Widgets;
-using Microsoft.Advertising.WinRT.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -27,18 +26,18 @@ namespace Metrics
                 if (d is Widget)
                     return this.Item;
 
-                if (d is AdControl)
+                if (d is AdWidget)
                     return this.Ad;
 
                 return null;
             }
             else
             {
+                if (d is AdWidget)
+                    return this.Ad;
+
                 if (d is Widget)
                     return this.Ungrouped;
-
-                if (d is AdControl)
-                    return this.Ad;
 
                 return null;
             }
