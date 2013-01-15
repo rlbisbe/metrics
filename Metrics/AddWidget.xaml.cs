@@ -31,6 +31,7 @@ namespace Metrics
         private void Close(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             popup.IsOpen = false;
+            viewModel.SwitchAd();
         }
 
         async private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -43,13 +44,13 @@ namespace Metrics
             {
                 viewModel.Add(widget);
                 popup.IsOpen = false;
+                viewModel.SwitchAd();
             }
             catch (Exception ex)
             {
                 ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 ErrorGridText.Text = "Error: " + ex.Message;
             }
-
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

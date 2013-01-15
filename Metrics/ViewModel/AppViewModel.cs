@@ -162,5 +162,15 @@ namespace Metrics.ViewModel
         private bool mIsGrouped;
         private Random random = new Random();
         private AdWidget adWidget = new AdWidget();
+
+        internal void SwitchAd()
+        {
+            if (myApp.Widgets.Contains(adWidget))
+            {
+                myApp.Widgets.Remove(adWidget);
+                return;
+            }
+            IncludeAdControl();
+        }
     }
 }

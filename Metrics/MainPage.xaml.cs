@@ -181,8 +181,8 @@ namespace Metrics
             w.Height = this.ActualHeight;
             popup.Child = w;
             popup.IsOpen = true;
-            
             BottomAppBar.IsOpen = false;
+            viewModel.SwitchAd();
         }
 
         /// <summary>
