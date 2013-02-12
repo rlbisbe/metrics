@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Metrics.Widgets
 {
@@ -18,7 +19,15 @@ namespace Metrics.Widgets
 
         private void SetUrl(string source)
         {
-            this.Source = source.Split('=')[1];
+            string[] result = source.Split('=');
+            
+            if (result.Length != 2)
+            {
+                this.Source = source;
+                return;
+            }
+
+            this.Source = result[1];
         }
 
         private void SetTexts()
@@ -47,8 +56,10 @@ namespace Metrics.Widgets
 
         public override Windows.Storage.ApplicationDataCompositeValue Save()
         {
-            return null;
-            //throw new NotImplementedException();
+            ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
+            composite["name"] = "YoutubeWidget";
+            composite["url"] = Source;
+            return composite;
         }
     }
 }
