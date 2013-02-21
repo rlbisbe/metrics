@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="677RobertoLuisBisb.Metrics" Publisher="CN=94CEFD94-7733-40B6-9D99-88E25EBFC8CE" Version="1.0.0.5" />
+  <Identity Name="677RobertoLuisBisb.Metrics" Publisher="CN=94CEFD94-7733-40B6-9D99-88E25EBFC8CE" Version="1.1.0.7" />
   <Properties>
     <DisplayName>Metrics</DisplayName>
     <PublisherDisplayName>Roberto Luis Bisbé</PublisherDisplayName>

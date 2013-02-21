@@ -5,71 +5,66 @@
     xmlns:local="using:Metrics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="Auto" Height="Auto">
+    mc:Ignorable="d">
 
-    <Grid Margin="0" Background="#4C000000">
+    <Grid Background="#4C000000">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="408*"/>
-            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
         <Grid x:Name="ErrorGrid" 
               Background="#FF111111" Height="50" VerticalAlignment="Top" Grid.ColumnSpan="2" Visibility="Collapsed">
             <Grid Margin="20,0,0,0">
-
                 <TextBlock x:Name="ErrorGridText" Foreground="#DEFFFFFF" Margin="10,10,86,15" Text="Generic Error" Style="{StaticResource TitleTextStyle}"/>
                 <Button x:Uid="Hide" Content="Hide" HorizontalAlignment="Right" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="White" Background="#19000000" Click="Button_Click_4" Height="38" Margin="0,2,10,2"/>
-
-
             </Grid>
         </Grid>
 
-        <Grid x:Name="ServiceGrid" Grid.Row="1" 
-              Background="#FFC3C3C3" Height="400" 
-              Grid.ColumnSpan="2">
+        <Grid x:Name="ServiceGrid"
+              Background="#FFC3C3C3" 
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid.Resources>
-                <Storyboard x:Name="myStoryboard">
-                    <DoubleAnimation
-    Storyboard.TargetName="ServiceGrid"
-    Storyboard.TargetProperty="Height"
-    To="500" Duration="0:0:10"/>
-                </Storyboard>
 
             </Grid.Resources>
-            <StackPanel Margin="200,0" Canvas.ZIndex="999">
+            <Button x:Name="backButton" 
+                    Style="{StaticResource BackButtonStyle}" 
+                    Margin="36,36,0,0" Height="Auto" 
+                    VerticalAlignment="Top"
+                    Click="Close"/>
 
-                <TextBlock x:Uid="SelectService" Style="{StaticResource SnappedPageHeaderTextStyle}" Foreground="#DE000000" Margin="4,20,18,20"/>
-                <GridView HorizontalAlignment="Left" Height="100">
-                    <Button Content="Facebook" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Background="#385998" Foreground="White" BorderBrush="#FF646464" Height="74" FontWeight="Bold"/>
-                    <Button Content="Github" VerticalAlignment="Top" Width="137" Click="Button_Click_3"  Background="White" Foreground="Black" BorderBrush="#FF646464" Height="74" FontWeight="Bold"/>
-                    <Button Content="StackOverflow" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="White" BorderBrush="#FF646464" Background="#366fb3" Height="74" FontWeight="Bold"/>
-                    <Button Content="Tuenti" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="#8ec9e8" BorderBrush="#FF646464" Background="#003b6a" Height="74" FontWeight="Bold"/>
-                    <Button Content="Twitter" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#33CCFF" Height="74" FontWeight="Bold"/>
-                    <Button Content="Wordpress" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="White" BorderBrush="#FF646464" Background="#464646" Height="74" FontWeight="Bold"/>
-                    <Button Content="Youtube" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="White" BorderBrush="#FF646464" Background="#d02525" Height="74" FontWeight="Bold"/>
-                    <Button x:Name="CustomWidget" x:Uid="CustomWidget" Content="Custom" VerticalAlignment="Top" Width="137" Click="Button_Click_3" Foreground="Black" BorderBrush="#FF646464" Background="#19000000" Height="74"/>
-                </GridView>
-
-                <Grid x:Name="WidgetContainer" LayoutUpdated="WidgetContainer_LayoutUpdated"/>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="1"  Margin="0" Orientation="Horizontal">
-                        <Button x:Uid="Add" Content="Add" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="Black" Background="#19000000" Click="Button_Click_2"/>
-                        <Button x:Uid="Cancel" Content="Cancel" VerticalAlignment="Top" Width="91" Click="Close" Foreground="Black" BorderBrush="#FF646464" Background="#19000000"/>
-                    </StackPanel>
-                </Grid>
-
-
-            </StackPanel>
+            <StackPanel Grid.Row="1"/>
+            <Grid Grid.Row="2" x:Name="WidgetContainer" Margin="36 0"/>
+            <Button Grid.Row="3" x:Uid="Add" 
+                    Content="Add" BorderBrush="#FF646464" 
+                    Foreground="Black" Background="#19000000" 
+                    Click="Button_Click_2" 
+                    Margin="36 10"
+                    HorizontalAlignment="Right"/>
+            
+            <TextBlock x:Uid="SelectService" 
+            	Text="Select a service:"
+            	Style="{StaticResource SnappedPageHeaderTextStyle}" 
+            	Foreground="#DE000000" Margin="118,40,0,0" VerticalAlignment="Top"/>
+            <TextBlock Margin="36,190,80,0" VerticalAlignment="Top"
+                       x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}"
+                       Foreground="#DE000000" 
+                       Text="Select metric:"/>
+            <ComboBox 
+            	Margin="36,220,36,0"
+                VerticalAlignment="Top"
+            	SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="Facebook"/>
+                <ComboBoxItem Content="Github"/>
+                <ComboBoxItem Content="StackOverflow"/>
+            </ComboBox>
         </Grid>
     </Grid>
 </UserControl>

@@ -11,7 +11,9 @@
     
     <StackPanel>
         <TextBlock x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}" Margin="4,0,0,5" Foreground="#DE000000" Text="Select metric:"/>
-        <ComboBox x:Name="Metric" BorderThickness="2" Margin="4,4,3,0" BorderBrush="#CC000000" SelectedIndex="0">
+        <ComboBox x:Name="Metric"
+                  Margin="4,4,3,0"
+                  SelectedIndex="1">
             <ComboBoxItem x:Name="FBControlLikes" x:Uid="FBControlLikes" Content="Page likes"/>
             <ComboBoxItem x:Name="FBControlTalkingAbout" x:Uid="FBControlTalkingAbout" Content="People talking about count"/>
         </ComboBox>

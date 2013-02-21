@@ -103,18 +103,13 @@ namespace Metrics
             object NewLoad = localSettings.Values["NewLoad"];
             if (NewLoad == null)
             {
-                MessageDialog msg = new MessageDialog(
-                    LocalizationService.GetString("FirstLaunchText"),
-                    LocalizationService.GetString("FirstLaunchTitle"));
-                msg.ShowAsync();
+                //MessageDialog msg = new MessageDialog(
+                //    LocalizationService.GetString("FirstLaunchText"),
+                //    LocalizationService.GetString("FirstLaunchTitle"));
+                //msg.ShowAsync();
             }
             itemGridView.SelectedItem = null;
             BottomAppBar.IsOpen = false;
-
-            //itemListView.Items.Add(new AdControl() {
-            //    ApplicationId = "5631da7f-12d0-4c10-ad98-3927d4b32ab8",
-            //    AdUnitId = "112816"
-            //});
         }
 
         private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -157,15 +152,12 @@ namespace Metrics
         private void Delete_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var element = itemGridView.SelectedItem;
-            if (element != null)
-            {
+            if (element != null && !(element is AdWidget))
                 myApp.Widgets.Remove(element as Widget);
 
-            }
             if (myApp.Widgets.Count == 0)
-            {
                 myApp.Widgets.Add(myApp.Empty);
-            }
+
             BottomAppBar.IsOpen = false;
         }
 

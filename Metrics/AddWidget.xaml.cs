@@ -83,15 +83,8 @@ namespace Metrics
                 default:
                     break;
             }
-            if (service == CustomWidget.Content.ToString())
-                WidgetContainer.Children.Add(new CustomWidgetControl());
-
-            myStoryboard.Begin();
-        }
-
-        private void WidgetContainer_LayoutUpdated(object sender, object e)
-        {
-            ServiceGrid.Height = WidgetContainer.ActualHeight + MARGIN;
+            //if (service == CustomWidget.Content.ToString())
+            //    WidgetContainer.Children.Add(new CustomWidgetControl());
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -101,6 +94,13 @@ namespace Metrics
 
         private Popup popup;
         private ViewModel.AppViewModel viewModel;
-        private int MARGIN = 250;
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((sender as ComboBox).SelectedItem as ComboBoxItem).Content.Equals("Facebook"))
+            {
+                WidgetContainer.Children.Add(new FacebookControl());   
+            }
+        }
     }
 }
