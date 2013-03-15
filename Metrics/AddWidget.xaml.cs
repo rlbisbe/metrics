@@ -26,6 +26,8 @@ namespace Metrics
             this.InitializeComponent();
             ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             this.viewModel = viewModel;
+
+            ServicesComboBox.ItemsSource = viewModel.Services;
         }
 
         private void Close(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -98,10 +100,10 @@ namespace Metrics
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (((sender as ComboBox).SelectedItem as ComboBoxItem).Content.Equals("Facebook"))
-            {
-                WidgetContainer.Children.Add(new FacebookControl());   
-            }
+            //if (((sender as ComboBox).SelectedItem as ComboBoxItem).Content.Equals("Facebook"))
+            //{
+            //    WidgetContainer.Children.Add(new FacebookControl());   
+            //}
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Metrics.ViewModel
 {
     public class AppViewModel : ViewModelBase
     {
+        public List<Service> Services { get; set; }
+
         public DelegateCommand RefreshCommand { get; private set; }
 
         public Windows.UI.Xaml.Visibility Loading
@@ -76,6 +78,13 @@ namespace Metrics.ViewModel
                 new DelegateCommand(RefreshCommandExecute,
                     RefreshCommandCanExecute);
             this.myApp = App.Current as App;
+
+
+            this.Services = new List<Service>();
+            Services.Add(new Service() { MetricsName = "Followers", MetricsProvider = "Twitter" });
+            Services.Add(new Service() { MetricsName = "Likes", MetricsProvider = "Facebook" });
+
+            Services = Services.OrderBy(x => x.MetricsProvider).ToList();
         }
 
         private bool RefreshCommandCanExecute()
@@ -172,5 +181,6 @@ namespace Metrics.ViewModel
             }
             IncludeAdControl();
         }
+
     }
 }
