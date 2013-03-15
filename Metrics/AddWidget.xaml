@@ -17,7 +17,8 @@
               Background="#FF111111" Height="50" VerticalAlignment="Top" Grid.ColumnSpan="2" Visibility="Collapsed">
             <Grid Margin="20,0,0,0">
                 <TextBlock x:Name="ErrorGridText" Foreground="#DEFFFFFF" Margin="10,10,86,15" Text="Generic Error" Style="{StaticResource TitleTextStyle}"/>
-                <Button x:Uid="Hide" Content="Hide" HorizontalAlignment="Right" VerticalAlignment="Stretch" BorderBrush="#FF646464" Foreground="White" Background="#19000000" Click="Button_Click_4" Height="38" Margin="0,2,10,2"/>
+                <Button x:Uid="Hide" Content="Hide" HorizontalAlignment="Right" VerticalAlignment="Stretch" 
+                        BorderBrush="#FF646464" Foreground="White" Background="#19000000" Click="Button_Click_4" Height="38" Margin="0,2,10,2"/>
             </Grid>
         </Grid>
 
@@ -32,7 +33,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.Resources>
-
+                <Storyboard x:Name="myStoryboard">
+                    <ColorAnimation
+    Storyboard.TargetName="ServiceGrid"
+    Storyboard.TargetProperty="Background"
+    To="Blue" Duration="0:0:5"/>
+                </Storyboard>
             </Grid.Resources>
             <Button x:Name="backButton" 
                     Style="{StaticResource BackButtonStyle}" 

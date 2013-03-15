@@ -85,6 +85,7 @@ namespace Metrics
             }
             //if (service == CustomWidget.Content.ToString())
             //    WidgetContainer.Children.Add(new CustomWidgetControl());
+            myStoryboard.Begin();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
