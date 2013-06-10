@@ -64,9 +64,6 @@ namespace Metrics
             WidgetContainer.Children.Clear();
             switch (service)
             {
-                case "Facebook":
-                    WidgetContainer.Children.Add(new FacebookControl());
-                    break;
                 case "Github":
                     WidgetContainer.Children.Add(new GithubControl());
                     break;
@@ -75,9 +72,6 @@ namespace Metrics
                     break;
                 case "Tuenti":
                     WidgetContainer.Children.Add(new TuentiControl());
-                    break;
-                case "Twitter":
-                    WidgetContainer.Children.Add(new TwitterControl());
                     break;
                 case "Wordpress":
                     WidgetContainer.Children.Add(new WordpressControl());

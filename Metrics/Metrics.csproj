@@ -153,9 +153,6 @@
     <Compile Include="Pages\WordpressControl.xaml.cs">
       <DependentUpon>WordpressControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FacebookControl.xaml.cs">
-      <DependentUpon>FacebookControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\IWidget.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -164,6 +161,7 @@
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\FacebookServices.cs" />
+    <Compile Include="ViewModel\GithubService.cs" />
     <Compile Include="ViewModel\Service.cs" />
     <Compile Include="ViewModel\TwitterServices.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -214,10 +212,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WordpressControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FacebookControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

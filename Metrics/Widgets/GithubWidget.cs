@@ -33,6 +33,7 @@ namespace Metrics.Widgets
         public override async Task Update()
         {
             var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data
             var response = await client.GetAsync(new Uri("https://api.github.com/repos/" + User + "/" + Repository));
             var result = await response.Content.ReadAsStringAsync();
