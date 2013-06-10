@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Metrics.ViewModel;
+using Windows.UI;
+using Windows.UI.Text;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -98,12 +101,57 @@ namespace Metrics
         private Popup popup;
         private ViewModel.AppViewModel viewModel;
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender,
+            SelectionChangedEventArgs e)
         {
-            //if (((sender as ComboBox).SelectedItem as ComboBoxItem).Content.Equals("Facebook"))
-            //{
-            //    WidgetContainer.Children.Add(new FacebookControl());   
-            //}
+            Service currentService
+                = ServicesComboBox.SelectedItem as Service;
+
+            metricDetails.Children.Clear();
+
+            foreach (string item in currentService.Properties.Keys)
+            {
+                var textBlock = new TextBlock();
+                textBlock.Text = item;
+                textBlock.FontSize = 16;
+                textBlock.FontWeight = FontWeights.SemiBold;
+                textBlock.Foreground = new SolidColorBrush(Colors.Black);
+                metricDetails.Children.Add(textBlock);
+
+                var textBox = new TextBox();
+                textBox.FontSize = 16;
+                
+                textBox.Foreground = new SolidColorBrush(Colors.Black);
+
+                Binding binding = new Binding();
+                binding.Path = new PropertyPath("Content");
+                binding.Source = currentService.Properties[item];
+                binding.Mode = BindingMode.TwoWay;
+                textBox.SetBinding(TextBox.TextProperty, binding);
+                metricDetails.Children.Add(textBox);
+            }
+        }
+
+        private async void addMetric_Click(object sender, RoutedEventArgs e)
+        {
+            Service currentService
+                = ServicesComboBox.SelectedItem as Service;
+
+            var widget = await currentService.GetWidget();
+            if (widget == null)
+                return;
+
+            try
+            {
+                viewModel.Add(widget);
+                popup.IsOpen = false;
+                viewModel.SwitchAd();
+            }
+            catch (Exception ex)
+            {
+                ErrorGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                ErrorGridText.Text = "Error: " + ex.Message;
+            }
         }
     }
 }

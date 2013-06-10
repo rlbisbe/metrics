@@ -10,7 +10,7 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
-    class TweetWidget : Widget
+    public class TweetWidget : Widget
     {
         public TweetWidget(string source)
         {

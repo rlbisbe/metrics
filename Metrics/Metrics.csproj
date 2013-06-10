@@ -166,7 +166,9 @@
     </Compile>
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\FacebookServices.cs" />
     <Compile Include="ViewModel\Service.cs" />
+    <Compile Include="ViewModel\TwitterServices.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Widgets\AdWidget.cs" />
     <Compile Include="Widgets\CustomWidget.cs" />

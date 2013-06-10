@@ -79,11 +79,11 @@ namespace Metrics.ViewModel
                     RefreshCommandCanExecute);
             this.myApp = App.Current as App;
 
-
             this.Services = new List<Service>();
-            Services.Add(new Service() { MetricsName = "Followers", MetricsProvider = "Twitter" });
-            Services.Add(new Service() { MetricsName = "Likes", MetricsProvider = "Facebook" });
-
+            Services.Add(new TwitterFollowersService());
+            Services.Add(new FacebookLikeService());
+            Services.Add(new FacebookTalkingAboutService());
+            
             Services = Services.OrderBy(x => x.MetricsProvider).ToList();
         }
 
