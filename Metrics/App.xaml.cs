@@ -113,10 +113,6 @@ namespace Metrics
                 w.Update();
                 this.Widgets.Add(w);
 
-                w = new TuentiWidget("cocacola");
-                w.Update();
-                this.Widgets.Add(w);
-
                 w = new TweetWidget("microsoft");
                 w.Update();
                 this.Widgets.Add(w);

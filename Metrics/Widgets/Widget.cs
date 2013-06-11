@@ -130,8 +130,6 @@ namespace Metrics
                     return new TweetWidget((string)val["source"]);
                 case "FacebookWidget":
                     return new FacebookWidget((string)val["source"], (string)val["selection"]);
-                case "TuentiWidget":
-                    return new TuentiWidget((string)val["source"]);
                 case "GithubWidget":
                     return new GithubWidget((string)val["username"], (string)val["repository"]);
                 case "StackOverflowWidget":
@@ -177,10 +175,6 @@ namespace Metrics
             this._allWidgets.Add(w);
 
             w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
-            w.Update();
-            this._allWidgets.Add(w);
-
-            w = new TuentiWidget("cocacola");
             w.Update();
             this._allWidgets.Add(w);
 

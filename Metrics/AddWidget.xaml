@@ -22,9 +22,14 @@
     </UserControl.Resources>
 
     <Grid Background="#4C000000">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="540"/>
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="ErrorGrid" 
@@ -37,46 +42,30 @@
         </Grid>
 
         <Grid x:Name="ServiceGrid"
-              Background="#FFC3C3C3" 
+              Background="#FF2D3944" 
               Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.Resources>
-                <Storyboard x:Name="myStoryboard">
-                    <ColorAnimation
-    Storyboard.TargetName="ServiceGrid"
-    Storyboard.TargetProperty="Background"
-    To="Blue" Duration="0:0:5"/>
-                </Storyboard>
-            </Grid.Resources>
+            <Grid.ChildrenTransitions>
+        <TransitionCollection>
+            <EntranceThemeTransition/>
+        </TransitionCollection>
+    </Grid.ChildrenTransitions>
             <Button x:Name="backButton" 
                     Style="{StaticResource BackButtonStyle}" 
-                    Margin="36,36,0,0" Height="Auto" 
+                    Margin="40,20,0,0" 
                     VerticalAlignment="Top"
                     Click="Close"/>
 
             <StackPanel Grid.Row="1"/>
             <Grid Grid.Row="2" x:Name="WidgetContainer" Margin="36 0"/>
-
-            <TextBlock x:Uid="SelectService" 
-            	Text="Select a service:"
-            	Style="{StaticResource SnappedPageHeaderTextStyle}" 
-            	Foreground="#DE000000" Margin="118,40,0,0" VerticalAlignment="Top"/>
-            <StackPanel Margin="36,190,36,0" Orientation="Vertical">
-                <TextBlock Margin="0,5,44,10" VerticalAlignment="Top"
-            		x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}"
-            		Foreground="#DE000000" 
-            		Text="Select metric:" FontSize="16"/>
+            <StackPanel Margin="40,73,20,0" Orientation="Vertical">
+                <TextBlock Margin="0,20,0,4" VerticalAlignment="Top"
+            		x:Uid="SelectMetric" Style="{StaticResource TitleTextStyle}" 
+            		Text="Select metric:"/>
                 <ComboBox
             		x:Name="ServicesComboBox"
             		VerticalAlignment="Top"
             		SelectionChanged="ComboBox_SelectionChanged" 
-            		ItemTemplate="{StaticResource MetricService}">
+            		ItemTemplate="{StaticResource MetricService}" Margin="0,4,0,0">
                     <ComboBox.ItemContainerStyle>
                         <Style TargetType="ComboBoxItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>                        </Style>
@@ -84,9 +73,8 @@
                 </ComboBox>
                 <StackPanel x:Name="metricDetails" HorizontalAlignment="Left" VerticalAlignment="Top" Width="474" Margin="0,10,0,0"/>
                 <Button x:Name="addMetric" x:Uid="Add" 
-                	Content="Add" BorderBrush="#FF646464" 
-                	Foreground="Black" Background="#19000000"
-                	HorizontalAlignment="Right" Margin="0,5,0,0" Click="addMetric_Click"/>
+                	Content="Add" Background="#19000000"
+                	HorizontalAlignment="Right" Click="addMetric_Click" Margin="0,0,-3,0"/>
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Left" Height="100" Margin="628,209,0,0" VerticalAlignment="Top" Width="100"/>

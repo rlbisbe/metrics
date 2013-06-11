@@ -141,14 +141,8 @@
     <Compile Include="Pages\CustomWidgetControl.xaml.cs">
       <DependentUpon>CustomWidgetControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GithubControl.xaml.cs">
-      <DependentUpon>GithubControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\StackOverflowControl.xaml.cs">
       <DependentUpon>StackOverflowControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TuentiControl.xaml.cs">
-      <DependentUpon>TuentiControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WordpressControl.xaml.cs">
       <DependentUpon>WordpressControl.xaml</DependentUpon>
@@ -171,7 +165,6 @@
     <Compile Include="Widgets\GithubWidget.cs" />
     <Compile Include="Widgets\Group.cs" />
     <Compile Include="Widgets\StackOverflowWidget.cs" />
-    <Compile Include="Widgets\TuentiWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
     <Compile Include="Widgets\Widget.cs" />
     <Compile Include="Widgets\FacebookWidget.cs" />
@@ -200,14 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\StackOverflowControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\GithubControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\TuentiControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

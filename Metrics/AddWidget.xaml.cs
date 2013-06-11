@@ -64,14 +64,8 @@ namespace Metrics
             WidgetContainer.Children.Clear();
             switch (service)
             {
-                case "Github":
-                    WidgetContainer.Children.Add(new GithubControl());
-                    break;
                 case "StackOverflow":
                     WidgetContainer.Children.Add(new StackOverflowControl());
-                    break;
-                case "Tuenti":
-                    WidgetContainer.Children.Add(new TuentiControl());
                     break;
                 case "Wordpress":
                     WidgetContainer.Children.Add(new WordpressControl());
@@ -82,9 +76,6 @@ namespace Metrics
                 default:
                     break;
             }
-            //if (service == CustomWidget.Content.ToString())
-            //    WidgetContainer.Children.Add(new CustomWidgetControl());
-            myStoryboard.Begin();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -107,15 +98,13 @@ namespace Metrics
             {
                 var textBlock = new TextBlock();
                 textBlock.Text = item;
-                textBlock.FontSize = 16;
-                textBlock.FontWeight = FontWeights.SemiBold;
-                textBlock.Foreground = new SolidColorBrush(Colors.Black);
+                textBlock.Style = App.Current.Resources["TitleTextStyle"] as Style;
+                textBlock.Margin = new Thickness(0, 16, 0, 0);
                 metricDetails.Children.Add(textBlock);
 
                 var textBox = new TextBox();
-                textBox.FontSize = 16;
-                
                 textBox.Foreground = new SolidColorBrush(Colors.Black);
+                textBox.Margin = new Thickness(0, 8, 0, 0);
 
                 Binding binding = new Binding();
                 binding.Path = new PropertyPath("Content");
