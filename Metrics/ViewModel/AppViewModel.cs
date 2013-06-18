@@ -85,6 +85,8 @@ namespace Metrics.ViewModel
             Services.Add(new FacebookTalkingAboutService());
             Services.Add(new GithubIssuesService());
             Services.Add(new StackOverflowReputationService());
+            Services.Add(new RedditCommentsService());
+            Services.Add(new RedditScoreService());
 
             Services = Services.OrderBy(x => x.MetricsProvider).ToList();
         }

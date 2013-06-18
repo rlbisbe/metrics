@@ -64,9 +64,6 @@ namespace Metrics
             WidgetContainer.Children.Clear();
             switch (service)
             {
-                case "StackOverflow":
-                    WidgetContainer.Children.Add(new StackOverflowControl());
-                    break;
                 case "Wordpress":
                     WidgetContainer.Children.Add(new WordpressControl());
                     break;

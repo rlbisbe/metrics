@@ -141,9 +141,6 @@
     <Compile Include="Pages\CustomWidgetControl.xaml.cs">
       <DependentUpon>CustomWidgetControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StackOverflowControl.xaml.cs">
-      <DependentUpon>StackOverflowControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\WordpressControl.xaml.cs">
       <DependentUpon>WordpressControl.xaml</DependentUpon>
     </Compile>
@@ -156,6 +153,7 @@
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\FacebookServices.cs" />
     <Compile Include="ViewModel\GithubService.cs" />
+    <Compile Include="ViewModel\RedditService.cs" />
     <Compile Include="ViewModel\Service.cs" />
     <Compile Include="ViewModel\StackOverflowService.cs" />
     <Compile Include="ViewModel\TwitterServices.cs" />
@@ -165,6 +163,7 @@
     <Compile Include="Widgets\EmptyWidget.cs" />
     <Compile Include="Widgets\GithubWidget.cs" />
     <Compile Include="Widgets\Group.cs" />
+    <Compile Include="Widgets\RedditWidget.cs" />
     <Compile Include="Widgets\StackOverflowWidget.cs" />
     <Compile Include="Widgets\WordpressWidget.cs" />
     <Compile Include="Widgets\Widget.cs" />
@@ -190,10 +189,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\CustomWidgetControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StackOverflowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
