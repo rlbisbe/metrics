@@ -157,6 +157,7 @@
     <Compile Include="ViewModel\FacebookServices.cs" />
     <Compile Include="ViewModel\GithubService.cs" />
     <Compile Include="ViewModel\Service.cs" />
+    <Compile Include="ViewModel\StackOverflowService.cs" />
     <Compile Include="ViewModel\TwitterServices.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Widgets\AdWidget.cs" />
