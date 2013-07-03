@@ -131,9 +131,6 @@
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="MyTemplateSelector.cs" />
-    <Compile Include="Pages\YoutubeControl.xaml.cs">
-      <DependentUpon>YoutubeControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\HttpService.cs" />
     <Compile Include="Services\LocalizationService.cs" />
@@ -157,6 +154,7 @@
     <Compile Include="ViewModel\Service.cs" />
     <Compile Include="ViewModel\StackOverflowService.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\YoutubeService.cs" />
     <Compile Include="Widgets\AdWidget.cs" />
     <Compile Include="Widgets\CustomWidget.cs" />
     <Compile Include="Widgets\EmptyWidget.cs" />
@@ -182,10 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
-    <Page Include="Pages\YoutubeControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\CustomWidgetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

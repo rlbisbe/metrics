@@ -8,14 +8,31 @@ using Windows.Storage;
 
 namespace Metrics.Widgets
 {
-    class YoutubeWidget : Widget
+    public class YoutubeWidget : Widget
     {
-        public YoutubeWidget(string source)
+        private Selection mSelection;
+        public enum Selection { Null, ViewCount, LikeCount }
+
+        public YoutubeWidget(string source, string selection) 
+            : this(source)
         {
+            this.mSelection = (Selection)Enum.Parse(typeof(Selection),
+                selection);
+        }
+
+        public YoutubeWidget(string source, 
+            Selection selection) 
+            : this(source)
+        {
+            this.mSelection = selection;
+        }
+
+        private YoutubeWidget (string source)
+	    {
             SetUrl(source);
             SetTexts();
             SetColors();
-        }
+	    }
 
         private void SetUrl(string source)
         {
@@ -48,7 +65,17 @@ namespace Metrics.Widgets
             var result = await HttpService.
                 GetJsonResult("https://gdata.youtube.com/feeds/api/videos/"
                 + this.Source + "?v=2&alt=jsonc");
-            Counter = (int)result["data"].GetObject()["viewCount"].GetNumber();
+
+            switch (mSelection)
+            {
+                case Selection.ViewCount:
+                    Counter = (int)result["data"].GetObject()["viewCount"].GetNumber();
+                    break;
+                case Selection.LikeCount:
+                    var str = result["data"].GetObject()["likeCount"].GetString();
+                    Counter = int.Parse(str);                    
+                    break;
+            }
             Title = result["data"].GetObject()["title"].GetString();
         }
 
@@ -59,6 +86,7 @@ namespace Metrics.Widgets
             ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
             composite["name"] = "YoutubeWidget";
             composite["url"] = Source;
+            composite["selection"] = mSelection.ToString();
             return composite;
         }
     }

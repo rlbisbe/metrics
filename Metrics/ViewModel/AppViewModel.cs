@@ -86,6 +86,8 @@ namespace Metrics.ViewModel
             Services.Add(new StackOverflowReputationService());
             Services.Add(new RedditCommentsService());
             Services.Add(new RedditScoreService());
+            Services.Add(new YoutubeViewsService());
+            Services.Add(new YoutubeUpvotesService());
 
             Services = Services.OrderBy(x => x.MetricsProvider).ToList();
         }
@@ -100,7 +102,7 @@ namespace Metrics.ViewModel
             if (!NetworkService.HaveInternetConnection())
                 return;
 
-            //UpdateAllAsync();
+            UpdateAllAsync();
         }
 
         private async void UpdateAllAsync()
@@ -112,7 +114,7 @@ namespace Metrics.ViewModel
                 try
                 {
                     UpdatedItems += 1;
-                    //await item.Update();
+                    await item.Update();
                 }
                 catch (Exception)
                 {

@@ -138,7 +138,7 @@ namespace Metrics
                     return new CustomWidget((string)val["url"], 
                         (string)val["data"], (string)val["widgetName"], (string)val["title"]);
                 case "YoutubeWidget":
-                    return new YoutubeWidget((string)val["url"]);
+                    return new YoutubeWidget((string)val["url"], (string)val["selection"]);
                 default:
                     return null;
             }
