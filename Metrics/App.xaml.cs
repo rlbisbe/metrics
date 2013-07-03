@@ -101,19 +101,11 @@ namespace Metrics
                 w.Update();
                 this.Widgets.Add(w);
 
-                w = new TweetWidget("windows");
-                w.Update();
-                this.Widgets.Add(w);
-
                 w = new GithubWidget("twitter", "bootstrap");
                 w.Update();
                 this.Widgets.Add(w);
 
                 w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
-                w.Update();
-                this.Widgets.Add(w);
-
-                w = new TweetWidget("microsoft");
                 w.Update();
                 this.Widgets.Add(w);
 

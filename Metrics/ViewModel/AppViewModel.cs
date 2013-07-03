@@ -80,7 +80,6 @@ namespace Metrics.ViewModel
             this.myApp = App.Current as App;
 
             this.Services = new List<Service>();
-            Services.Add(new TwitterFollowersService());
             Services.Add(new FacebookLikeService());
             Services.Add(new FacebookTalkingAboutService());
             Services.Add(new GithubIssuesService());

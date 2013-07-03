@@ -126,8 +126,6 @@ namespace Metrics
 
             switch (type)
             {
-                case "TweetWidget":
-                    return new TweetWidget((string)val["source"]);
                 case "FacebookWidget":
                     return new FacebookWidget((string)val["source"], (string)val["selection"]);
                 case "GithubWidget":
@@ -166,19 +164,11 @@ namespace Metrics
             w.Update();
             this._allWidgets.Add(w);
 
-            w = new TweetWidget("windows");
-            w.Update();
-            this._allWidgets.Add(w);
-
             w = new GithubWidget("twitter", "bootstrap");
             w.Update();
             this._allWidgets.Add(w);
 
             w = new FacebookWidget("microsoft", FacebookWidget.Selection.TalkingAbout);
-            w.Update();
-            this._allWidgets.Add(w);
-
-            w = new TweetWidget("microsoft");
             w.Update();
             this._allWidgets.Add(w);
 

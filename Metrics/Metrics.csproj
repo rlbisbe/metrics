@@ -156,7 +156,6 @@
     <Compile Include="ViewModel\RedditService.cs" />
     <Compile Include="ViewModel\Service.cs" />
     <Compile Include="ViewModel\StackOverflowService.cs" />
-    <Compile Include="ViewModel\TwitterServices.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Widgets\AdWidget.cs" />
     <Compile Include="Widgets\CustomWidget.cs" />
@@ -168,7 +167,6 @@
     <Compile Include="Widgets\WordpressWidget.cs" />
     <Compile Include="Widgets\Widget.cs" />
     <Compile Include="Widgets\FacebookWidget.cs" />
-    <Compile Include="Widgets\TweetWidget.cs" />
     <Compile Include="Widgets\YoutubeWidget.cs" />
   </ItemGroup>
   <ItemGroup>

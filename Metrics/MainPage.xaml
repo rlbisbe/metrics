@@ -36,7 +36,7 @@
                     Margin="0,0,0,0" 
                     VerticalAlignment="Top" 
                     Width="250"/>
-                </Grid>
+            </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="SnappedAd">
@@ -239,14 +239,14 @@
             x:Name="itemGridScrollViewer"
             AutomationProperties.AutomationId="GridScrollViewer"
             Grid.Row="1"
-            Margin="0,-4,0,0"
+            Margin="0,0,0,0"
             Style="{StaticResource HorizontalScrollViewerStyle}">
 
             <GridView
                 x:Name="itemGridView"
                 AutomationProperties.AutomationId="ItemsGridView"
                 AutomationProperties.Name="Items"
-                Margin="0,-4,0,0"
+                Margin="0,0,0,0"
                 Padding="116,0,116,46"
                 ItemTemplateSelector="{Binding Source={StaticResource mySelector}}"
                 ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
@@ -269,12 +269,6 @@
                                                 <VisualState x:Name="PointerOver">
                                                     <Storyboard>
                                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PointerOverBorder"/>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectionBackground">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ListViewItemSelectedPointerOverBackgroundThemeBrush}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="SelectedBorder">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ListViewItemSelectedPointerOverBorderThemeBrush}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
                                                     </Storyboard>
                                                 </VisualState>
                                                 <VisualState x:Name="Pressed">
@@ -286,12 +280,6 @@
                                                     <Storyboard>
                                                         <PointerDownThemeAnimation TargetName="ContentContainer"/>
                                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PointerOverBorder"/>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="SelectionBackground">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ListViewItemSelectedPointerOverBackgroundThemeBrush}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="SelectedBorder">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ListViewItemSelectedPointerOverBorderThemeBrush}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
                                                     </Storyboard>
                                                 </VisualState>
                                                 <VisualState x:Name="Disabled">
@@ -464,7 +452,7 @@
                                                 <Grid x:Name="InnerDragContent">
                                                     <Rectangle x:Name="PointerOverBorder" Fill="{StaticResource ListViewItemPointerOverBackgroundThemeBrush}" IsHitTestVisible="False" Margin="1" Opacity="0"/>
                                                     <Rectangle x:Name="FocusVisual" IsHitTestVisible="False" Opacity="0" Stroke="{StaticResource ListViewItemFocusBorderThemeBrush}" StrokeThickness="2"/>
-                                                    <Rectangle x:Name="SelectionBackground" Fill="{StaticResource ListViewItemSelectedBackgroundThemeBrush}" Margin="4" Opacity="0"/>
+                                                    <Rectangle x:Name="SelectionBackground" Fill="#66FFFFFF" Margin="4" Opacity="0"/>
                                                     <Border x:Name="ContentBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="4">
                                                         <Grid>
                                                             <ContentPresenter x:Name="contentPresenter" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -473,7 +461,7 @@
                                                             <Rectangle x:Name="MultiArrangeOverlayBackground" Fill="{StaticResource ListViewItemDragBackgroundThemeBrush}" IsHitTestVisible="False" Opacity="0"/>
                                                         </Grid>
                                                     </Border>
-                                                    <Rectangle x:Name="SelectedBorder" IsHitTestVisible="False" Margin="2" Opacity="0" Stroke="{StaticResource ListViewItemSelectedBackgroundThemeBrush}" StrokeThickness="{StaticResource GridViewItemSelectedBorderThemeThickness}"/>
+                                                    <Rectangle x:Name="SelectedBorder" IsHitTestVisible="False" Margin="0" Opacity="0" Stroke="#66FFFFFF" StrokeThickness="{StaticResource GridViewItemSelectedBorderThemeThickness}"/>
                                                 </Grid>
                                             </Border>
                                         </Grid>
