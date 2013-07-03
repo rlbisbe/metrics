@@ -88,6 +88,9 @@ namespace Metrics.ViewModel
             Services.Add(new RedditScoreService());
             Services.Add(new YoutubeViewsService());
             Services.Add(new YoutubeUpvotesService());
+            Services.Add(new WordpressDayService());
+            Services.Add(new WordpressWeekService());
+            Services.Add(new WordpressMonthService());
 
             Services = Services.OrderBy(x => x.MetricsProvider).ToList();
         }

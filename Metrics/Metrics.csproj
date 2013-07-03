@@ -154,6 +154,7 @@
     <Compile Include="ViewModel\Service.cs" />
     <Compile Include="ViewModel\StackOverflowService.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\WordpressService.cs" />
     <Compile Include="ViewModel\YoutubeService.cs" />
     <Compile Include="Widgets\AdWidget.cs" />
     <Compile Include="Widgets\CustomWidget.cs" />
