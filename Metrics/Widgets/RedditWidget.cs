@@ -24,7 +24,7 @@ namespace Metrics.Widgets
             this.Url = url;
             this.MetricType = type;
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            this.Title = String.Format(loader.GetString("GithubWidgetOpenIssues"));
+            this.Title = "Reddit stuff";
             this.Background = "#ffffff";
             this.Foreground = "black";
             this.WidgetForeground = "#33000000";
