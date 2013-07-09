@@ -8,9 +8,14 @@ using Windows.Data.Json;
 
 namespace Metrics.Services
 {
-    class HttpService
+    public interface IHttpService
     {
-        public static async Task<JsonObject> GetJsonResult(string url)
+        Task<JsonObject> GetJsonResult(string url);
+    }
+
+    class HttpService : IHttpService
+    {
+        public async Task<JsonObject> GetJsonResult(string url)
         {
             var client = new HttpClient();
             client.MaxResponseContentBufferSize = 1024 * 1024; // Read up to 1 MB of data

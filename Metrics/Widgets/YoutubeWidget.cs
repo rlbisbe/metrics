@@ -25,6 +25,7 @@ namespace Metrics.Widgets
             : this(source)
         {
             this.mSelection = selection;
+            HttpService = new HttpService();
         }
 
         private YoutubeWidget (string source)
@@ -89,5 +90,7 @@ namespace Metrics.Widgets
             composite["selection"] = mSelection.ToString();
             return composite;
         }
+
+        public IHttpService HttpService { get; set; }
     }
 }
