@@ -131,10 +131,6 @@
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="MyTemplateSelector.cs" />
-    <Compile Include="Services\DataService.cs" />
-    <Compile Include="Services\HttpService.cs" />
-    <Compile Include="Services\LocalizationService.cs" />
-    <Compile Include="Services\NetworkService.cs" />
     <Compile Include="Pages\CustomWidgetControl.xaml.cs">
       <DependentUpon>CustomWidgetControl.xaml</DependentUpon>
     </Compile>
@@ -156,17 +152,6 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WordpressService.cs" />
     <Compile Include="ViewModel\YoutubeService.cs" />
-    <Compile Include="Widgets\AdWidget.cs" />
-    <Compile Include="Widgets\CustomWidget.cs" />
-    <Compile Include="Widgets\EmptyWidget.cs" />
-    <Compile Include="Widgets\GithubWidget.cs" />
-    <Compile Include="Widgets\Group.cs" />
-    <Compile Include="Widgets\RedditWidget.cs" />
-    <Compile Include="Widgets\StackOverflowWidget.cs" />
-    <Compile Include="Widgets\WordpressWidget.cs" />
-    <Compile Include="Widgets\Widget.cs" />
-    <Compile Include="Widgets\FacebookWidget.cs" />
-    <Compile Include="Widgets\YoutubeWidget.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -176,8 +161,6 @@
     <None Include="Metrics_StoreKey.pfx" />
     <None Include="Metrics_TemporaryKey.pfx" />
     <None Include="packages.config" />
-    <PRIResource Include="strings\en-US\Resources.resw" />
-    <PRIResource Include="strings\es-ES\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
@@ -224,6 +207,12 @@
     <SDKReference Include="MSAdvertisingXaml, Version=6.1">
       <Name>Microsoft Advertising SDK for Windows 8 %28Xaml%29</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metrics.Library\Metrics.Library.csproj">
+      <Project>{2acfe6a7-079a-49e3-8171-214f8f3155c1}</Project>
+      <Name>Metrics.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

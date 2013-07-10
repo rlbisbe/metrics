@@ -1,4 +1,5 @@
-﻿using Metrics.Widgets;
+﻿using Metrics.Library.Widgets;
+using Metrics.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;

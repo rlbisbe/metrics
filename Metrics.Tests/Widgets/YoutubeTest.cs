@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using Metrics.Widgets;
 using System.Threading.Tasks;
 using System.Threading;
+using Metrics.Library.Widgets;
 
 namespace Metrics.Test.Widgets
 {

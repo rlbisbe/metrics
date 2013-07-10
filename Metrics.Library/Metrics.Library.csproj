@@ -6,15 +6,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3977131F-90EE-49EE-947B-A58EE3158D7F}</ProjectGuid>
+    <ProjectGuid>{2ACFE6A7-079A-49E3-8171-214F8F3155C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Metrics.Test</RootNamespace>
-    <AssemblyName>Metrics.Test</AssemblyName>
+    <RootNamespace>Metrics.Library</RootNamespace>
+    <AssemblyName>Metrics.Library</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>UnitTestLibrary1_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,48 +98,31 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup>
-    <AppXPackage>True</AppXPackage>
-    <AppxPackageIncludePrivateSymbols>true</AppxPackageIncludePrivateSymbols>
-  </PropertyGroup>
   <ItemGroup>
-    <!--A reference to the entire .Net Framework and Windows SDK are automatically included-->
-    <SDKReference Include="MSTestFramework, Version=11.0" />
-    <SDKReference Include="TestPlatform, Version=11.0" />
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <PRIResource Include="strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mocks\MockHttpService.cs" />
-    <Compile Include="Widgets\YoutubeTest.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\HttpService.cs" />
+    <Compile Include="Services\LocalizationService.cs" />
+    <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Widgets\AdWidget.cs" />
+    <Compile Include="Widgets\CustomWidget.cs" />
+    <Compile Include="Widgets\EmptyWidget.cs" />
+    <Compile Include="Widgets\FacebookWidget.cs" />
+    <Compile Include="Widgets\GithubWidget.cs" />
+    <Compile Include="Widgets\Group.cs" />
+    <Compile Include="Widgets\GzipHttpClient.cs" />
+    <Compile Include="Widgets\RedditWidget.cs" />
+    <Compile Include="Widgets\StackOverflowWidget.cs" />
+    <Compile Include="Widgets\Widget.cs" />
+    <Compile Include="Widgets\WordpressWidget.cs" />
+    <Compile Include="Widgets\YoutubeWidget.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-    <None Include="UnitTestLibrary1_TemporaryKey.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\UnitTestLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\UnitTestSmallLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\UnitTestSplashScreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\UnitTestStoreLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Widgets\YoutubeJson.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Metrics.Library\Metrics.Library.csproj">
-      <Project>{2acfe6a7-079a-49e3-8171-214f8f3155c1}</Project>
-      <Name>Metrics.Library</Name>
-    </ProjectReference>
+    <PRIResource Include="strings\es-ES\Resources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
@@ -149,7 +131,7 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>  
+  </Target>
   <Target Name="AfterBuild">
   </Target>
   -->
